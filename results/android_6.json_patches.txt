@@ -1,0 +1,2357 @@
+    <string name="settings_qbittorrent_https_self_signed_keystore_password_title">Contraseña del almacén de claves </string>
+    <string name="error_permission">Se requiere acceso de almacenamiento para descargar y enviar los archivos torrents!</string>
+    <string name="error_grant_permission">Se requiere acceso de almacenamiento para descargar y enviar los archivos torrents\n\n.¿Le gustaría conceder el permiso en la configuración de Android?</string>
+
+</resources>
+  <string name="settings_qbittorrent_https_self_signed_keystore_password_title">Giltzategi sarhitza</string>
+  <string name="error_grant_permission">Biltegiratze sarbidea beharrezkoa da torrentak jeitsi eta bidaltzeko!\n\nBaimena ematea nahi duzu Android ezarpenetan?</string>
+  <string name="error_permission">Biltegirartze sarbidea beharrezkoa da torrentak jeitsi eta bidaltzeko!</string>
+</resources>
+
+
+    <string name="settings_qbittorrent_https_self_signed_keystore_password_title">Mot de passe keystore</string>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Keystore de certificat auto-signé</string>
+    <string name="error_grant_permission">L\'accès de stockage est nécessaire pour télécharger et envoyer des fichiers torrent!\n\nVoulez-vous accorder l\'autorisation dans les paramètres Android?</string>
+    <string name="error_permission">l\'accès de stockage est nécessaire pour télécharger et envoyer des fichiers torrent</string>
+
+</resources>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Chiavi per il certificato auto-firmato</string>
+    <string name="error_grant_permission">L\'accesso storage è necessario per scaricare e inviare file torrent!\n\nVolete concedere l\'autorizzazione nelle impostazioni di Android?</string>
+    <string name="error_permission">L\'accesso storage è necessario per scaricare e inviare file torrent!</string>
+
+</resources>
+  <string name="settings_qbittorrent_https_self_signed_keystore_password_title">キーストアのパスワード</string>
+  <string name="error_grant_permission">Torrent ファイルをダウンロードしたり送信するために、ストレージのアクセスが必要です! \nAndroid の設定でアクセス許可を付与しますか?</string>
+  <string name="error_permission">Torrent ファイルをダウンロードしたり送信するために、ストレージのアクセスが必要です!</string>
+
+</resources>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Kluczy dla certyfikatu z podpisem własnym</string>
+    <string name="error_grant_permission">Dostęp do pamięci jest zobowiązany do pobierania i wysyłania plików torrent!\n\nChciałbyś udzielenia pozwolenia w ustawieniach Android?</string>
+    <string name="error_permission">Dostęp do pamięci jest zobowiązany do pobierania i wysyłania plików torrent!</string>
+
+</resources>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Keystore for self-signed certificate</string>
+    <string name="error_grant_permission">Acesso de armazenamento é necessário para baixar e enviar arquivos torrent!\n\nVocê gostaria de conceder a permissão em configurações do Android?</string>
+    <string name="error_permission">Acesso de armazenamento é necessário para baixar e enviar arquivos torrent!</string>
+
+</resources>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Keystore for self-signed certificate</string>
+    <string name="error_grant_permission">Acesso de armazenamento é necessário para baixar e enviar arquivos torrent!\n\nVocê gostaria de conceder a permissão em configurações do Android?</string>
+    <string name="error_permission">Acesso de armazenamento é necessário para baixar e enviar arquivos torrent!</string>
+
+</resources>
+  <string name="settings_qbittorrent_https_self_signed_bks_file_title">Keystore для собственного сертификата</string>
+  <string name="error_grant_permission">Доступ хранения требуется для загрузки и отправки торрент-файлы!\n\nВы хотите, чтобы предоставить разрешение в настройках Android?</string>
+  <string name="error_permission">Доступ для хранения требуется, чтобы загрузить и отправить торрент-файлы!</string>
+
+</resources>
+    <string name="settings_qbittorrent_https_category">HTTPS</string>
+    <string name="settings_qbittorrent_https_self_signed_keystore_password_title">yckelbehållaren lösenord</string>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Nyckel för självsignerat certifikat</string>
+    <string name="error_grant_permission">Tillgång lagring krävs för att hämta och skicka torrentfiler !\n\nVill du ge tillstånd i Android-inställningar?</string>
+    <string name="error_permission">Tillgång lagring krävs för att hämta och skicka torrentfiler !</string>
+
+</resources>
+    <string name="settings_qbittorrent_https_self_signed_keystore_password_title">Keystore password</string>
+    <string name="error_grant_permission">Storage access required to download and send torrent files!\n\nWould you like to grant the permission in Android settings?</string>
+    <string name="error_permission">Storage access required to download and send torrent files!</string>
+
+</resources>
+ */
+package com.lgallardo.qbittorrentclient;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.preference.CheckBoxPreference;
+import android.preference.EditTextPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.util.Log;
+import android.view.Menu;
+
+
+    private Preference keystore_path;
+    private EditTextPreference keystore_password;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+public void onCancel(DialogInterface dialog) {
+        keystore_path.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent intent = new Intent(getApplicationContext(), FilePickerActivity.class);
+                intent.putExtra(FilePickerActivity.ARG_FILE_FILTER, Pattern.compile(".*\\.bks"));
+                startActivityForResult(intent, 1);
+
+                return true;
+            }
+        });
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        keystore_path.setSummary(keystore_path_value);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+    <string name="settings_qbittorrent_https_category">HTTPS</string>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Almacén de claves del certificado autofirmado</string>
+    <string name="settings_qbittorrent_https_self_signed_keystore_password_title">Contraseña del almacén de claves </string>
+    <string name="error_permission">Se requiere acceso de almacenamiento para descargar y enviar los archivos torrents!</string>
+    <string name="error_grant_permission">Se requiere acceso de almacenamiento para descargar y enviar los archivos torrents\n\n.¿Le gustaría conceder el permiso en la configuración de Android?</string>
+
+</resources>
+  <string name="settings_qbittorrent_https_self_signed_keystore_password_title">Giltzategi sarhitza</string>
+  <string name="error_grant_permission">Biltegiratze sarbidea beharrezkoa da torrentak jeitsi eta bidaltzeko!\n\nBaimena ematea nahi duzu Android ezarpenetan?</string>
+  <string name="error_permission">Biltegirartze sarbidea beharrezkoa da torrentak jeitsi eta bidaltzeko!</string>
+</resources>
+    <string name="settings_qbittorrent_https_self_signed_keystore_password_title">Mot de passe keystore</string>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Keystore de certificat auto-signé</string>
+    <string name="error_grant_permission">L\'accès de stockage est nécessaire pour télécharger et envoyer des fichiers torrent!\n\nVoulez-vous accorder l\'autorisation dans les paramètres Android?</string>
+    <string name="error_permission">l\'accès de stockage est nécessaire pour télécharger et envoyer des fichiers torrent</string>
+
+</resources>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Chiavi per il certificato auto-firmato</string>
+    <string name="error_grant_permission">L\'accesso storage è necessario per scaricare e inviare file torrent!\n\nVolete concedere l\'autorizzazione nelle impostazioni di Android?</string>
+    <string name="error_permission">L\'accesso storage è necessario per scaricare e inviare file torrent!</string>
+
+</resources>
+  <string name="settings_qbittorrent_https_self_signed_keystore_password_title">キーストアのパスワード</string>
+  <string name="error_grant_permission">Torrent ファイルをダウンロードしたり送信するために、ストレージのアクセスが必要です! \nAndroid の設定でアクセス許可を付与しますか?</string>
+  <string name="error_permission">Torrent ファイルをダウンロードしたり送信するために、ストレージのアクセスが必要です!</string>
+
+
+</resources>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Kluczy dla certyfikatu z podpisem własnym</string>
+    <string name="error_grant_permission">Dostęp do pamięci jest zobowiązany do pobierania i wysyłania plików torrent!\n\nChciałbyś udzielenia pozwolenia w ustawieniach Android?</string>
+    <string name="error_permission">Dostęp do pamięci jest zobowiązany do pobierania i wysyłania plików torrent!</string>
+
+</resources>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Keystore for self-signed certificate</string>
+    <string name="error_grant_permission">Acesso de armazenamento é necessário para baixar e enviar arquivos torrent!\n\nVocê gostaria de conceder a permissão em configurações do Android?</string>
+    <string name="error_permission">Acesso de armazenamento é necessário para baixar e enviar arquivos torrent!</string>
+
+</resources>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Keystore for self-signed certificate</string>
+    <string name="error_grant_permission">Acesso de armazenamento é necessário para baixar e enviar arquivos torrent!\n\nVocê gostaria de conceder a permissão em configurações do Android?</string>
+    <string name="error_permission">Acesso de armazenamento é necessário para baixar e enviar arquivos torrent!</string>
+
+</resources>
+  <string name="settings_qbittorrent_https_self_signed_bks_file_title">Keystore для собственного сертификата</string>
+  <string name="error_grant_permission">Доступ хранения требуется для загрузки и отправки торрент-файлы!\n\nВы хотите, чтобы предоставить разрешение в настройках Android?</string>
+  <string name="error_permission">Доступ для хранения требуется, чтобы загрузить и отправить торрент-файлы!</string>
+
+</resources>
+    <string name="settings_qbittorrent_https_category">HTTPS</string>
+    <string name="settings_qbittorrent_https_self_signed_keystore_password_title">yckelbehållaren lösenord</string>
+    <string name="settings_qbittorrent_https_self_signed_bks_file_title">Nyckel för självsignerat certifikat</string>
+    <string name="error_grant_permission">Tillgång lagring krävs för att hämta och skicka torrentfiler !\n\nVill du ge tillstånd i Android-inställningar?</string>
+    <string name="error_permission">Tillgång lagring krävs för att hämta och skicka torrentfiler !</string>
+
+</resources>
+    <string name="settings_qbittorrent_https_self_signed_keystore_password_title">Keystore password</string>
+    <string name="error_grant_permission">Storage access required to download and send torrent files!\n\nWould you like to grant the permission in Android settings?</string>
+    <string name="error_permission">Storage access required to download and send torrent files!</string>
+</resources>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+private void drawSatellite(Canvas c, int s, float elev, float azim, float snr, i
+                    c.drawCircle(x, y, SAT_RADIUS, mSatelliteStrokePaint);
+                    break;
+                case GLONASS:
+                    c.drawRect(x - SAT_RADIUS, y + SAT_RADIUS, x + SAT_RADIUS, y - SAT_RADIUS,
+                            thisPaint);
+                    c.drawRect(x - SAT_RADIUS, y + SAT_RADIUS, x + SAT_RADIUS, y - SAT_RADIUS,
+                            mSatelliteStrokePaint);
+                    break;
+            }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    <string name="pref_changelog_last_checksum">changelog_last_checksum</string>
+    <string name="pref_caches_history">caches_history</string>
+    <string name="pref_hardware_acceleration">hardware_acceleration2</string>
+    <string name="pref_last_cache_log">last_cache_log</string>
+    <string name="pref_last_trackable_log">last_trackable_log</string>
+    <string name="pref_home_location">home_location</string>
+            StringUtils.equals(Build.MODEL, "GT-I9195")  ||    // Samsung S4 mini
+            StringUtils.equals(Build.MODEL, "GT-I8200N");      // Samsung S3 mini
+
+    // twitter api keys
+    private final static @NonNull String TWITTER_KEY_CONSUMER_PUBLIC = CryptUtils.rot13("ESnsCvAv3kEupF1GCR3jGj");
+    private final static @NonNull String TWITTER_KEY_CONSUMER_SECRET = CryptUtils.rot13("7vQWceACV9umEjJucmlpFe9FCMZSeqIqfkQ2BnhV9x");
+public static void setUseGooglePlayServices(final boolean value) {
+    }
+
+    public static boolean useGooglePlayServices() {
+        // By default, enable play services starting from ICS.
+        return CgeoApplication.getInstance().isGooglePlayServicesAvailable() &&
+                getBoolean(R.string.pref_googleplayservices, VERSION.SDK_INT >= VERSION_CODES.ICE_CREAM_SANDWICH);
+    }
+
+    public static boolean useLowPowerMode() {
+public static void addCacheToHistory(@NonNull final String geocode) {
+    }
+
+    public static boolean useHardwareAcceleration() {
+        return getBoolean(R.string.pref_hardware_acceleration, !HW_ACCEL_DISABLED_BY_DEFAULT);
+    }
+
+    static void setUseHardwareAcceleration(final boolean useHardwareAcceleration) {
+        putBoolean(R.string.pref_hardware_acceleration, useHardwareAcceleration);
+    }
+
+    public static String getLastCacheLog() {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+private static void cancelActiveNotifications(@NonNull Context context) {
+    notifications.cancel(SUMMARY_NOTIFICATION_ID);
+
+    if (Build.VERSION.SDK_INT >= 23) {
+      StatusBarNotification[] activeNotifications = notifications.getActiveNotifications();
+
+      for (StatusBarNotification activeNotification : activeNotifications) {
+        if (activeNotification.getId() != NotificationBarManager.RED_PHONE_NOTIFICATION) {
+          notifications.cancel(activeNotification.getId());
+        }
+      }
+    }
+  }
+
+  private static void cancelOrphanedNotifications(@NonNull Context context, NotificationState notificationState) {
+    if (Build.VERSION.SDK_INT >= 23) {
+      NotificationManager     notifications       = ServiceUtil.getNotificationManager(context);
+      StatusBarNotification[] activeNotifications = notifications.getActiveNotifications();
+
+      for (StatusBarNotification notification : activeNotifications) {
+        boolean validNotification = false;
+
+        if (notification.getId() != SUMMARY_NOTIFICATION_ID && notification.getId() != NotificationBarManager.RED_PHONE_NOTIFICATION) {
+          for (NotificationItem item : notificationState.getNotifications()) {
+            if (notification.getId() == (SUMMARY_NOTIFICATION_ID + item.getThreadId())) {
+              validNotification = true;
+              break;
+            }
+          }
+
+          if (!validNotification) {
+            notifications.cancel(notification.getId());
+          }
+        }
+      }
+    }
+  }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Material Design
+Imgur upload support
+Experimental Tor support (thanks to SpotComms)
+
+70/1.9.3.4
+Fixed album swiping
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v7.app.AppCompatActivity;
+import org.quantumbadger.redreader.R;
+import org.quantumbadger.redreader.cache.CacheDownload;
+import org.quantumbadger.redreader.common.PrefsUtility;
+import org.quantumbadger.redreader.http.okhttp.OKHTTPBackend;
+import info.guardianproject.netcipher.proxy.OrbotHelper;
+
+public class BaseActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+
+	private static boolean closingAll = false;
+
+	public void closeAllExceptMain() {
+		closingAll = true;
+		closeIfNecessary();
+private void closeIfNecessary() {
+		}
+	}
+
+	private void setOrientationFromPrefs() {
+		PrefsUtility.ScreenOrientation orientation = PrefsUtility.pref_behaviour_screen_orientation(this, sharedPreferences);
+		if (orientation == PrefsUtility.ScreenOrientation.AUTO)
+
+package org.quantumbadger.redreader.reddit.prepared;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
+import org.apache.commons.lang3.StringEscapeUtils;
+import org.quantumbadger.redreader.R;
+import org.quantumbadger.redreader.account.RedditAccount;
+import org.quantumbadger.redreader.account.RedditAccountManager;
+import org.quantumbadger.redreader.activities.BugReportActivity;
+import org.quantumbadger.redreader.activities.CommentReplyActivity;
+import org.quantumbadger.redreader.activities.MainActivity;
+public void onClick(DialogInterface dialog, int which) {
+
+			case SAVE_IMAGE: {
+
+				final RedditAccount anon = RedditAccountManager.getAnon();
+
+				LinkHandler.getImageInfo(activity, post.src.getUrl(), Constants.Priority.IMAGE_VIEW, 0, new GetImageInfoListener() {
+
+					@Override
+					public void onFailure(final @CacheRequest.RequestFailureType int type, final Throwable t, final Integer status, final String readableMessage) {
+						final RRError error = General.getGeneralErrorForFailure(activity, type, t, status, post.src.getUrl());
+						General.showResultDialog(activity, error);
+					}
+
+					@Override
+					public void onSuccess(final ImageInfo info) {
+
+						CacheManager.getInstance(activity).makeRequest(new CacheRequest(General.uriFromString(info.urlOriginal), anon, null,
+								Constants.Priority.IMAGE_VIEW, 0, CacheRequest.DOWNLOAD_IF_NECESSARY,
+								Constants.FileType.IMAGE, CacheRequest.DOWNLOAD_QUEUE_IMMEDIATE, false, false, activity) {
+
+							@Override
+							protected void onCallbackException(Throwable t) {
+								BugReportActivity.handleGlobalError(context, t);
+							}
+
+							@Override
+							protected void onDownloadNecessary() {
+								General.quickToast(context, R.string.download_downloading);
+							}
+
+							@Override
+							protected void onDownloadStarted() {
+							}
+
+							@Override
+							protected void onFailure(@CacheRequest.RequestFailureType int type, Throwable t, Integer status, String readableMessage) {
+								final RRError error = General.getGeneralErrorForFailure(context, type, t, status, url.toString());
+								General.showResultDialog(activity, error);
+							}
+
+							@Override
+							protected void onProgress(boolean authorizationInProgress, long bytesRead, long totalBytes) {
+							}
+
+							@Override
+							protected void onSuccess(CacheManager.ReadableCacheFile cacheFile, long timestamp, UUID session, boolean fromCache, String mimetype) {
+
+								File dst = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), General.uriFromString(info.urlOriginal).getPath());
+
+								if(dst.exists()) {
+									int count = 0;
+
+									while(dst.exists()) {
+										count++;
+										dst = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), count + "_" + General.uriFromString(info.urlOriginal).getPath().substring(1));
+									}
+								}
+
+								try {
+									final InputStream cacheFileInputStream = cacheFile.getInputStream();
+
+									if(cacheFileInputStream == null) {
+										notifyFailure(CacheRequest.REQUEST_FAILURE_CACHE_MISS, null, null, "Could not find cached image");
+										return;
+									}
+
+									General.copyFile(cacheFileInputStream, dst);
+
+								} catch(IOException e) {
+									notifyFailure(CacheRequest.REQUEST_FAILURE_STORAGE, e, null, "Could not copy file");
+									return;
+								}
+
+								activity.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
+												Uri.parse("file://" + dst.getAbsolutePath()))
+								);
+
+								General.quickToast(context, context.getString(R.string.action_save_image_success) + " " + dst.getAbsolutePath());
+							}
+						});
+
+					}
+
+					@Override
+					public void onNotAnImage() {
+						General.quickToast(activity, R.string.selected_link_is_not_image);
+					}
+				});
+
+	<string name="submit_post_self_text_hint">Self Text</string>
+	<string name="submit_post_url_hint">URL</string>
+
+</resources>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public void onCreate(Bundle state) {
+
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_CONTACTS)
+                != PackageManager.PERMISSION_GRANTED) {
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        <item name="android:colorAccent">@color/kiss_green</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="appSelectableItemBackground">?android:attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="BaseThemeDark" parent="@android:style/Theme.Material.NoActionBar">
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Released under BSD license. Requires Adobe AIR 17+.
+Just give me the ANE!
+---------------------
+
+If you don't care about the source code and just want to download the latest, ready-built ANE, click the [releases link](https://github.com/mesmotronic/air-fullscreen-ane/releases) at the top of this project's page on GitHub.
+
+How does it work?
+-----------------
+
+
+@echo off
+
+copy ..\android-jar\bin\fullscreen-ane-jar.jar android
+
+call adt ^
+ -package ^
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<application xmlns="http://ns.adobe.com/air/application/17.0">
+
+	<id>com.mesmotronic.ane.fullscreen.test</id>
+
+		<fullScreen>false</fullScreen>
+		<visible>true</visible>
+		<softKeyboardBehavior>none</softKeyboardBehavior>
+		<renderMode>gpu</renderMode>
+    </initialWindow>
+	
+	<android>
+
+
+
+<manifest 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mesmotronic.ane.fullscreen"
+    android:versionCode="1"
+    android:versionName="1.0" 
+    >
+	
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="17"
+        />
+
+    <application />
+
+#proguard.config=${sdk.dir}/tools/proguard/proguard-android.txt:proguard-project.txt
+
+# Project target.
+target=android-22
+android.library=true
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.view.Window;
+public Window getWindow()
+			_windowCallback = new Window.Callback()
+			{
+				@Override
+				public ActionMode onWindowStartingActionMode(Callback callback) 
+				{
+					return windowCallback.onWindowStartingActionMode(callback);
+public void onWindowAttributesChanged(LayoutParams attrs)
+				}
+				
+				@Override
+				public boolean onSearchRequested() 
+				{
+					return windowCallback.onSearchRequested();
+
+
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.WindowManager;
+import android.view.ActionMode.Callback;
+public void onSystemUiVisibilityChange(int visibility)
+				window.setCallback(new Window.Callback()
+				{
+					@Override
+					public ActionMode onWindowStartingActionMode(Callback callback) 
+					{
+						return windowCallback.onWindowStartingActionMode(callback);
+public void onWindowAttributesChanged(LayoutParams attrs)
+					}
+					
+					@Override
+					public boolean onSearchRequested() 
+					{
+						return windowCallback.onSearchRequested();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public void onRetry() {
+                    public void run() {
+                        mErrorView.setConfig(ErrorView.Config.create()
+                                .title(getString(R.string.error_title_damn))
+                                .titleColor(getColor(R.color.apptheme_primary))
+                                .subtitle(getString(R.string.error_subtitle_failed_one_more_time))
+                                .retryText(getString(R.string.error_view_retry))
+                                .build());
+public void run() {
+            }
+        });
+    }
+
+    public int getColor(int res) {
+        return getResources().getColor(res);
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<?xml version="1.0" encoding="utf-8"?> 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.inaturalist.android"
+    android:versionCode="201"
+    android:versionName="1.5.4" >
+
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="21"
+        />
+public void onCreate() {
+                .memoryCache(new LruCache((int)(Runtime.getRuntime().maxMemory() * 0.5)))
+                .build();
+        Picasso.setSingletonInstance(picasso);
+        Picasso.with(getApplicationContext())
+                .setIndicatorsEnabled(true);
+
+        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        INaturalistApp.context = getApplicationContext();
+private void importPhotoMetadata(Uri photoUri) {
+            }
+
+
+            String datetime = exif.getAttribute("DateTimeOriginal" /* ExifInterface.TAG_DATETIME_ORIGINAL - supported from API v24 only */);
+
+            if (datetime != null) {
+                SimpleDateFormat exifDateFormat = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+package com.artursworld.reactiontest.controller.export;
+
+import android.app.Activity;
+import android.os.AsyncTask;
+import android.support.annotation.NonNull;
+import android.widget.ListView;
+
+import com.artursworld.reactiontest.controller.helper.Type;
+import com.artursworld.reactiontest.controller.util.UtilsRG;
+ */
+public class ExportViaCSV implements IExporter {
+
+    private static final String SEPARATOR = ", ";
+    private Activity activity = null;
+    private String userId = null;
+public ExportViaCSV(Activity a, String userId) {
+
+    @Override
+    public void export() {
+        loadDirectoryAndExport(userId);
+    }
+
+    /**
+package com.artursworld.reactiontest.view.user;
+
+import android.app.Fragment;
+import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import com.artursworld.reactiontest.controller.util.UtilsRG;
+import com.artursworld.reactiontest.model.entity.MedicalUser;
+import com.artursworld.reactiontest.model.persistence.manager.MedicalUserManager;
+
+import java.util.List;
+
+public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+        if (isEmptyUserList) {
+            if (userListView != null && getActivity() != null) {
+                TextView emptyText = (TextView) getView().findViewById(R.id.empty_user_list);
+                if(emptyText != null)
+                    emptyText.setVisibility(View.VISIBLE);
+            }
+        }
+        else{
+            if (userListView != null && getActivity() != null) {
+                TextView emptyText = (TextView) getView().findViewById(R.id.empty_user_list);
+                if(emptyText != null)
+                    emptyText.setVisibility(View.INVISIBLE);
+            }
+        }
+public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMen
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+
+        if(item.getItemId() == R.id.delete_user){
+            final String medicalUserId = userListView.getItemAtPosition(info.position).toString();
+            UtilsRG.info("delete user("+medicalUserId+")");
+            new AsyncTask<Void, Void, Void>(){
+                @Override
+                protected Void doInBackground(Void... params) {
+                    MedicalUserManager db = new MedicalUserManager(getActivity().getApplicationContext());
+                    if(db != null){
+                        db.deleteUserById(medicalUserId);
+                    }
+                    return null;
+protected void onPostExecute(Void aVoid) {
+                    initMedicalUserListViewAsync(null);
+                }
+            }.execute();
+        }
+        else if(item.getItemId() == R.id.export){
+            IExporter exporter = new ExportViaCSV(getActivity(), selectedMedicalUserId);
+            exporter.export();
+        }
+        return super.onContextItemSelected(item);
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+android {
+        }
+    }
+    lintOptions {
+        disable 'MissingTranslation', 'ExtraTranslation'
+    }
+}
+
+public void importSettings(SharedPreferences prefs, JSONObject json) throws JSON
+				if (server.has("new_torrent_alarm"))
+					editor.putBoolean("server_alarmnew_" + postfix, server.getBoolean("new_torrent_alarm"));
+				if (server.has("alarm_filter_exclude"))
+					editor.putBoolean("server_alarmexclude_" + postfix, server.getBoolean("alarm_filter_exclude"));
+				if (server.has("alarm_filter_include"))
+					editor.putBoolean("server_alarminclude_" + postfix, server.getBoolean("alarm_filter_include"));
+
+			}
+		}
+public void importSettings(SharedPreferences prefs, JSONObject json) throws JSON
+				if (feed.has("new_item_alarm"))
+					editor.putBoolean("rssfeed_alarmnew_" + postfix, feed.getBoolean("new_item_alarm"));
+				if (feed.has("alarm_filter_include"))
+					editor.putBoolean("rssfeed_alarminclude_" + postfix, feed.getBoolean("alarm_filter_include"));
+				if (feed.has("alarm_filter_exclude"))
+					editor.putBoolean("rssfeed_alarmexclude_" + postfix, feed.getBoolean("alarm_filter_exclude"));
+				if (feed.has("last_seen"))
+					editor.putString("rssfeed_lastnew_" + postfix, feed.getString("last_seen"));
+
+			}
+		}
+private JSONObject exportSettings(SharedPreferences prefs) throws JSONException
+			server.put("server_timeout", prefs.getString("server_timeout_" + postfixi, null));
+			server.put("download_alarm", prefs.getBoolean("server_alarmfinished_" + postfixi, false));
+			server.put("new_torrent_alarm", prefs.getBoolean("server_alarmnew_" + postfixi, false));
+			server.put("alarm_filter_exclude", prefs.getBoolean("server_alarmexclude_" + postfixi, false));
+			server.put("alarm_filter_include", prefs.getBoolean("server_alarminclude_" + postfixi, false));
+
+			servers.put(server);
+			i++;
+private JSONObject exportSettings(SharedPreferences prefs) throws JSONException
+			feed.put("url", prefs.getString("rssfeed_url_" + postfixk, null));
+			feed.put("needs_auth", prefs.getBoolean("rssfeed_reqauth_" + postfixk, false));
+			feed.put("new_item_alarm", prefs.getBoolean("rssfeed_alarmnew_" + postfixk, false));
+			feed.put("alarm_filter_exclude", prefs.getBoolean("server_alarmexclude_" + postfixk, false));
+			feed.put("alarm_filter_include", prefs.getBoolean("server_alarminclude_" + postfixk, false));
+			feed.put("last_seen", prefs.getString("rssfeed_lastnew_" + postfixk, null));
+
+			feeds.put(feed);
+			k++;
+import android.os.AsyncTask;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+	// Auto refresh task
+	private AsyncTask<Void, Void, Void> autoRefreshTask;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// Set the theme according to the user preference
+public boolean onSearchRequested() {
+		return true;
+	}
+
+	@Click(R.id.addmenu_link_button)
+	protected void startUrlEntryDialog() {
+		addmenuButton.collapse();
+public void addTorrentByMagnetUrl(String url, String title) {
+
+	@Background
+	protected void addTorrentByFile(String localFile, String title) {
+		DaemonTaskResult result = AddByFileTask.create(currentConnection, localFile).execute(log);
+		if (result instanceof DaemonTaskSuccessResult) {
+			onTaskSucceeded((DaemonTaskSuccessResult) result, getString(R.string.result_added, title));
+ */
+package org.transdroid.core.gui.navigation;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ResolveInfo;
+import android.net.Uri;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
+
+import com.nostra13.universalimageloader.cache.disc.impl.ext.LruDiskCache;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.cache.memory.impl.UsingFreqLimitedMemoryCache;
+@EBean
+public class NavigationHelper {
+
+	private static ImageLoader imageCache;
+	@RootContext
+	protected Context context;
+
+	/**
+	 * Converts a string into a {@link Spannable} that displays the string in the Roboto Condensed font
+	 * @param string A plain text {@link String}
+import android.preference.CheckBoxPreference;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.PreferenceActivity;
+import android.preference.PreferenceManager;
+import android.text.TextUtils;
+
+import com.nispok.snackbar.Snackbar;
+public boolean onPreferenceClick(Preference preference) {
+	protected ErrorLogSender errorLogSender;
+	@Bean
+	protected SettingsPersistence settingsPersistence;
+	private OnPreferenceClickListener onCheckUpdatesClick = new OnPreferenceClickListener() {
+		@Override
+		public boolean onPreferenceClick(Preference preference) {
+public boolean onPreferenceClick(Preference preference) {
+	private OnClickListener importSettingsFromFile = new OnClickListener() {
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(SystemSettingsActivity.this);
+			try {
+				settingsPersistence.importSettingsFromFile(prefs, SettingsPersistence.DEFAULT_SETTINGS_FILE);
+				SnackbarManager.show(Snackbar.with(SystemSettingsActivity.this).text(R.string.pref_import_success));
+			} catch (FileNotFoundException e) {
+				SnackbarManager
+						.show(Snackbar.with(SystemSettingsActivity.this).text(R.string.error_file_not_found).colorResource(R.color.red));
+			} catch (JSONException e) {
+				SnackbarManager.show(Snackbar.with(SystemSettingsActivity.this)
+						.text(getString(R.string.error_no_valid_settings_file, getString(R.string.app_name))).colorResource(R.color.red));
+			}
+		}
+	};
+	private OnClickListener importSettingsFromQr = new OnClickListener() {
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+public void onClick(DialogInterface dialog, int which) {
+	private OnClickListener exportSettingsToFile = new OnClickListener() {
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(SystemSettingsActivity.this);
+			try {
+				settingsPersistence.exportSettingsToFile(prefs, SettingsPersistence.DEFAULT_SETTINGS_FILE);
+				SnackbarManager.show(Snackbar.with(SystemSettingsActivity.this).text(R.string.pref_export_success));
+			} catch (JSONException | IOException e) {
+				SnackbarManager.show(Snackbar.with(SystemSettingsActivity.this).text(R.string.error_cant_write_settings_file)
+						.colorResource(R.color.red));
+			}
+		}
+	};
+	private OnClickListener exportSettingsToQr = new OnClickListener() {
+		@Override
+		public void onClick(DialogInterface dialog, int which) {
+protected void navigateUp() {
+		MainSettingsActivity_.intent(this).flags(Intent.FLAG_ACTIVITY_CLEAR_TOP).start();
+	}
+
+	@OnActivityResult(BarcodeHelper.ACTIVITY_BARCODE_QRSETTINGS)
+	public void onQrCodeScanned(int resultCode, Intent data) {
+		// We should have received Intent extras with the QR-decoded data representing Transdroid settings
+		if (data == null || !data.hasExtra("SCAN_RESULT"))
+			return; // Cancelled scan; ignore
+		<item>43200</item>
+		<item>86400</item>
+	</string-array>
+	
+	<string name="error_httperror">Error during communication; check your connection</string>
+	<string name="error_unsupported">Your torrent client does not support this operation</string>
+	<string name="error_jsonrequesterror">Internal error building request</string>
+buildscript {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+    }
+}
+#Tue Dec 09 09:45:38 CET 2014
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-2.8-all.zip
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+private void deliver(Intent i, int resultCode) {
+			Field f = BroadcastReceiver.class.getDeclaredField("mPendingResult");
+			f.setAccessible(true);
+			f.set(intentProcessor, pr);
+		} catch(Exception ex) {
+			throw new RuntimeException(ex);
+		}
+
+		deliver(i);
+	}
+
+	private void deliver(Intent i) {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+private void initFolder() {
+        mFolder = new Folder();
+        mFolder.id = getIntent().getStringExtra(EXTRA_FOLDER_ID);
+        mFolder.label = getIntent().getStringExtra(EXTRA_FOLDER_LABEL);
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+            // Scan every 3 days (in case inotify dropped some changes)
+            mFolder.rescanIntervalS = 259200;
+        }
+        else {
+            // FileObserver does not work correctly on Android Marshmallow.
+            // Nougat seems to have the same problem in emulator, but we should check this again.
+            // https://code.google.com/p/android/issues/detail?id=189231
+            mFolder.rescanIntervalS = 60;
+        }
+        mFolder.versioning = new Folder.Versioning();
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+navigator.VuforiaPlugin.startVuforia(
+  function(data){
+    console.log(data);
+    alert("Image found: "+data.imageName);
+  }
+);
+```
+{
+  "name": "cordova-plugin-vuforia",
+  "description": "Cordova Vuforia Plugin",
+  "version": "1.1.2",
+  "homepage": "https://github.com/mattrayner/cordova-plugin-vuforia",
+  "repository": {
+    "type": "git",
+        xmlns:rim="http://www.blackberry.com/ns/widgets"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-vuforia"
+        version="1.1.2">
+    <name>Vuforia</name>
+    <description>Cordova Vuforia Plugin</description>
+    <license>MIT</license>
+    <author>Matthew Rayner</author>
+
+    <info>
+        Cordova Vuforia Plugin version 1.1.2, Copyright (C) 2016 Matthew Rayner
+        Cordova Vuforia Plugin comes with ABSOLUTELY NO WARRANTY; see the
+        LICENSE file for more information.
+        This is free software, and you are welcome to redistribute it
+import android.app.Activity;
+import android.content.Intent;
+import android.content.Context;
+import android.util.Log;
+
+import com.mattrayner.vuforia.app.ImageTargets;
+
+public class VuforiaPlugin extends CordovaPlugin {
+    static final String LOGTAG = "Cordova Vuforia Plugin";
+
+    static final int IMAGE_REC_REQUEST = 1;
+public VuforiaPlugin() {
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);
+
+        Log.d(LOGTAG, "Plugin initialized.");
+    }
+
+    @Override
+    public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
+        String targetFile = args.getString(0);
+        String targets = args.getJSONArray(1).toString();
+        String overlayText = args.getString(2);
+public boolean execute(String action, JSONArray args, CallbackContext callbackCo
+        intent.putExtra("OVERLAY_TEXT", overlayText);
+        intent.putExtra("LICENSE_KEY", vuforiaLicense);
+
+        // Launch a new activity with Vuforia in it. Expect it to return a result.
+        cordova.startActivityForResult(this, intent, IMAGE_REC_REQUEST);
+
+        return true;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String name;
+var VuforiaPlugin = {
+  startVuforia: function(imageFile ,imageTargets, overlayCopy, vuforiaLicense, imageFoundCallback){
+
+    cordova.exec(
+
+      // Register the callback handler
+      function callback(data) {
+        imageFoundCallback(data);
+      },
+      // Register the errorHandler
+      function errorHandler(err) {
+        console.error('Vuforia Plugin Error:');
+        console.error(err);
+      },
+      // Define what class to route messages to
+      'VuforiaPlugin',
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Please also read the [Upgrade Guide](https://github.com/katzer/cordova-plugin-lo
+- New "quarter" intervall for iOS & Android
+- Fixed #732 loop between update and trigger (Android)
+- Fixed #710 crash due to >500 notifications (Android)
+- Fixed crashing `get(ID)` if notification doesn't exist
+
+#### Version 0.8.2 (08.11.2015)
+public void onCreate (Bundle state) {
+    }
+
+    /**
+     * Called when local notification was clicked by the user.
+     *
+     * @param notification
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+###Changelog
+
+####Version 0.6.7
+* Pebble: Allow installation of 3.x apps on OG Pebble (FW will be released soon)
+* Fix crashes on startup when logging is enabled or when entering the app manager on some phones
+private String getContactDisplayNameByNumber(String number) {
+        }
+
+        ContentResolver contentResolver = getContentResolver();
+        Cursor contactLookup = contentResolver.query(uri, null, null, null, null);
+
+        try {
+            if (contactLookup != null && contactLookup.getCount() > 0) {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import com.nextgis.maplib.map.MapBase;
+import com.nextgis.maplib.util.SettingsConstants;
+import com.nextgis.maplibui.activity.NGPreferenceActivity;
+import com.nextgis.maplibui.util.ControlHelper;
+import com.nextgis.maplibui.util.SettingsConstantsUI;
+import com.nextgis.mobile.MainApplication;
+import com.nextgis.mobile.R;
+public static void initializeReset(final SettingsActivity activity, final Prefer
+            preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    AlertDialog.Builder confirm = new AlertDialog.Builder(activity, ControlHelper.getDialogTheme(activity, activity.getThemeId()));
+                    confirm.setTitle(R.string.reset_settings_title).setMessage(R.string.reset_settings_message)
+                            .setNegativeButton(android.R.string.cancel, null)
+                            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+public Dialog onCreateDialog(Bundle savedInstanceState) {
+        final EditText name = (EditText) view.findViewById(R.id.et_field_name);
+        final Spinner type = (Spinner) view.findViewById(R.id.sp_field_type);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext, mDialogTheme);
+        builder.setTitle(mTitle).setView(view).setNegativeButton(android.R.string.cancel, null)
+            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+Subproject commit 4bf99e9876e70aba2a244d6a6df7555cfd877103
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#Wed Apr 10 15:27:10 PDT 2013
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+zipStoreBase=GRADLE_USER_HOME
+import org.jdeferred.DonePipe;
+import org.jdeferred.Promise;
+import org.jdeferred.android.AndroidDeferredManager;
+import org.jdeferred.android.AndroidDeferredObject;
+import org.jdeferred.impl.DeferredPromise;
+
+import java.util.UUID;
+
+    private BluetoothDevice mDevice;
+    private ConnectionHelper mConnectionHelper;
+
+    ///////////////////////////
+    // Initialization
+    ///////////////////////////
+public KonashiManager(Context context) {
+        mBletia = new Bletia(context);
+        mConnectionHelper = new ConnectionHelper(mConnectionHelperCallback, context);
+        mBletia.addListener(mCallbackHandler);
+    }
+
+    /**
+public void removeAllListeners() {
+    ///////////////////////////
+    // PIO
+    ///////////////////////////
+    
+    /**
+     * PIOのピンを入力として使うか、出力として使うかの設定を行う
+     * @param pin 設定するPIOのピン名。
+public void removeAllListeners() {
+    public Promise<BluetoothGattCharacteristic, BletiaException, Void> pinMode(int pin, int mode){
+        return execute(new PioPinModeAction(getKonashiService(), pin, mode, mPioStore.getModes()), mPioDispatcher);
+    }
+    
+    /**
+     * PIOのピンを入力として使うか、出力として使うかの設定を行う
+     * @param modes PIO0 〜 PIO7 の計8ピンの設定
+     */
+    public Promise<BluetoothGattCharacteristic, BletiaException, Void> pinModeAll(int modes){
+        return execute(new PioPinModeAction(getKonashiService(), modes), mPioDispatcher);
+    }
+    
+    /**
+     * PIOのピンをプルアップするかの設定を行う
+     * @param pin 設定するPIOのピン名
+public void removeAllListeners() {
+    public Promise<BluetoothGattCharacteristic, BletiaException, Void> pinPullup(int pin, int pullup){
+        return execute(new PioPinPullupAction(getKonashiService(), pin, pullup, mPioStore.getPullups()), mPioDispatcher);
+    }
+    
+    /**
+     * PIOのピンをプルアップするかの設定を行う
+     * @param pullups PIO0 〜 PIO7 の計8ピンのプルアップの設定
+     */
+    public Promise<BluetoothGattCharacteristic, BletiaException, Void> pinPullupAll(int pullups){
+        return execute(new PioPinPullupAction(getKonashiService(), pullups), mPioDispatcher);
+    }
+    
+    /**
+     * PIOの特定のピンの入力状態を取得する
+     * @param pin PIOのピン名
+public void removeAllListeners() {
+    public int digitalRead(int pin){
+        return mPioStore.getInput(pin);
+    }
+    
+    /**
+     * PIOのすべてのピンの状態を取得する
+     * @return PIOの状態(PIO0〜PIO7の入力状態が8bit(1byte)で表現)
+     */
+    public int digitalReadAll(){
+        return mPioStore.getInputs();
+    }
+    
+    /**
+     * PIOの特定のピンの出力状態を設定する
+     * @param pin 設定するPIOのピン名
+public int digitalReadAll(){
+    public Promise<BluetoothGattCharacteristic, BletiaException, Void> digitalWrite(int pin, int output){
+        return execute(new PioDigitalWriteAction(getKonashiService(), pin, output, mPioStore.getOutputs()), mPioDispatcher);
+    }
+    
+    /**
+     * PIOの特定のピンの出力状態を設定する
+     * @param outputs PIOの出力状態。PIO0〜PIO7の出力状態が8bit(1byte)で表現
+     */
+    public Promise<BluetoothGattCharacteristic, BletiaException, Void> digitalWriteAll(int outputs){
+        return execute(new PioDigitalWriteAction(getKonashiService(), outputs), mPioDispatcher);
+    }
+    
+    
+    ///////////////////////////
+    // PWM
+    ///////////////////////////
+    
+    /**
+     * PIO の指定のピンを PWM として使用する/しないかを設定する
+     * @param pin PWMモードの設定をするPIOのピン番号。Konashi.PIO0 〜 Konashi.PIO7。
+public int digitalReadAll(){
+
+        return promise;
+    }
+    
+    /**
+     * 指定のピンのPWM周期を設定する
+     * @param pin PWMモードの設定をするPIOのピン番号。Konashi.PIO0 〜 Konashi.PIO7。
+public int digitalReadAll(){
+    public Promise<BluetoothGattCharacteristic, BletiaException, Void> pwmPeriod(int pin, int period){
+        return execute(new PwmPeriodAction(getKonashiService(), pin, period, mPwmStore.getDuty(pin))).then(mPwmDispatcher);
+    }
+    
+    /**
+     * 指定のピンのPWMのデューティ(ONになっている時間)を設定する。
+     * @param pin PWMモードの設定をするPIOのピン番号。Konashi.PIO0 〜 Konashi.PIO7。
+public int digitalReadAll(){
+    public Promise<BluetoothGattCharacteristic, BletiaException, Void> pwmDuty(int pin, int duty){
+        return execute(new PwmDutyAction(getKonashiService(), pin, duty, mPwmStore.getPeriod(pin))).then(mPwmDispatcher);
+    }
+    
+    /**
+     * 指定のピンのLEDの明るさを0%!〜(MISSING)100%!で(MISSING)指定する
+     * @param pin PWMモードの設定をするPIOのピン番号。Konashi.PIO0 〜 Konashi.PIO7。
+public int digitalReadAll(){
+    public Promise<BluetoothGattCharacteristic, BletiaException, Void> pwmLedDrive(int pin, float dutyRatio){
+        return execute(new PwmLedDriveAction(getKonashiService(), pin, dutyRatio, mPwmStore.getPeriod(pin))).then(mPwmDispatcher);
+    }
+    
+    /**
+     * pwmLedDrive(int pin, float dutyRatio) の doubleでdutyRatioを指定する版。
+     * @param pin PWMモードの設定をするPIOのピン番号。Konashi.PIO0 〜 Konashi.PIO7。
+public int digitalReadAll(){
+    public Promise<BluetoothGattCharacteristic, BletiaException, Void> pwmLedDrive(int pin, double dutyRatio){
+        return pwmLedDrive(pin, (float) dutyRatio);
+    }
+    
+    
+    ///////////////////////////
+    // AIO
+    ///////////////////////////
+public int digitalReadAll(){
+                .then(mAioDispatcher)
+                .then(new AioAnalogReadFilter(pin));
+    }
+    
+    /**
+     * AIO の指定のピンに任意の電圧を出力する
+     * @param pin AIOのピン名。指定可能なピン名は AIO0, AIO1, AIO
+public int digitalReadAll(){
+//        }
+//    }
+
+    
+    ///////////////////////////
+    // UART
+    ///////////////////////////
+public int digitalReadAll(){
+    public Promise<BluetoothGattCharacteristic, BletiaException, Void> uartMode(int mode){
+        return execute(new UartModeAction(getKonashiService(), mode, mUartStore), mUartDispatcher);
+    }
+    
+    /**
+     * UART の通信速度を設定する
+     * @param baudrate UARTの通信速度。Konashi.UART_RATE_2K4 か Konashi.UART_RATE_9K6 を指定
+public int digitalReadAll(){
+//            notifyKonashiError(KonashiErrorReason.NOT_ENABLED_UART);
+//        }
+//    }
+    
+    
+    ///////////////////////////
+    // I2C
+    ///////////////////////////
+    
+    /**
+     * I2Cのコンディションを発行する
+     * @param condition コンディション。Konashi.I2C_START_CONDITION, Konashi.I2C_RESTART_CONDITION, Konashi.I2C_STOP_CONDITION を指定できる。
+public int digitalReadAll(){
+
+    private void connect(BluetoothDevice device){
+        mDevice = device;
+        mBletia.connect(device);
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ */
+public class ExportViaCSV implements IExporter {
+
+    public static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 1;
+
+    private static final String SEPARATOR = ", ";
+    private Activity activity = null;
+public ExportViaCSV(Activity a, String userId) {
+
+    @Override
+    public void export() {
+        if (!permissionExternalStorageAllowed()) {
+            requestPermission();
+        }
+        if (permissionExternalStorageAllowed()) {
+            loadDirectoryAndExport(userId);
+        }
+    }
+
+    /**
+     * Request storage permissions
+     */
+    private void requestPermission() {
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            UtilsRG.info("permission for WRITE_EXTERNAL_STORAGE is already set");
+        } else {
+            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, ExportViaCSV.REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
+        }
+    }
+
+    /**
+     * Check if permission is granted
+     *
+     * @return true if granted otherwise false
+     */
+    private boolean permissionExternalStorageAllowed() {
+        int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (result == PackageManager.PERMISSION_GRANTED) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+package com.artursworld.reactiontest.controller.util;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Vibrator;
+import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
+
+import com.artursworld.reactiontest.R;
+import com.artursworld.reactiontest.controller.helper.GameStatus;
+import com.artursworld.reactiontest.controller.helper.Type;
+import com.artursworld.reactiontest.view.games.StartGameSettings;
+
+import org.slf4j.Logger;
+public static void shareFile(File file, Activity activity, String medId) {
+        sendIntent.setType("text/html");
+        activity.startActivity(Intent.createChooser(sendIntent, activity.getResources().getString(R.string.share_using)));
+    }
+}
+
+
+package com.artursworld.reactiontest.view.games;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.MediaRecorder;
+import android.os.AsyncTask;
+import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class AudioRecorder {
+
+    private ImageView recordButton = null;
+    private RippleBackground rippleBackground = null;
+    private TextView statusText = null;
+    private boolean isRecording = false;
+    private boolean hasRecorded = false;
+    private MediaPlayer mediaPlayer = null;
+    private String filepath = "reactionTest";
+
+    public AudioRecorder(MaterialDialog audioDialog, final InOpEvent event, final Activity activity, final boolean playOnly) {
+        recordButton = (ImageView) audioDialog.getCustomView().findViewById(R.id.record_icon);
+        statusText = (TextView) audioDialog.getCustomView().findViewById(R.id.record_state_label);
+        rippleBackground = (RippleBackground) audioDialog.getCustomView().findViewById(R.id.ripple_background);
+protected void onPostExecute(Void aVoid) {
+
+            }
+        });
+
+
+    }
+
+    private void playMusic() {
+private void loadPreferances(final Activity activity) {
+            @Override
+            protected Void doInBackground(Void... params) {
+                SharedPreferences mySharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
+                triesPerGameCount = mySharedPreferences.getInt("go_game_tries_per_game", 3);
+                String countdownCountKey = getResources().getString(R.string.go_game_countdown_count);
+                countDown_sec = mySharedPreferences.getInt(countdownCountKey, 4);
+
+                minWaitTimeBeforeGameStarts_sec = 1;
+                String maxRandomWaitTimeBeforeGameStartsKey = getResources().getString(R.string.go_game_max_random_waiting_time);
+                maxWaitTimeBeforeGameStarts_sec = mySharedPreferences.getInt(maxRandomWaitTimeBeforeGameStartsKey, 3);
+                return null;
+            }
+        }.execute();
+package com.artursworld.reactiontest.view.games;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+public void onClick(int buttonIndex) {
+                int addEventIndex = 2;
+
+                if (buttonIndex == recordAudioIndex) {
+                    UtilsRG.info("add audio record has been selected");
+                    InOpEvent event = new InOpEvent(operationIssue, new Date(), TYPE_AUDIO, null);
+                    MaterialDialog audioDialog = getAudioDialog(activity);
+                    AudioRecorder recorder = new AudioRecorder(audioDialog, event, activity, false);
+                } else if (buttonIndex == addEventIndex) {
+                    UtilsRG.info("addEventIndex has been selected");
+                    MaterialDialog dialog = initNoteDialog(activity);
+public void onClick(int buttonIndex) {
+                } else if (buttonIndex == addNewReactionTestIndex) {
+                    startIntentNewReactionTest(activity);
+                }
+            }//coll //coll //uncool //uncool //coll
+        });
+    }
+
+    /**
+     * Starts the reaction test
+     *
+     * @param activity
+import com.artursworld.reactiontest.controller.util.UtilsRG;
+import com.artursworld.reactiontest.model.entity.MedicalUser;
+import com.artursworld.reactiontest.model.persistence.manager.MedicalUserManager;
+import com.sdsmdg.tastytoast.TastyToast;
+
+import java.util.List;
+protected void onPostExecute(Void aVoid) {
+                }
+            }.execute();
+        } else if (item.getItemId() == R.id.export) {
+            IExporter exporter = new ExportViaCSV(getActivity(), selectedMedicalUserId);
+            exporter.export();
+
+
+
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    @Override
+    public void onActivityCreated(final Bundle savedInstanceState) {
+        UtilsRG.info(UserManagementFragmentListView.class.getSimpleName() + " onActivityCreated");
+        super.onActivityCreated(savedInstanceState);
+
+    <PreferenceCategory android:title="@string/go_game_settings">
+        <com.artursworld.reactiontest.view.settings.NumberPickerPreference
+            android:defaultValue="3"
+            android:key="go_game_tries_per_game"
+            android:title="@string/set_go_game_reaction_test_count_per_game" />
+
+        <com.artursworld.reactiontest.view.settings.NumberPickerPreference
+            android:key="@string/go_game_countdown_count"
+            android:title="@string/set_go_no_go_game_count_down_count" />
+
+        <com.artursworld.reactiontest.view.settings.NumberPickerPreference
+            android:key="@string/go_game_max_random_waiting_time"
+            android:title="@string/set_go_game_max_random_waiting_time" />
+    </PreferenceCategory>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+protected void onCreate(Bundle savedInstanceState) {
+                Permissions.acquireAllAppPermissions(this, this,
+                        Permissions.ALL_PERMISSIONS_REQUEST);
+        if (!askingForPerms) {
+            // With basic perms satisfied, ask user to allow SMS reading for
+            // sms app install code
+            performSMSInstall(false);
+        }
+    }
+
+public void onRequestPermissionsResult(int requestCode,
+                    scanSMSLinks(manualSMSInstall);
+                }
+            }
+
+            if (isSingleAppBuild()) {
+                SingleAppInstallation.installSingleApp(this, DIALOG_INSTALL_PROGRESS);
+            }
+        } else if (requestCode == Permissions.ALL_PERMISSIONS_REQUEST) {
+            String[] requiredPerms = Permissions.getRequiredPerms();
+
+public void onRequestPermissionsResult(int requestCode,
+                uiStateScreenTransition();
+            }
+
+            // Since SMS asks for more permissions, call was delayed until here
+            performSMSInstall(false);
+        }
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/atv_grouped_section_header_footer_min_height" >
+
+    <com.nakardo.atableview.uikit.UILabel
+        android:id="@+id/textLabel"
+        style="@style/Widget.ATableView.Section.Grouped.Footer.TextLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/atv_grouped_section_footer_text_margin_bottom"
+        android:layout_marginLeft="@dimen/atv_grouped_section_header_footer_text_margin_left_right"
+        android:layout_marginRight="@dimen/atv_grouped_section_header_footer_text_margin_left_right"
+        android:layout_marginTop="@dimen/atv_grouped_section_header_footer_text_margin_top_bottom"
+        android:visibility="gone" />
+
+</FrameLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/atv_grouped_section_header_footer_min_height" >
+
+    <com.nakardo.atableview.uikit.UILabel
+        android:id="@+id/textLabel"
+        style="@style/Widget.ATableView.Section.Grouped.Header.TextLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="@dimen/atv_grouped_section_header_text_margin_top"
+        android:layout_marginBottom="@dimen/atv_grouped_section_header_footer_text_margin_top_bottom"
+        android:layout_marginLeft="@dimen/atv_grouped_section_header_footer_text_margin_left_right"
+        android:layout_marginRight="@dimen/atv_grouped_section_header_footer_text_margin_left_right"
+        android:visibility="gone" />
+
+</FrameLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/plain_header_background" >
+
+    <com.nakardo.atableview.uikit.UILabel
+        android:id="@+id/textLabel"
+        style="@style/Widget.ATableView.Section.Plain.Header.TextLabel"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/atv_plain_section_header_text_margin_left"
+        android:layout_marginRight="@dimen/atv_plain_section_header_text_margin_right" />
+
+</FrameLayout>
+    
+    <!-- plain table header -->
+    <dimen name="atv_plain_header_text_size">18sp</dimen>
+    <dimen name="atv_plain_section_header_text_margin_left">15dp</dimen>
+    <dimen name="atv_plain_section_header_text_margin_right">20dp</dimen>
+    <dimen name="atv_plain_section_header_height">24px</dimen>
+    
+    <!-- grouped table header & footer -->
+    <dimen name="atv_grouped_section_header_footer_text_margin_top_bottom">8dp</dimen>
+    <dimen name="atv_grouped_section_header_footer_text_margin_left_right">20dp</dimen>
+    <dimen name="atv_grouped_section_header_footer_min_height">10dp</dimen>
+    
+    <!-- grouped table header -->
+    <dimen name="atv_grouped_section_header_text_size">20sp</dimen>
+    <dimen name="atv_grouped_section_header_first_row_text_margin_top">16dp</dimen>
+    <dimen name="atv_grouped_section_header_text_margin_top">6dp</dimen>
+    
+    <!-- grouped table footer -->
+    <dimen name="atv_grouped_section_footer_text_size">18sp</dimen>
+    <dimen name="atv_grouped_section_footer_last_row_text_margin_bottom">10dp</dimen>
+    <dimen name="atv_grouped_section_footer_text_margin_bottom">6dp</dimen>
+    
+    <!-- grouped style cell -->
+    <dimen name="atv_cell_grouped_margins">10dp</dimen>
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+private ATableViewHeaderFooterCell getReusableHeaderFooterCell(View convertView,
+	
+	private void setupHeaderFooterRowLayout(ATableViewHeaderFooterCell cell, NSIndexPath indexPath, boolean isFooterRow) {
+		ATableViewDataSource dataSource = mTableView.getDataSource();
+		ATableViewStyle tableViewStyle = mTableView.getStyle();
+		int section = indexPath.getSection();
+		
+		TextView textLabel = cell.getTextLabel();
+		
+		// get text.
+private void setupHeaderFooterRowLayout(ATableViewHeaderFooterCell cell, NSIndex
+		}
+		textLabel.setText(headerText);
+		
+		// setup layout depending on style.
+		if (tableViewStyle == ATableViewStyle.Grouped) {
+			Resources res = mTableView.getResources();
+			FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) textLabel.getLayoutParams();
+			
+			// if we're on the very first header of the table, we've to add an extra margin top to textView.
+			int marginTop = (int) res.getDimension(R.dimen.atv_grouped_section_header_text_margin_top);
+			if (!isFooterRow && section == 0) {
+				marginTop = (int) res.getDimension(R.dimen.atv_grouped_section_header_first_row_text_margin_top);
+			}
+			params.topMargin = marginTop;
+			
+			// if we're on the last footer of the table, extra margin applies here as well.
+			int marginBottom = (int) res.getDimension(R.dimen.atv_grouped_section_footer_text_margin_bottom);
+			if (isFooterRow && section == mRows.size() - 1) {
+				marginBottom = (int) res.getDimension(R.dimen.atv_grouped_section_footer_last_row_text_margin_bottom);			
+			}
+			params.bottomMargin = marginBottom;
+			
+			textLabel.setLayoutParams(params);
+			
+			// hide header or footer text if it's null.
+			int visibility = headerText != null && headerText.length() > 0 ? View.VISIBLE : View.GONE;
+			textLabel.setVisibility(visibility);
+		}
+		
+		// setup layout height.
+		int rowHeight = getHeaderFooterRowHeight(indexPath, isFooterRow);
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.FrameLayout;
+
+import com.nakardo.atableview.R;
+protected static int getLayout(ATableViewHeaderFooterCellType type, ATableView t
+			return R.layout.atv_grouped_footer;
+		}
+		
+		return R.layout.atv_plain_header;
+	}
+	
+	public ATableViewHeaderFooterCell(ATableViewHeaderFooterCellType type, ATableView tableView) {
+		super(tableView.getContext());
+		LayoutInflater inflater = LayoutInflater.from(tableView.getContext());
+		
+		View headerFooterView = inflater.inflate(getLayout(type, tableView), null);
+		mTextLabel = (UILabel) headerFooterView.findViewById(R.id.textLabel);
+		addView(headerFooterView);
+	}
+	
+	public ATableViewHeaderFooterCell(Context context) {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+# Ti.DrawerLayout [![gittio](http://img.shields.io/badge/gittio-1.4.1-00B4CC.svg)](http://gitt.io/component/com.tripvi.drawerlayout)
+Native Android [Navigation Drawer](http://developer.android.com/design/patterns/navigation-drawer.html) for [Titanium](http://www.appcelerator.com/titanium/)
+
+- [Overview](#overview)
+
+
+
+version: 1.4.1
+apiversion: 2
+description: Native Android DrawerLayout for Titanium
+author: metacortex, manumaticx
+{
+  "name": "drawerlayout",
+  "id": "com.tripvi.drawerlayout",
+  "version": "1.4.1",
+  "description": "Android Drawer for Titanium ",
+  "license": "MIT",
+  "devDependencies": {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":app" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="qBittorrent-Controller" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android-gradle" name="Android-Gradle">
+      <configuration>
+      <sourceFolder url="file://$MODULE_DIR$/src/proDebug/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/proDebug/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/proDebug/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/pro/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/androidTest/pro/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/androidTest/pro/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/androidTest/pro/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/androidTest/pro/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/androidTest/pro/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testProDebug/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testProDebug/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testProDebug/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testProDebug/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testProDebug/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testProDebug/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/testProDebug/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/pro/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/pro/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/pro/assets" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dependency-cache" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dex" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/design/23.1.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.3.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.3.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.3.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.3.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.3.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services/7.3.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.nbsp/library/1.03/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/mockable-android-22.jar" />
+    <orderEntry type="library" exported="" name="play-services-drive-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-analytics-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-panorama-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="library-1.03" level="project" />
+    <orderEntry type="library" exported="" name="robotium-solo-5.4.1" level="project" />
+    <orderEntry type="library" exported="" name="play-services-appindexing-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-cast-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="recyclerview-v7-23.1.1" level="project" />
+    <orderEntry type="library" exported="" name="play-services-location-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-23.1.1" level="project" />
+    <orderEntry type="library" exported="" name="play-services-ads-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="httpclient-android-4.3.5.1" level="project" />
+    <orderEntry type="library" exported="" name="play-services-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-base-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-safetynet-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-23.1.1" level="project" />
+    <orderEntry type="library" exported="" name="appcompat-v7-23.1.1" level="project" />
+    <orderEntry type="library" exported="" name="play-services-appinvite-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-gcm-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="httpmime-4.3.5" level="project" />
+    <orderEntry type="library" exported="" name="play-services-nearby-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="cardview-v7-23.1.1" level="project" />
+    <orderEntry type="library" exported="" name="play-services-fitness-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="design-23.1.1" level="project" />
+    <orderEntry type="library" exported="" name="play-services-plus-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-wearable-7.3.0" level="project" />
+    <orderEntry type="library" exported="" name="play-services-appstate-7.3.0" level="project" />
+apply plugin: 'com.android.application'
+
+android {
+
+    buildToolsVersion "23.0.0"
+    compileSdkVersion 23
+
+    defaultConfig {
+repositories {
+
+dependencies {
+    compile 'com.android.support:support-v4:23.1.1'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.android.support:cardview-v7:23.1.1'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient-android', version: '4.3.5.1'
+dependencies {
+
+    // nbsp-team/MaterialFilePicker
+    dependencies {
+        compile 'com.nbsp:library:1.03'
+    }
+
+    // Robotium
+private void addTorrentByIntent(Intent intent) {
+    private void checkDangerousPermissions() {
+
+        // Check Dangerous permissions (Android 6.0+, API 23+)
+        Log.d("Debug", "checkDangerousPermissions invoked");
+
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+
+            // No explanation needed, request the permission.
+            Log.d("Debug", "checkDangerousPermissions invoked - no explanation needed");
+
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                genericOkDialog(R.string.error_permission,
+public void onClick(DialogInterface dialog, int which) {
+                        });
+
+            }else{
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+
+public void onClick(DialogInterface dialog, int which) {
+
+        } else {
+
+            Log.d("Debug", "Permissions granted - PERMISSION_GRANTED");
+            handleUrlTorrent();
+
+        }
+public void onRequestPermissionsResult(int requestCode,
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    Log.d("Debug", "Permissions granted - onRequestPermissionsResult");
+                    handleUrlTorrent();
+
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+
+                    Log.d("Debug", "Permissions denied");
+                    Log.d("Debug", "grantResults.length: " + grantResults.length);
+                    Log.d("Debug", "grantResults[0] = " + grantResults[0] + "/" + PackageManager.PERMISSION_GRANTED);
+
+                    // Should we show an explanation?
+                    if (!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+public void onClick(DialogInterface dialog, int which) {
+                    }
+                    return;
+                }
+
+                // other 'case' lines to check for other
+                // permissions this app might request
+            }
+        }
+    }
+import com.nbsp.materialfilepicker.ui.FilePickerActivity;
+
+import java.util.ArrayList;
+
+public class SettingsActivity extends PreferenceActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
+
+public void onCancel(DialogInterface dialog) {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent intent = new Intent(getApplicationContext(), FilePickerActivity.class);
+                startActivityForResult(intent, 1);
+                return true;
+            }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+
+    <DatePicker
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/datePicker_datePicker"/>
+
+    <TimePicker
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/datePicker_timePicker"
+            android:layout_gravity="right|center_vertical"/>
+</LinearLayout>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import android.app.Activity;
+import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+/**
+ * Modified from the FingerPaint example found in The Android Open Source
+ * Project.
+ * 
+ * @author BehrAtherton@gmail.com
+ * 
+ */
+public class DrawActivity extends Activity {
+    private static final String t = "DrawActivity";
+    private File output = null;
+    private File savepointImage = null;
+
+    private Paint paint;
+    private Paint pointPaint;
+    private DrawView drawView;
+    private String alertTitleString;
+
+protected void onSaveInstanceState(Bundle outState) {
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        if ( savepointImage.exists() ) {
+            outState.putString(SAVEPOINT_IMAGE, savepointImage.getAbsolutePath());
+        }
+    }
+protected void onCreate(Bundle savedInstanceState) {
+                loadOption = OPTION_DRAW;
+            }
+            // refImage can also be present if resuming a drawing
+            Uri uri = (Uri) extras.get(REF_IMAGE);
+            if (uri != null) {
+                refImage = new File(uri.getPath());
+            }
+protected void onCreate(Bundle savedInstanceState) {
+                }
+            }
+            //sets where the result will be saved to
+            uri = (Uri) extras.get(EXTRA_OUTPUT);
+            if (uri != null) {
+                output = new File(uri.getPath());
+            } else {
+protected void onCreate(Bundle savedInstanceState) {
+        setTitle(getString(R.string.application_name) + " > "
+                + getString(R.string.draw_image));
+
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        RelativeLayout v = (RelativeLayout) inflater.inflate(
+                R.layout.draw_layout, null);
+        LinearLayout ll = (LinearLayout) v.findViewById(R.id.drawViewLayout);
+
+        drawView = new DrawView(this, OPTION_SIGNATURE.equals(loadOption),
+                savepointImage, paint, pointPaint);
+
+        ll.addView(drawView);
+
+        setContentView(v);
+
+        paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setDither(true);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeJoin(Paint.Join.ROUND);
+        paint.setStrokeWidth(10);
+        paint.setColor(Color.BLACK);
+
+        pointPaint = new Paint();
+        pointPaint.setAntiAlias(true);
+        pointPaint.setDither(true);
+        pointPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        pointPaint.setStrokeWidth(10);
+        pointPaint.setColor(Color.BLACK);
+
+        Button btnFinished = (Button)findViewById(R.id.btnFinishDraw);
+        btnFinished.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SaveAndClose();
+            }
+        });
+        Button btnReset = (Button)findViewById(R.id.btnResetDraw);
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Reset();
+            }
+        });
+        Button btnCancel = (Button)findViewById(R.id.btnCancelDraw);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                CancelAndClose();
+            }
+        });
+
+    }
+
+    private void SaveAndClose() {
+        try {
+            saveFile(output);
+            setResult(Activity.RESULT_OK);
+private void SaveAndClose() {
+    }
+
+    private void saveFile(File f) throws FileNotFoundException {
+        if ( drawView.getWidth() == 0 || drawView.getHeight() == 0 ) {
+            // apparently on 4.x, the orientation change notification can occur
+            // sometime before the view is rendered. In that case, the view
+            // dimensions will not be known.
+            Log.e(t,"view has zero width or zero height");
+        } else {
+            FileOutputStream fos;
+            fos = new FileOutputStream(f);
+private void saveFile(File f) throws FileNotFoundException {
+            try {
+                fos.flush();
+                fos.close();
+            } catch ( Exception e) {
+            }
+        }
+    }
+
+    private void Reset() {
+        savepointImage.delete();
+        if (!OPTION_SIGNATURE.equals(loadOption) && refImage != null
+                && refImage.exists()) {
+private void Reset() {
+        drawView.invalidate();
+    }
+
+    private void CancelAndClose() {
+        setResult(Activity.RESULT_CANCELED);
+        this.finish();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+        case KeyEvent.KEYCODE_BACK:
+
+            createQuitDrawDialog();
+            return true;
+        case KeyEvent.KEYCODE_DPAD_RIGHT:
+            if (event.isAltPressed()) {
+
+                createQuitDrawDialog();
+                return true;
+            }
+            break;
+        case KeyEvent.KEYCODE_DPAD_LEFT:
+            if (event.isAltPressed()) {
+
+                createQuitDrawDialog();
+                return true;
+            }
+            break;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+private void createQuitDrawDialog() {
+        View.OnClickListener keepChangesListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SaveAndClose();
+            }
+        };
+        DialogChoiceItem keepOption = new DialogChoiceItem(getString(R.string.keep_changes), -1,
+public void onClick(View v) {
+        View.OnClickListener discardChangesListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CancelAndClose();
+            }
+        };
+        DialogChoiceItem discardOption = new DialogChoiceItem(getString(R.string.do_not_save), -1,
+public void onClick(View v) {
+        private File mBackgroundBitmapFile;
+        private final Paint paint;
+        private final Paint pointPaint;
+
+        public DrawView(final Context c, Paint paint, Paint pointPaint) {
+            super(c);
+            this.paint = paint;
+            this.pointPaint = pointPaint;
+            isSignature = false;
+public DrawView(final Context c, Paint paint, Paint pointPaint) {
+
+        public DrawView(Context c, boolean isSignature, File f, Paint paint, Paint pointPaint) {
+            this(c, paint, pointPaint);
+            this.isSignature = isSignature;
+            mBackgroundBitmapFile = f;
+        }
+
+        public void reset() {
+            Display display = ((WindowManager) getContext().getSystemService(
+                    Context.WINDOW_SERVICE)).getDefaultDisplay();
+            int screenWidth = display.getWidth();
+            int screenHeight = display.getHeight();
+public void resetImage(int w, int h) {
+                mBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+                mCanvas = new Canvas(mBitmap);
+                mCanvas.drawColor(0xFFFFFFFF);
+                if (isSignature)
+                    drawSignLine();
+            }
+        }
+
+protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+
+        @Override
+        protected void onDraw(Canvas canvas) {
+            canvas.drawColor(R.color.grey);
+            canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
+            canvas.drawPath(mCurrentPath, paint);
+        }
+
+        private float mX, mY;
+
+        private void touch_start(float x, float y) {
+            mCurrentPath.reset();
+            mCurrentPath.moveTo(x, y);
+private void touch_start(float x, float y) {
+        }
+
+        public void drawSignLine() {
+            mCanvas.drawLine(0, (int) (mCanvas.getHeight() * .7),
+                    mCanvas.getWidth(), (int) (mCanvas.getHeight() * .7), paint);
+        }
+
+        private void touch_move(float x, float y) {
+public boolean onTouchEvent(MotionEvent event) {
+            }
+            return true;
+        }
+
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+package cl.niclabs.adkmobile.monitor;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+	/**
+	 * @var Frequency of sampling for check NetworkStatsManager for android version > 6 (in seconds)
+	 */
+	public static int NEW_TRAFFIC_UPDATE_INTERVAL = 600;
+
+	/**
+	 * Extra key for configuring the traffic update interval
+public void run() {
+				uids = getUids(mContext);
+			}
+
+			if (VERSION.SDK_INT >= Build.VERSION_CODES.M){
+				calculateApplicationTrafficForAllUids(uids);
+			}
+			else {
+				long newWifiRxBytes = TrafficStats.getTotalRxBytes()
+						- TrafficStats.getMobileRxBytes();
+				long dWifiRxBytes = newWifiRxBytes - appWifiRxBytes;
+
+				int networkType = NETWORK_TYPE_MOBILE;
+				if (dWifiRxBytes > 0) {
+					networkType = NETWORK_TYPE_WIFI;
+				}
+				for (int uid : uids) {
+					calculateApplicationTrafficForUid(networkType, uid);
+				}
+
+				appWifiRxBytes = newWifiRxBytes;
+			}
+		}
+	};
+
+	private SparseArray<Long> appRxBytes;
+	private SparseArray<Long> appTxBytes;
+	private SparseArray<Long> appRxPackets;
+	private SparseArray<Long> appTxPackets;
+
+	private ArrayList<Integer> uids;
+
+private void calculateApplicationTrafficForUid(int networkType, int uid) {
+				TRAFFIC_APPLICATION, Time.currentTimeMillis());
+		appData.setUid(uid);
+
+		long newAppRxBytes = TrafficStats.getUidRxBytes(uid);
+		long newAppTxBytes = TrafficStats.getUidTxBytes(uid);
+
+		// IF the entry does not exist, the delta is 0
+		long dAppRxBytes = newAppRxBytes
+private void calculateApplicationTrafficForAllUids(ArrayList<Integer> uids){
+		long startOfActualDay = calendar.getTimeInMillis();
+
+		for (int uid : uids){
+            //Get wifi traffic
+			String uidWifiKey = Integer.toString(uid) + "_wifi";
+			long lastEndTimestamp;
+			if (sharedPreferences.contains(uidWifiKey))
+private void calculateApplicationTrafficForAllUids(ArrayList<Integer> uids){
+				while (stats.hasNextBucket()){
+					stats.getNextBucket(bucketOut);
+					TrafficObservation appData = new TrafficObservation(
+							TRAFFIC_APPLICATION, bucketOut.getEndTimeStamp());
+					appData.setUid(bucketOut.getUid());
+					appData.setNetworkType(NETWORK_TYPE_WIFI);
+					appData.setRxBytes(bucketOut.getRxBytes());
+private void calculateApplicationTrafficForAllUids(ArrayList<Integer> uids){
+			} catch (RemoteException e) {
+				e.printStackTrace();
+			} finally {
+                editor.commit();
+            }
+
+            //Get mobile traffic
+			String uidMobileKey = Integer.toString(uid) + "_mobile";
+			if (sharedPreferences.contains(uidMobileKey))
+				lastEndTimestamp = sharedPreferences.getLong(uidMobileKey, 0);
+private void calculateApplicationTrafficForAllUids(ArrayList<Integer> uids){
+				}
+			} catch (RemoteException e) {
+				e.printStackTrace();
+            } finally {
+                editor.commit();
+            }
+		}
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public synchronized void onRefresh(boolean isRefresh) {
+    }
+
+    protected void stopRefresh(final MenuItem refreshItem) {
+        Handler handler = new Handler(Looper.getMainLooper());
+        final Runnable r = new Runnable() {
+            @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+private String generateQualifiers() {
+            } else {
+                ret.append("-mnc00");
+            }
+        }
+        ret.append(getLocaleString());
+
+public void shortendedMncTest() throws BrutException {
+    }
+
+    @Test
+    public void anyDpiTest() throws BrutException, IOException {
+        compareValuesFiles("values-watch/strings.xml");
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    <string name="error_no_location_found">Aucune position disponible</string>
+    <string name="error_no_gmaps_app_found">Aucune application de navigation trouvée</string>
+
+    <!-- Home Preferences -->
+    <string name="prefs_home_title">Affichage stations</string>
+    <string name="prefs_station_id_visible_title">Numéro</string>
+    <string name="error_no_location_found">No location available</string>
+    <string name="error_no_gmaps_app_found">No navigation app found</string>
+
+    <!-- Home Preferences -->
+    <string name="prefs_home_title">Stations display</string>
+    <string name="prefs_station_id_visible_title">Id</string>
+package com.vlille.checker.ui.fragment;
+
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import com.vlille.checker.ui.delegate.StationUpdateDelegate;
+import com.vlille.checker.ui.osm.MapState;
+import com.vlille.checker.ui.osm.MapView;
+import org.droidparts.annotation.inject.InjectDependency;
+import org.droidparts.fragment.support.v4.Fragment;
+import org.osmdroid.util.GeoPoint;
+
+import java.util.List;
+ 
+/**
+ * A fragment to localize and bookmark stations from a map, using OpenStreetMap.
+ */
+public class MapFragment extends Fragment implements StationUpdateDelegate {
+
+	private static final String TAG = MapFragment.class.getSimpleName();
+
+    @InjectDependency
+    private StationEntityManager stationEntityManager;
+
+	private MapState state = new MapState();
+	private MapView mapView;
+	private List<Station> stations;
+	
+	@Override
+	public void onCreate(Bundle bundle) {
+		super.onCreate(bundle);
+		Log.d(TAG, "onCreate");
+
+        if (!this.state.isInitialized()) {
+            this.state.save(MapView.DEFAULT_CENTER_GEO_POINT, MapView.DEFAULT_ZOOM_LEVEL);
+        }
+    }
+
+    public void setCenter(GeoPoint center) {
+        Log.d(TAG, "setCenter " + center);
+        this.state.currentCenter = center;
+        this.state.zoomLevel = MapView.DEFAULT_ZOOM_LEVEL;
+    }
+	
+	@Override
+    public View onCreateView(Bundle savedInstanceState,
+                             LayoutInflater inflater, ViewGroup container) {
+		super.onCreate(savedInstanceState);
+		Log.d(TAG, "onCreateView");
+
+		final View view = inflater.inflate(R.layout.maps, container, false);
+		mapView = (MapView) view.findViewById(R.id.mapview);
+
+		return view;
+	}
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+public void onClick(View v) {
+        });
+    }
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		
+		mapView.updateStations();
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		Log.d(TAG, "onPause");
+		
+		GeoPoint mapCenter = (GeoPoint) mapView.getMapCenter();
+		if (mapView.isLocationOn()) {
+			mapCenter = null;
+		}
+		state.save(mapCenter, mapView.getZoomLevel());
+	}
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+dependencies {
+    compile("com.crashlytics.sdk.android:answers:1.3.7@aar") {
+        transitive = true
+    }
+    compile "com.github.slugify:slugify:2.1.3"
+
+    // debug
+package me.vickychijwani.spectre.util;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.net.Uri;
+import android.os.Build;
+import android.support.annotation.NonNull;
+import android.util.DisplayMetrics;
+import android.widget.Toast;
+public static String getAppVersion(@NonNull Context context) {
+        }
+    }
+
+    /**
+     * Set the app to use the given locale. Useful for testing translations. This is normally
+     * not needed because the device locale is applied automatically.
+package me.vickychijwani.spectre.view.fragments;
+
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import me.vickychijwani.spectre.model.entity.Post;
+import me.vickychijwani.spectre.model.entity.Tag;
+import me.vickychijwani.spectre.network.ApiFailure;
+import me.vickychijwani.spectre.util.EditTextSelectionState;
+import me.vickychijwani.spectre.util.EditTextUtils;
+import me.vickychijwani.spectre.util.KeyboardUtils;
+import me.vickychijwani.spectre.view.FormatOptionClickListener;
+import me.vickychijwani.spectre.view.Observables;
+import me.vickychijwani.spectre.view.PostViewActivity;
+import rx.Observable;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subscriptions.Subscriptions;
+
+public class PostEditFragment extends BaseFragment implements
+        FormatOptionClickListener {
+
+public void onFormatImageClicked(View v) {
+            if (item.getItemId() == R.id.action_insert_image_url) {
+                onInsertImageUrlClicked(insertMarkdownAction);
+            } else if (item.getItemId() == R.id.action_insert_image_upload) {
+                onInsertImageUploadClicked(insertMarkdownAction);
+            }
+            return true;
+        });
+        popupMenu.show();
+    }
+
+    public void onInsertImageUrlClicked(Action1<String> resultAction) {
+        Observables.getImageUrlDialog(mActivity).subscribe((imageUrl) -> {
+            resultAction.call(imageUrl);
+public void onInsertImageUrlClicked(Action1<String> resultAction) {
+        });
+    }
+
+    public void onInsertImageUploadClicked(Action1<String> uploadDoneAction) {
+        mImageUploadDoneAction = uploadDoneAction;
+        Intent imagePickIntent = new Intent(Intent.ACTION_GET_CONTENT);
+public void onInsertImageUploadClicked(Action1<String> uploadDoneAction) {
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent result) {
+        if (result == null || result.getData() == null || resultCode != Activity.RESULT_OK) {
+    <string name="uploading">Uploading…</string>
+    <string name="image_upload_failed">Couldn\'t upload image</string>
+    <string name="remove_image">Remove This Image</string>
+
+    <!-- conflict resolution -->
+    <string name="conflict_explanation"><![CDATA[<b>The post <i>%!s(MISSING)</i> has a conflict.</b> It was updated on the server before your device\'s copy could be uploaded. Which version of the post would you like to keep?]]></string>
+allprojects {
+ext {
+    okhttpVersion = '3.6.0'
+    supportLibVersion = '25.1.1'
+    debugdrawerVersion = '0.7.0'
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+private static Contact _findByUserId(Context context, String userId) {
+    private static byte[] loadAvatarData(Context context, Uri contactUri) {
+        byte[] data = null;
+
+        Uri uri;
+        try {
+            long cid = ContentUris.parseId(contactUri);
+            uri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, cid);
+        }
+        catch (Exception e) {
+            uri = contactUri;
+        }
+
+        InputStream avatarDataStream = Contacts.openContactPhotoInputStream(
+                    context.getContentResolver(), uri);
+        if (avatarDataStream != null) {
+            try {
+                    data = new byte[avatarDataStream.available()];
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

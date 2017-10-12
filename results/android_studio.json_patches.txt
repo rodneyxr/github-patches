@@ -1,0 +1,1698 @@
+Recommended: Take a look at the Android [documentation](https://docs.hypertrack.
+1. Sync the Gradle files to download the HyperTrack SDKs.
+2. Replace `YOUR_PUBLISHABLE_KEY` with your Hypertrack API key in `ExampleAppApplication.java` [here](https://github.com/hypertrack/example-android/blob/master/app/src/main/java/com/hypertrack/example_android/ExampleAppApplication.java#L19).
+3. Setup a Google Maps API key. More info [here](https://developers.google.com/maps/documentation/android-api/start) and the steps to get an API key are [here](https://developers.google.com/maps/documentation/android-api/start#step_4_get_a_google_maps_api_key).
+4. Add the API key [here](https://github.com/hypertrack/meta-android/blob/develop/app/src/main/AndroidManifest.xml#L207).
+5. Run in emulator. You might need to enable the location permission: see [how](readme-imgs/location.gif).
+
+## Documentation
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":app" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="org.solovyev.android" external.system.module.version="0.6.1" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android-gradle" name="Android-Gradle">
+      <configuration>
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
+      <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
+    </content>
+    <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
+    <orderEntry type="library" exported="" name="acra-4.5.0" level="project" />
+    <orderEntry type="module" module-name="lib" exported="" />
+  </component>
+  <component name="org.twodividedbyzero.idea.findbugs">
+    <option name="_basePreferences">
+      <map>
+        <entry key="property.analysisEffortLevel" value="default" />
+        <entry key="property.analyzeAfterCompile" value="false" />
+        <entry key="property.annotationGutterIconEnabled" value="true" />
+        <entry key="property.annotationSuppressWarningsClass" value="edu.umd.cs.findbugs.annotations.SuppressFBWarnings" />
+        <entry key="property.annotationTextRangeMarkupEnabled" value="true" />
+        <entry key="property.exportAsHtml" value="true" />
+        <entry key="property.exportAsXml" value="true" />
+        <entry key="property.exportBaseDir" value="" />
+        <entry key="property.exportCreateArchiveDir" value="false" />
+        <entry key="property.exportOpenBrowser" value="true" />
+        <entry key="property.minPriorityToReport" value="Medium" />
+        <entry key="property.runAnalysisInBackground" value="false" />
+        <entry key="property.showHiddenDetectors" value="false" />
+        <entry key="property.toolWindowToFront" value="true" />
+      </map>
+    </option>
+    <option name="_detectors">
+      <map>
+        <entry key="AppendingToAnObjectOutputStream" value="true" />
+        <entry key="AtomicityProblem" value="true" />
+        <entry key="BadAppletConstructor" value="false" />
+        <entry key="BadResultSetAccess" value="true" />
+        <entry key="BadSyntaxForRegularExpression" value="true" />
+        <entry key="BadUseOfReturnValue" value="true" />
+        <entry key="BadlyOverriddenAdapter" value="true" />
+        <entry key="BooleanReturnNull" value="true" />
+        <entry key="BuildInterproceduralCallGraph" value="false" />
+        <entry key="BuildObligationPolicyDatabase" value="true" />
+        <entry key="CallToUnsupportedMethod" value="false" />
+        <entry key="CalledMethods" value="true" />
+        <entry key="CheckCalls" value="false" />
+        <entry key="CheckExpectedWarnings" value="false" />
+        <entry key="CheckImmutableAnnotation" value="true" />
+        <entry key="CheckRelaxingNullnessAnnotation" value="true" />
+        <entry key="CheckTypeQualifiers" value="true" />
+        <entry key="CloneIdiom" value="true" />
+        <entry key="ComparatorIdiom" value="true" />
+        <entry key="ConfusedInheritance" value="true" />
+        <entry key="ConfusionBetweenInheritedAndOuterMethod" value="true" />
+        <entry key="CrossSiteScripting" value="true" />
+        <entry key="DefaultEncodingDetector" value="true" />
+        <entry key="DoInsideDoPrivileged" value="true" />
+        <entry key="DontCatchIllegalMonitorStateException" value="true" />
+        <entry key="DontIgnoreResultOfPutIfAbsent" value="true" />
+        <entry key="DontUseEnum" value="true" />
+        <entry key="DroppedException" value="true" />
+        <entry key="DumbMethodInvocations" value="true" />
+        <entry key="DumbMethods" value="true" />
+        <entry key="DuplicateBranches" value="true" />
+        <entry key="EmptyZipFileEntry" value="false" />
+        <entry key="EqualsOperandShouldHaveClassCompatibleWithThis" value="true" />
+        <entry key="ExplicitSerialization" value="true" />
+        <entry key="FieldItemSummary" value="true" />
+        <entry key="FinalizerNullsFields" value="true" />
+        <entry key="FindBadCast2" value="true" />
+        <entry key="FindBadForLoop" value="true" />
+        <entry key="FindBugsSummaryStats" value="true" />
+        <entry key="FindCircularDependencies" value="false" />
+        <entry key="FindDeadLocalStores" value="true" />
+        <entry key="FindDoubleCheck" value="true" />
+        <entry key="FindEmptySynchronizedBlock" value="true" />
+        <entry key="FindFieldSelfAssignment" value="true" />
+        <entry key="FindFinalizeInvocations" value="true" />
+        <entry key="FindFloatEquality" value="true" />
+        <entry key="FindFloatMath" value="false" />
+        <entry key="FindHEmismatch" value="true" />
+        <entry key="FindInconsistentSync2" value="true" />
+        <entry key="FindJSR166LockMonitorenter" value="true" />
+        <entry key="FindLocalSelfAssignment2" value="true" />
+        <entry key="FindMaskedFields" value="true" />
+        <entry key="FindMismatchedWaitOrNotify" value="true" />
+        <entry key="FindNakedNotify" value="true" />
+        <entry key="FindNonSerializableStoreIntoSession" value="false" />
+        <entry key="FindNonSerializableValuePassedToWriteObject" value="false" />
+        <entry key="FindNonShortCircuit" value="true" />
+        <entry key="FindNullDeref" value="true" />
+        <entry key="FindNullDerefsInvolvingNonShortCircuitEvaluation" value="true" />
+        <entry key="FindOpenStream" value="true" />
+        <entry key="FindPuzzlers" value="true" />
+        <entry key="FindRefComparison" value="true" />
+        <entry key="FindReturnRef" value="true" />
+        <entry key="FindRoughConstants" value="true" />
+        <entry key="FindRunInvocations" value="true" />
+        <entry key="FindSelfComparison" value="true" />
+        <entry key="FindSelfComparison2" value="true" />
+        <entry key="FindSleepWithLockHeld" value="true" />
+        <entry key="FindSpinLoop" value="true" />
+        <entry key="FindSqlInjection" value="true" />
+        <entry key="FindTwoLockWait" value="true" />
+        <entry key="FindUncalledPrivateMethods" value="true" />
+        <entry key="FindUnconditionalWait" value="true" />
+        <entry key="FindUninitializedGet" value="true" />
+        <entry key="FindUnrelatedTypesInGenericContainer" value="true" />
+        <entry key="FindUnreleasedLock" value="true" />
+        <entry key="FindUnsatisfiedObligation" value="true" />
+        <entry key="FindUnsyncGet" value="true" />
+        <entry key="FindUseOfNonSerializableValue" value="true" />
+        <entry key="FindUselessControlFlow" value="true" />
+        <entry key="FormatStringChecker" value="true" />
+        <entry key="FunctionsThatMightBeMistakenForProcedures" value="true" />
+        <entry key="HugeSharedStringConstants" value="true" />
+        <entry key="IDivResultCastToDouble" value="true" />
+        <entry key="IncompatMask" value="true" />
+        <entry key="InconsistentAnnotations" value="true" />
+        <entry key="InefficientIndexOf" value="true" />
+        <entry key="InefficientMemberAccess" value="false" />
+        <entry key="InefficientToArray" value="true" />
+        <entry key="InfiniteLoop" value="true" />
+        <entry key="InfiniteRecursiveLoop" value="true" />
+        <entry key="InheritanceUnsafeGetResource" value="true" />
+        <entry key="InitializationChain" value="true" />
+        <entry key="InitializeNonnullFieldsInConstructor" value="true" />
+        <entry key="InstantiateStaticClass" value="true" />
+        <entry key="IntCast2LongAsInstant" value="true" />
+        <entry key="InvalidJUnitTest" value="true" />
+        <entry key="IteratorIdioms" value="true" />
+        <entry key="LazyInit" value="true" />
+        <entry key="LoadOfKnownNullValue" value="true" />
+        <entry key="LostLoggerDueToWeakReference" value="true" />
+        <entry key="MethodReturnCheck" value="true" />
+        <entry key="Methods" value="true" />
+        <entry key="MultithreadedInstanceAccess" value="true" />
+        <entry key="MutableLock" value="true" />
+        <entry key="MutableStaticFields" value="true" />
+        <entry key="Naming" value="true" />
+        <entry key="Noise" value="false" />
+        <entry key="NoiseNullDeref" value="false" />
+        <entry key="NoteAnnotationRetention" value="true" />
+        <entry key="NoteCheckReturnValueAnnotations" value="true" />
+        <entry key="NoteDirectlyRelevantTypeQualifiers" value="true" />
+        <entry key="NoteJCIPAnnotation" value="true" />
+        <entry key="NoteNonNullAnnotations" value="false" />
+        <entry key="NoteNonnullReturnValues" value="false" />
+        <entry key="NoteSuppressedWarnings" value="true" />
+        <entry key="NoteUnconditionalParamDerefs" value="true" />
+        <entry key="NumberConstructor" value="true" />
+        <entry key="OptionalReturnNull" value="true" />
+        <entry key="OverridingEqualsNotSymmetrical" value="true" />
+        <entry key="PreferZeroLengthArrays" value="true" />
+        <entry key="PublicSemaphores" value="false" />
+        <entry key="QuestionableBooleanAssignment" value="true" />
+        <entry key="ReadOfInstanceFieldInMethodInvokedByConstructorInSuperclass" value="true" />
+        <entry key="ReadReturnShouldBeChecked" value="true" />
+        <entry key="RedundantInterfaces" value="true" />
+        <entry key="ReflectiveClasses" value="true" />
+        <entry key="RepeatedConditionals" value="true" />
+        <entry key="ResolveAllReferences" value="false" />
+        <entry key="RuntimeExceptionCapture" value="true" />
+        <entry key="SerializableIdiom" value="true" />
+        <entry key="StartInConstructor" value="true" />
+        <entry key="StaticCalendarDetector" value="true" />
+        <entry key="StringConcatenation" value="true" />
+        <entry key="SuperfluousInstanceOf" value="true" />
+        <entry key="SuspiciousThreadInterrupted" value="true" />
+        <entry key="SwitchFallthrough" value="true" />
+        <entry key="SynchronizationOnSharedBuiltinConstant" value="true" />
+        <entry key="SynchronizeAndNullCheckField" value="true" />
+        <entry key="SynchronizeOnClassLiteralNotGetClass" value="true" />
+        <entry key="SynchronizingOnContentsOfFieldToProtectField" value="true" />
+        <entry key="TestASM" value="false" />
+        <entry key="TestDataflowAnalysis" value="false" />
+        <entry key="TestingGround" value="false" />
+        <entry key="TestingGround2" value="false" />
+        <entry key="TrainFieldStoreTypes" value="true" />
+        <entry key="TrainLongInstantfParams" value="true" />
+        <entry key="TrainNonNullAnnotations" value="true" />
+        <entry key="TrainUnconditionalDerefParams" value="true" />
+        <entry key="URLProblems" value="true" />
+        <entry key="UncallableMethodOfAnonymousClass" value="true" />
+        <entry key="UnnecessaryMath" value="true" />
+        <entry key="UnreadFields" value="true" />
+        <entry key="UselessSubclassMethod" value="false" />
+        <entry key="VarArgsProblems" value="true" />
+        <entry key="VolatileUsage" value="true" />
+        <entry key="WaitInLoop" value="true" />
+        <entry key="WrongMapIterator" value="true" />
+        <entry key="XMLFactoryBypass" value="true" />
+      </map>
+    </option>
+    <option name="_reportCategories">
+      <map>
+        <entry key="BAD_PRACTICE" value="true" />
+        <entry key="CORRECTNESS" value="true" />
+        <entry key="EXPERIMENTAL" value="true" />
+        <entry key="I18N" value="true" />
+        <entry key="MALICIOUS_CODE" value="true" />
+        <entry key="MT_CORRECTNESS" value="true" />
+        <entry key="PERFORMANCE" value="true" />
+        <entry key="SECURITY" value="true" />
+        <entry key="STYLE" value="true" />
+      </map>
+    </option>
+  </component>
+</module>
+
+task androidSourcesJar(type: Jar) {
+
+artifacts {
+    archives androidSourcesJar
+    archives file: file('build/outputs/apk/checkout-release.apk'), name: 'checkout-app', type: 'apk'
+    archives file: file('build/outputs/mapping/release/mapping.txt'), name: 'checkout-app', classifier: 'proguard', type: 'txt'
+}
+
+uploadArchives {
+            }
+
+            pom.project {
+                name 'Android Checkout App'
+                packaging 'apk'
+                // optionally artifactId can be defined here
+                description 'Sample App for Android In-App Billing (Version 3)'
+                url 'https://github.com/serso/android-checkout'
+
+allprojects {
+        }
+        mavenCentral()
+    }
+}
+uploadArchives {
+            }
+
+            pom.project {
+                name 'Android Checkout Library'
+                packaging 'aar'
+                // optionally artifactId can be defined here
+                description 'Library for Android In-App Billing (Version 3)'
+                url 'https://github.com/serso/android-checkout'
+
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":lib" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="org.solovyev.android" external.system.module.version="0.6.1" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android-gradle" name="Android-Gradle">
+      <configuration>
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/bundles" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/rs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/symbols" />
+      <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
+      <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
+    </content>
+    <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="jsr305-2.0.3" level="project" />
+  </component>
+  <component name="org.twodividedbyzero.idea.findbugs">
+    <option name="_basePreferences">
+      <map>
+        <entry key="property.analysisEffortLevel" value="default" />
+        <entry key="property.analyzeAfterCompile" value="false" />
+        <entry key="property.annotationGutterIconEnabled" value="true" />
+        <entry key="property.annotationSuppressWarningsClass" value="edu.umd.cs.findbugs.annotations.SuppressFBWarnings" />
+        <entry key="property.annotationTextRangeMarkupEnabled" value="true" />
+        <entry key="property.exportAsHtml" value="true" />
+        <entry key="property.exportAsXml" value="true" />
+        <entry key="property.exportBaseDir" value="" />
+        <entry key="property.exportCreateArchiveDir" value="false" />
+        <entry key="property.exportOpenBrowser" value="true" />
+        <entry key="property.minPriorityToReport" value="Medium" />
+        <entry key="property.runAnalysisInBackground" value="false" />
+        <entry key="property.showHiddenDetectors" value="false" />
+        <entry key="property.toolWindowToFront" value="true" />
+      </map>
+    </option>
+    <option name="_detectors">
+      <map>
+        <entry key="AppendingToAnObjectOutputStream" value="true" />
+        <entry key="AtomicityProblem" value="true" />
+        <entry key="BadAppletConstructor" value="false" />
+        <entry key="BadResultSetAccess" value="true" />
+        <entry key="BadSyntaxForRegularExpression" value="true" />
+        <entry key="BadUseOfReturnValue" value="true" />
+        <entry key="BadlyOverriddenAdapter" value="true" />
+        <entry key="BooleanReturnNull" value="true" />
+        <entry key="BuildInterproceduralCallGraph" value="false" />
+        <entry key="BuildObligationPolicyDatabase" value="true" />
+        <entry key="CallToUnsupportedMethod" value="false" />
+        <entry key="CalledMethods" value="true" />
+        <entry key="CheckCalls" value="false" />
+        <entry key="CheckExpectedWarnings" value="false" />
+        <entry key="CheckImmutableAnnotation" value="true" />
+        <entry key="CheckRelaxingNullnessAnnotation" value="true" />
+        <entry key="CheckTypeQualifiers" value="true" />
+        <entry key="CloneIdiom" value="true" />
+        <entry key="ComparatorIdiom" value="true" />
+        <entry key="ConfusedInheritance" value="true" />
+        <entry key="ConfusionBetweenInheritedAndOuterMethod" value="true" />
+        <entry key="CrossSiteScripting" value="true" />
+        <entry key="DefaultEncodingDetector" value="true" />
+        <entry key="DoInsideDoPrivileged" value="true" />
+        <entry key="DontCatchIllegalMonitorStateException" value="true" />
+        <entry key="DontIgnoreResultOfPutIfAbsent" value="true" />
+        <entry key="DontUseEnum" value="true" />
+        <entry key="DroppedException" value="true" />
+        <entry key="DumbMethodInvocations" value="true" />
+        <entry key="DumbMethods" value="true" />
+        <entry key="DuplicateBranches" value="true" />
+        <entry key="EmptyZipFileEntry" value="false" />
+        <entry key="EqualsOperandShouldHaveClassCompatibleWithThis" value="true" />
+        <entry key="ExplicitSerialization" value="true" />
+        <entry key="FieldItemSummary" value="true" />
+        <entry key="FinalizerNullsFields" value="true" />
+        <entry key="FindBadCast2" value="true" />
+        <entry key="FindBadForLoop" value="true" />
+        <entry key="FindBugsSummaryStats" value="true" />
+        <entry key="FindCircularDependencies" value="false" />
+        <entry key="FindDeadLocalStores" value="true" />
+        <entry key="FindDoubleCheck" value="true" />
+        <entry key="FindEmptySynchronizedBlock" value="true" />
+        <entry key="FindFieldSelfAssignment" value="true" />
+        <entry key="FindFinalizeInvocations" value="true" />
+        <entry key="FindFloatEquality" value="true" />
+        <entry key="FindFloatMath" value="false" />
+        <entry key="FindHEmismatch" value="true" />
+        <entry key="FindInconsistentSync2" value="true" />
+        <entry key="FindJSR166LockMonitorenter" value="true" />
+        <entry key="FindLocalSelfAssignment2" value="true" />
+        <entry key="FindMaskedFields" value="true" />
+        <entry key="FindMismatchedWaitOrNotify" value="true" />
+        <entry key="FindNakedNotify" value="true" />
+        <entry key="FindNonSerializableStoreIntoSession" value="false" />
+        <entry key="FindNonSerializableValuePassedToWriteObject" value="false" />
+        <entry key="FindNonShortCircuit" value="true" />
+        <entry key="FindNullDeref" value="true" />
+        <entry key="FindNullDerefsInvolvingNonShortCircuitEvaluation" value="true" />
+        <entry key="FindOpenStream" value="true" />
+        <entry key="FindPuzzlers" value="true" />
+        <entry key="FindRefComparison" value="true" />
+        <entry key="FindReturnRef" value="true" />
+        <entry key="FindRoughConstants" value="true" />
+        <entry key="FindRunInvocations" value="true" />
+        <entry key="FindSelfComparison" value="true" />
+        <entry key="FindSelfComparison2" value="true" />
+        <entry key="FindSleepWithLockHeld" value="true" />
+        <entry key="FindSpinLoop" value="true" />
+        <entry key="FindSqlInjection" value="true" />
+        <entry key="FindTwoLockWait" value="true" />
+        <entry key="FindUncalledPrivateMethods" value="true" />
+        <entry key="FindUnconditionalWait" value="true" />
+        <entry key="FindUninitializedGet" value="true" />
+        <entry key="FindUnrelatedTypesInGenericContainer" value="true" />
+        <entry key="FindUnreleasedLock" value="true" />
+        <entry key="FindUnsatisfiedObligation" value="true" />
+        <entry key="FindUnsyncGet" value="true" />
+        <entry key="FindUseOfNonSerializableValue" value="true" />
+        <entry key="FindUselessControlFlow" value="true" />
+        <entry key="FormatStringChecker" value="true" />
+        <entry key="FunctionsThatMightBeMistakenForProcedures" value="true" />
+        <entry key="HugeSharedStringConstants" value="true" />
+        <entry key="IDivResultCastToDouble" value="true" />
+        <entry key="IncompatMask" value="true" />
+        <entry key="InconsistentAnnotations" value="true" />
+        <entry key="InefficientIndexOf" value="true" />
+        <entry key="InefficientMemberAccess" value="false" />
+        <entry key="InefficientToArray" value="true" />
+        <entry key="InfiniteLoop" value="true" />
+        <entry key="InfiniteRecursiveLoop" value="true" />
+        <entry key="InheritanceUnsafeGetResource" value="true" />
+        <entry key="InitializationChain" value="true" />
+        <entry key="InitializeNonnullFieldsInConstructor" value="true" />
+        <entry key="InstantiateStaticClass" value="true" />
+        <entry key="IntCast2LongAsInstant" value="true" />
+        <entry key="InvalidJUnitTest" value="true" />
+        <entry key="IteratorIdioms" value="true" />
+        <entry key="LazyInit" value="true" />
+        <entry key="LoadOfKnownNullValue" value="true" />
+        <entry key="LostLoggerDueToWeakReference" value="true" />
+        <entry key="MethodReturnCheck" value="true" />
+        <entry key="Methods" value="true" />
+        <entry key="MultithreadedInstanceAccess" value="true" />
+        <entry key="MutableLock" value="true" />
+        <entry key="MutableStaticFields" value="true" />
+        <entry key="Naming" value="true" />
+        <entry key="Noise" value="false" />
+        <entry key="NoiseNullDeref" value="false" />
+        <entry key="NoteAnnotationRetention" value="true" />
+        <entry key="NoteCheckReturnValueAnnotations" value="true" />
+        <entry key="NoteDirectlyRelevantTypeQualifiers" value="true" />
+        <entry key="NoteJCIPAnnotation" value="true" />
+        <entry key="NoteNonNullAnnotations" value="false" />
+        <entry key="NoteNonnullReturnValues" value="false" />
+        <entry key="NoteSuppressedWarnings" value="true" />
+        <entry key="NoteUnconditionalParamDerefs" value="true" />
+        <entry key="NumberConstructor" value="true" />
+        <entry key="OptionalReturnNull" value="true" />
+        <entry key="OverridingEqualsNotSymmetrical" value="true" />
+        <entry key="PreferZeroLengthArrays" value="true" />
+        <entry key="PublicSemaphores" value="false" />
+        <entry key="QuestionableBooleanAssignment" value="true" />
+        <entry key="ReadOfInstanceFieldInMethodInvokedByConstructorInSuperclass" value="true" />
+        <entry key="ReadReturnShouldBeChecked" value="true" />
+        <entry key="RedundantInterfaces" value="true" />
+        <entry key="ReflectiveClasses" value="true" />
+        <entry key="RepeatedConditionals" value="true" />
+        <entry key="ResolveAllReferences" value="false" />
+        <entry key="RuntimeExceptionCapture" value="true" />
+        <entry key="SerializableIdiom" value="true" />
+        <entry key="StartInConstructor" value="true" />
+        <entry key="StaticCalendarDetector" value="true" />
+        <entry key="StringConcatenation" value="true" />
+        <entry key="SuperfluousInstanceOf" value="true" />
+        <entry key="SuspiciousThreadInterrupted" value="true" />
+        <entry key="SwitchFallthrough" value="true" />
+        <entry key="SynchronizationOnSharedBuiltinConstant" value="true" />
+        <entry key="SynchronizeAndNullCheckField" value="true" />
+        <entry key="SynchronizeOnClassLiteralNotGetClass" value="true" />
+        <entry key="SynchronizingOnContentsOfFieldToProtectField" value="true" />
+        <entry key="TestASM" value="false" />
+        <entry key="TestDataflowAnalysis" value="false" />
+        <entry key="TestingGround" value="false" />
+        <entry key="TestingGround2" value="false" />
+        <entry key="TrainFieldStoreTypes" value="true" />
+        <entry key="TrainLongInstantfParams" value="true" />
+        <entry key="TrainNonNullAnnotations" value="true" />
+        <entry key="TrainUnconditionalDerefParams" value="true" />
+        <entry key="URLProblems" value="true" />
+        <entry key="UncallableMethodOfAnonymousClass" value="true" />
+        <entry key="UnnecessaryMath" value="true" />
+        <entry key="UnreadFields" value="true" />
+        <entry key="UselessSubclassMethod" value="false" />
+        <entry key="VarArgsProblems" value="true" />
+        <entry key="VolatileUsage" value="true" />
+        <entry key="WaitInLoop" value="true" />
+        <entry key="WrongMapIterator" value="true" />
+        <entry key="XMLFactoryBypass" value="true" />
+      </map>
+    </option>
+    <option name="_reportCategories">
+      <map>
+        <entry key="BAD_PRACTICE" value="true" />
+        <entry key="CORRECTNESS" value="true" />
+        <entry key="EXPERIMENTAL" value="true" />
+        <entry key="I18N" value="true" />
+        <entry key="MALICIOUS_CODE" value="true" />
+        <entry key="MT_CORRECTNESS" value="true" />
+        <entry key="PERFORMANCE" value="true" />
+        <entry key="SECURITY" value="true" />
+        <entry key="STYLE" value="true" />
+      </map>
+    </option>
+  </component>
+</module>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+dependencies {
+        exclude module: 'bolts-android'
+        exclude module: 'support-v4'
+    }
+}
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name"
+import android.content.Context;
+
+import com.parse.Parse;
+import com.parse.ParseObject;
+
+
+
+public void onCreate() {
+        super.onCreate();
+
+        Parse.enableLocalDatastore(this);
+
+        // Register any ParseObject subclass. Must be done before calling Parse.initialize()
+
+package jthd.trumpeter;
+
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.net.Uri;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
+import android.widget.AbsListView;
+import android.widget.ListView;
+
+import com.parse.FindCallback;
+
+    boolean isScrollingUp;
+    int lastFirstVisibleItem;
+    boolean firstLoad;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_feed);
+        firstLoad = true;
+        titleBar = (Toolbar) findViewById(R.id.titleBar);
+        feedListView = (ListView) findViewById(R.id.feedListView);
+        feedSwipeLayout = (SwipeRefreshLayout) findViewById(R.id.feedSwipeLayout);
+protected void onCreate(Bundle savedInstanceState) {
+        loadListViewData();
+        setSupportActionBar(titleBar);
+        feedSwipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                                            @Override
+                                            public void onRefresh() {
+                                                // This method performs the actual data-refresh operation.
+                                                // The method calls setRefreshing(false) when it's finished.
+                                                refreshListView();
+                                            }
+                                        }
+        );
+
+
+    }
+protected void onResume(){
+        Log.d("FeedActivity", mUser.getEmail());
+        Fragment submitBarFragment = launchSubmitBarFragment();
+        startScrollListener(submitBarFragment);
+        // On first load, after call to loadListViewData(), firstLoad bool prevents refreshListView() from being called. On future onResume() calls
+        // (e.g. after activity completion and return), firstLoad is false and the ListView is refreshed.
+        // TODO This seemed to be causing some errors, but tricky to reproduce. Keep an eye out.
+        if (!firstLoad && feedListView.getAdapter() != null){
+            //feedSwipeLayout.setRefreshing(true); Not sure I like displaying the refresh here. Keep it out unless it feels missing. Just seems more fluid w/o.
+            refreshListView();
+        }
+        firstLoad = false;
+
+        // TODO; need a good way to refresh. Call refresh function (that refresh button also uses) on resume, that somehow loads adapter with new info?
+        // Make new adapter and load it? All that needs to be done is making a need FeedManager in FeedAdapter; function that just does that?
+protected void onResume(){
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+public boolean onOptionsItemSelected(MenuItem item) {
+            // launch ProfileActivity
+            // return true;
+            case R.id.refreshAction:
+                feedSwipeLayout.setRefreshing(true);
+                refreshListView();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+public void onSubmitBarFragmentInteraction(Uri uri) {
+
+    }
+
+
+    /**
+     *
+     * Note: Call feedSwipeLayout.setRefreshing(true) before every call to this function. This function sets refreshing to false once refreshing
+     * is complete.
+     */
+public void done(List<ParseObject> trumpetList, ParseException e) {
+     * Launches the ScrollListener attached to feedListView that shows and hides the SubmitBarFragment as user scrolls up and down.
+     * @param submitBarFragment The Fragment at the bottom of the screen that shows and hides with user scrolling.
+     */
+    private void startScrollListener(final Fragment submitBarFragment){
+        feedListView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                // TODO Auto-generated method stub
+private void hideSubmitBarFragment(Fragment submitBarFragment){
+        ft.commit();
+    }
+
+
+}
+public long getItemId(int arg0) {
+        return trumpetList.get(arg0).getInt("trumpetID");
+    }
+
+
+
+    @Override
+public void onClick(View v) {
+     */
+    private void toSubmitTrumpet(){
+        Intent submitTrumpetIntent = new Intent(getActivity(), SubmitTrumpetActivity.class);
+        getActivity().startActivity(submitTrumpetIntent);
+    }
+
+    // TODO: Rename method, update argument and hook method into UI event
+package jthd.trumpeter;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+    private String replyUsername;
+    private int replyTrumpetID;
+
+
+    @Override
+public void onClick(View v) {
+                if (replyUsername == null) {
+                    SubmitTrumpetManager.submitNewTrumpet(trumpetEditText.getText().toString(), user);
+                    // This finish call should return user to FeedActivity
+                    finish();
+                } else {
+                    SubmitTrumpetManager.submitReplyTrumpet(trumpetEditText.getText().toString(), user, replyTrumpetID);
+                    // This finish call should return user to FeedActivity or ViewTrumpetActivity, depending on which reply button was pushed
+                    finish();
+                }
+            }
+        });
+private void checkIfReply(){
+        replyUsername = intent.getStringExtra("trumpetUsername");
+        if (replyUsername != null){
+            replyTrumpetID = intent.getIntExtra("trumpetID", -1);
+            trumpetEditText.setText("@" + replyUsername);
+            trumpetEditText.setSelection(trumpetEditText.getText().length() + 1);
+        }
+    }
+
+public static void submitNewTrumpet(String text, ParseUser user) {
+        //trumpet.put("retrumpeter", ""); Defaults to empty
+        trumpet.put("retrumpets", 0);
+        trumpet.put("likes", 0);
+        // This query retrieves the next available Trumpet ID for the new Trumpet from the TrumpetCounter object and atomically increments the counter field.
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("TrumpetCounter");
+        query.getFirstInBackground(new GetCallback<ParseObject>() {
+public static void submitRetrumpet(ParseObject trumpet, String retrumpeter) {
+        retrumpet.put("retrumpeter", retrumpeter);
+        retrumpet.put("retrumpets", trumpet.getInt("retrumpets") + 1);
+        retrumpet.put("likes", trumpet.get("likes"));
+        retrumpet.put("trumpetID", trumpet.get("trumpetID"));
+        retrumpet.saveInBackground();
+    }
+public static void submitReplyTrumpet(String text, ParseUser user, int replyTrum
+        //trumpet.put("retrumpeter", ""); Defaults to empty
+        trumpet.put("retrumpets", 0);
+        trumpet.put("likes", 0);
+        trumpet.put("replyTrumpetID", replyTrumpetID);
+        // This query retrieves the next available Trumpet ID for the new Trumpet from the TrumpetCounter object and atomically increments the counter field.
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("TrumpetCounter");
+package jthd.trumpeter;
+
+import android.content.Context;
+import android.content.Intent;
+import android.util.AttributeSet;
+import com.parse.ParseUser;
+import com.squareup.picasso.Picasso;
+
+
+/**
+ * Custom View class that manages the layout for each Trumpet, or item in the FeedActivity ListView. Performs strictly the "View" function
+    private Boolean retrumpet;
+    private int retrumpets;
+    private int likes;
+
+    private TextView usernameTextView;
+    private TextView trumpetTextView;
+    private TextView retrumpetCountTextView;
+    private TextView likeCountTextView;
+    private TextView retrumpetTextView;
+    private ImageView profilePictureImageView;
+    private ImageButton replyButton;
+    private ImageButton retrumpetButton;
+protected void onFinishInflate(){
+        retrumpetCountTextView = (TextView) findViewById(R.id.retrumpetCountTextView);
+        likeCountTextView = (TextView) findViewById(R.id.likeCountTextView);
+        retrumpetTextView = (TextView) findViewById(R.id.retrumpetTextView);
+        profilePictureImageView = (ImageView) findViewById(R.id.profilePictureImageView);
+        replyButton = (ImageButton) findViewById(R.id.replyButton);
+        retrumpetButton = (ImageButton) findViewById(R.id.retrumpetButton);
+protected void onFinishInflate(){
+    /**
+     * Retrieves data from provided Trumpet ParseObject and loads it into trumpetView's Views. Displays or hides retrumpetTextView based on retrumpet status.
+     * Sets listeners for buttons.
+     * @param showTrumpet, the Trumpet ParseObject that contains all necessary information for a Trumpet to be displayed.
+     */
+    public void showTrumpet(ParseObject showTrumpet) {
+public void showTrumpet(ParseObject showTrumpet) {
+        retrumpet = (boolean) trumpet.get("retrumpet");
+        retrumpets = trumpet.getInt("retrumpets");
+        likes = trumpet.getInt("likes");
+        // If this Trumpet is a Retrumpet, display relevant Retrumpet information. Otherwise, hide the Retrumpet TextView
+        if (retrumpet) {
+            retrumpetTextView.setVisibility(View.VISIBLE);
+public void showTrumpet(ParseObject showTrumpet) {
+        } else {
+            retrumpetTextView.setVisibility(View.GONE);
+        }
+        setProfilePicture();
+        usernameTextView.setText(username);
+        trumpetTextView.setText(text);
+        retrumpetCountTextView.setText(Integer.toString(retrumpets));
+        likeCountTextView.setText(Integer.toString(likes));
+        replyButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toSubmitTrumpetActivityReply();
+            }
+        });
+        retrumpetButton.setOnClickListener(new OnClickListener() {
+public void onClick(View v) {
+    /**
+     * Retrieves data from showTrumpet and loads it into a more detailed version of the TrumpetView layout designed for the specific
+     * Trumpet being viewed in ViewTrumpetActivity. Exact differences are visible in ViewTrumpetActivity layout file.
+     * @param showTrumpet, the Trumpet ParseObject that contains all necessary information for a Trumpet to be displayed.
+     */
+    public void showDetailedTrumpet(ParseObject showTrumpet){
+public void showDetailedTrumpet(ParseObject showTrumpet){
+        retrumpet = (boolean)trumpet.get("retrumpet");
+        retrumpets = trumpet.getInt("retrumpets");
+        likes = trumpet.getInt("likes");
+        // If this Trumpet is a Retrumpet, display relevant Retrumpet information. Otherwise, hide the Retrumpet TextView
+        if (retrumpet){
+            retrumpetTextView.setVisibility(View.VISIBLE);
+public void showDetailedTrumpet(ParseObject showTrumpet){
+        } else {
+            retrumpetTextView.setVisibility(View.GONE);
+        }
+        setProfilePicture();
+        usernameTextView.setText(username);
+        trumpetTextView.setText(text);
+        retrumpetCountTextView.setText(Integer.toString(retrumpets) + " Retrumpets");
+        likeCountTextView.setText(Integer.toString(likes) + " Likes");
+        replyButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toSubmitTrumpetActivityReply();
+            }
+        });
+        retrumpetButton.setOnClickListener(new OnClickListener() {
+public void onClick(View v) {
+    /**
+     * Sets the user's profile picture asynchronously with Picasso. If no profile picture has been uploaded, use default.
+     */
+    private void setProfilePicture(){
+        // if profilePicture is not null (a profile picture has been uploaded), use it. Otherwise, use default
+        if (trumpetUser.getParseFile("profilePicture") != null){
+            // Asynchronously optimizes and loads the user's profile picture. Loads the default profile picture as a placeholder.
+            ParseFile profilePicture = trumpetUser.getParseFile("profilePicture");
+            Picasso.with(App.getAppContext()).load(profilePicture.getUrl()).placeholder(R.drawable.default_profile_picture).resize(180, 180).into(profilePictureImageView);
+        } else {
+            // Asynchronously optimizes and loads the default profile picture.
+            // TODO Acceptable way to get context here? Is there an easier way (it is passed in). Does it matter?
+            Picasso.with(App.getAppContext()).load(R.drawable.default_profile_picture).resize(180, 180).centerInside().into(profilePictureImageView);
+
+        }
+    }
+
+    /**
+     * Launches SubmitTrumpetActivity with intent data from this Trumpet which is being replied to.
+     */
+    private void toSubmitTrumpetActivityReply(){
+        Intent intent = new Intent(getContext(), SubmitTrumpetActivity.class);
+        intent.putExtra("trumpetUsername", username);
+        intent.putExtra("trumpetID", trumpet.getInt("trumpetID"));
+        getContext().startActivity(intent);
+    }
+
+
+public void done(List<ParseObject> trumpetList, ParseException e) {
+        });
+    }
+
+
+}
+package jthd.trumpeter;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+
+public class ViewTrumpetActivity extends AppCompatActivity {
+
+    private TrumpetView detailedTrumpetView;
+    private ListView replyFeedListView;
+    private Toolbar titleBar;
+
+    private int detailedTrumpetObjectID;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_trumpet);
+        Intent intent = getIntent();
+        detailedTrumpetObjectID = intent.getIntExtra("objectID", -1);
+        detailedTrumpetView = (TrumpetView)findViewById(R.id.detailedItemLayout);
+        replyFeedListView = (ListView) findViewById(R.id.replyFeedListView);
+        // TODO Experimenting here by setting views in onCreate; seems like a better idea. If no issues, do it this way in all other activities where it makes sense
+        setViews();
+        titleBar = (Toolbar) findViewById(R.id.titleBar);
+        setSupportActionBar(titleBar);
+
+    }
+
+    @Override
+public boolean onOptionsItemSelected(MenuItem item) {
+                // launch Settings activity
+                return true;
+            case R.id.refreshAction:
+                //feedSwipeLayout.setRefreshing(true);
+                //refreshListView();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+private void setViews(){
+            public void done(ParseObject trumpet, ParseException e) {
+                if (e == null) {
+                    detailedTrumpetView.showDetailedTrumpet(trumpet);
+                    loadReplyListViewData(trumpet.getInt("trumpetID"));
+                } else {
+
+                }
+public void done(ParseObject trumpet, ParseException e) {
+    /**
+     * Loads the list of Trumpets that are marked as reply Trumpets to the Trumpet being viewed. This relationship is maintained through the attribute replyTrumpetID,
+     * which points to the trumpetID of the Trumpet being viewed.
+     * @param trumpetID The TrumpetID of the Trumpet that is being viewed, for use in matching with replyTrumpetIDs.
+     */
+    private void loadReplyListViewData(int trumpetID){
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Trumpet");
+        query.orderByAscending("createdAt");
+        query.whereEqualTo("replyTrumpetID", trumpetID);
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> trumpetList, ParseException e) {
+                if (e == null) {
+public void done(List<ParseObject> trumpetList, ParseException e) {
+            }
+        });
+    }
+}
+        android:layout_alignParentStart="true">
+
+
+
+    <TextView
+        tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, um."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/trumpetTextView"
+        android:paddingLeft="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="12dp"
+        android:textColor="@color/colorTrumpetText"
+        android:textSize="15sp"
+        android:layout_below="@+id/profilePictureImageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        tools:text="55 Likes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/likeCountTextView"
+        android:textColor="#FFFFFF"
+        android:paddingLeft="1dp"
+        android:textSize="14sp"
+        android:layout_below="@+id/trumpetTextView"
+        android:layout_toRightOf="@+id/likeButton"
+        android:layout_toEndOf="@+id/likeButton"/>
+
+    <ImageButton
+        android:layout_width="30dp"
+        android:layout_height="20dp"
+        android:id="@+id/likeButton"
+        android:src="@drawable/like"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:paddingTop="2dp"
+        android:layout_alignBottom="@+id/likeCountTextView"
+        android:layout_alignRight="@+id/retrumpetTextView"
+        android:layout_alignEnd="@+id/retrumpetTextView"/>
+
+    <TextView
+        tools:text="30 Retrumpets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/retrumpetCountTextView"
+        android:textColor="#FFFFFF"
+        android:paddingBottom="6dp"
+        android:paddingLeft="2dp"
+        android:textSize="14sp"
+        android:layout_alignTop="@+id/likeCountTextView"
+        android:layout_toRightOf="@+id/retrumpetButton"
+        android:layout_toEndOf="@+id/retrumpetButton"/>
+
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:id="@+id/retrumpetButton"
+        android:src="@drawable/retrumpet"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:layout_alignBottom="@+id/replyButton"
+        android:layout_toRightOf="@+id/profilePictureImageView"
+        android:layout_toEndOf="@+id/profilePictureImageView"/>
+
+    <ImageButton
+        android:layout_width="35dp"
+        android:layout_height="28dp"
+        android:id="@+id/replyButton"
+        android:src="@drawable/reply_arrow"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:background="#00FFFFFF"
+        android:paddingLeft="0dp"
+        android:paddingBottom="2dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginStart="18dp"
+        android:layout_alignBottom="@+id/retrumpetCountTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        tools:text="\@jessethd"
+        android:layout_width="120dp"
+        android:layout_height="25dp"
+        android:id="@+id/usernameTextView"
+        android:gravity="center|left"
+        android:paddingLeft="4dp"
+        android:textSize="20sp"
+        android:textColor="@color/colorText"
+        android:textStyle="bold"
+        android:layout_alignBottom="@+id/profilePictureImageView"
+        android:layout_alignLeft="@+id/retrumpetTextView"
+        android:layout_alignStart="@+id/retrumpetTextView"
+        android:layout_marginBottom="21dp"/>
+
+    <TextView
+        tools:text="Retrumpeted by @jessethd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/retrumpetTextView"
+        android:paddingLeft="8dp"
+        android:paddingTop="6dp"
+        android:layout_alignTop="@+id/detailedItemLayout"
+        android:layout_centerHorizontal="true"/>
+
+    <ImageView
+        tools:src="@drawable/default_profile_picture"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        android:id="@+id/profilePictureImageView"
+        android:layout_below="@+id/retrumpetTextView"
+        android:layout_alignLeft="@+id/replyButton"
+        android:layout_alignStart="@+id/replyButton"/>
+
+    </jthd.trumpeter.TrumpetView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@+id/detailedItemLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/detailedTrumpetSeparationLine"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_alignParentStart="true"
+        android:id="@+id/actionBarSeparationLine"/>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/replyFeedListView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/detailedItemLayout"/>
+
+</RelativeLayout>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/feedItemLayout"
+                android:orientation="vertical">
+
+    <ImageView
+        tools:src="@drawable/default_profile_picture"
+        android:layout_below="@+id/trumpetTextView"/>
+
+    <TextView
+        tools:text="Retrumpeted by @jessethd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+<resources>
+    <string name="parse_app_id">jadibgKgQBjKhvYdPhptYCM0C2mTWIYkXeYKhsuq</string>
+    <string name="parse_client_key">AYj5VuAVO5eaCD2KTHR19BqJZiq0zA6xMMmAsj1d</string>
+    <string name="app_name">Trumpeter</string>
+    <string name="emailAddressString">Email Address</string>
+    <string name="emailAddressOrUsernameString">Email Address or Username</string>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+buildscript {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.8"
+dependencies {
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    compile 'io.requery:requery:1.2.1'
+    compile 'io.requery:requery-android:1.2.1'
+    annotationProcessor 'io.requery:requery-processor:1.2.1'
+}
+/*
+ * Copyright 2016 requery.io
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+class AndroidObservableExtension implements TypeGenerationExtension, PropertyGenerationExtension {
+
+    private static final String BINDING_PACKAGE = "android.databinding";
+
+    private final EntityDescriptor entity;
+    private final ProcessingEnvironment processingEnvironment;
+    private final boolean observable;
+
+    AndroidObservableExtension(EntityDescriptor entity,
+                               ProcessingEnvironment processingEnvironment) {
+        this.entity = entity;
+        this.processingEnvironment = processingEnvironment;
+        this.observable = isObservable();
+    }
+
+    private boolean isObservable() {
+public void addToSetter(AttributeDescriptor member, MethodSpec.Builder builder)
+        TypeElement dataBindingType = elements.getTypeElement(bindingInfo);
+        ClassName BRclass = null;
+
+        if (dataBindingType != null) {
+            Optional<String> modulePackage = Mirrors.findAnnotationMirror(
+                dataBindingType, BINDING_PACKAGE + ".BindingBuildInfo")
+            .map(mirror -> Mirrors.findAnnotationValue(mirror, "modulePackage"))
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<idea-plugin version="2">
+    <id>com.moxun.plugin.s2v</id>
+    <name>SVG2VectorDrawable</name>
+    <version>1.5</version>
+    <vendor email="furmint@foxmail.com">moxun</vendor>
+
+    <description><![CDATA[
+    ]]></description>
+
+    <change-notes><![CDATA[
+      <b>1.5</b><br>
+      Support attr 'fill-rule'; And many improvements, it is highly recommended to upgrade to this version<br>
+      <b>1.4.6</b><br>
+import com.intellij.notification.NotificationType;
+import com.intellij.notification.Notifications;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.openapi.vfs.VirtualFileManager;
+import com.intellij.psi.PsiManager;
+import com.intellij.psi.xml.XmlAttribute;
+import com.intellij.psi.xml.XmlFile;
+import com.moxun.s2v.Configuration;
+import com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl;
+import com.sun.org.apache.xml.internal.resolver.readers.SAXCatalogReader;
+import com.sun.xml.internal.txw2.Document;
+import com.thaiopensource.validate.SchemaReader;
+import com.thaiopensource.validate.rng.SAXSchemaReader;
+import org.jdom.JDOMException;
+import org.jdom.input.SAXBuilder;
+
+import javax.xml.parsers.SAXParser;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.List;
+import java.util.Locale;
+
+/**
+ * Created by moxun on 16/10/9.
+ */
+public class CommonUtil {
+
+    public static void dumpAttrs(String tag, List<XmlAttribute> attrs) {
+        if (attrs == null) {
+            return;
+        }
+public static void dumpAttrs(String tag, List<XmlAttribute> attrs) {
+        for (XmlAttribute attr : attrs) {
+            ret += attr.getName() + ":" + attr.getValue() + ",";
+        }
+        ret = ret.substring(0, ret.length() - 2) + "]";
+        Logger.debug(tag + ": " + ret);
+    }
+
+public static void init(String name, int level) {
+        NotificationsConfiguration.getNotificationsConfiguration().register(NAME, NotificationDisplayType.NONE);
+    }
+
+    public static void debug(String text) {
+        if (LEVEL >= DEBUG) {
+            Notifications.Bus.notify(
+
+
+{
+  "version": "1.5",
+  "versionCode": 10,
+  "desc": "Support attr 'fill-rule'<br>Add generate mode<br>Other optimization"
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="JDK" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" default="true" assert-keyword="true" jdk-15="true">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" />
+    </modules>
+  </component>
+</project>
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.system.id="GRADLE" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android-gradle" name="Android-Gradle">
+      <configuration>
+        <option name="GRADLE_PROJECT_PATH" value=":" />
+      </configuration>
+    </facet>
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="ALLOW_USER_CONFIGURATION" value="false" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="android" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="android-gradle" name="Android-Gradle">
+      <configuration>
+    <facet type="android" name="Android">
+      <configuration>
+        <option name="SELECTED_BUILD_VARIANT" value="debug" />
+        <option name="ASSEMBLE_TASK_NAME" value="assembleDebug" />
+        <option name="COMPILE_JAVA_TASK_NAME" value="compileDebugJava" />
+        <option name="ASSEMBLE_TEST_TASK_NAME" value="assembleDebugTest" />
+        <option name="SOURCE_GEN_TASK_NAME" value="generateDebugSources" />
+        <option name="ALLOW_USER_CONFIGURATION" value="false" />
+        <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
+        <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/build/intermediates/classes/debug" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/debug" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/test/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/test/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/test/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/test/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/test/debug" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/assets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/assets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/assets" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates" />
+      <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
+    </content>
+    <orderEntry type="jdk" jdkName="Android API 22 Platform" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="core-3.2.0" level="project" />
+    <orderEntry type="library" exported="" name="android-integration-3.2.0" level="project" />
+  </component>
+</module>
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public class GoogleLoginUsersPanel extends JPanel implements ListSelectionListener {
+  private static final String PLAY_CONSOLE_URL = "https://play.google.com/apps/publish/#ProfilePlace";
+  private static final String CLOUD_CONSOLE_URL = "https://console.developers.google.com/";
+  private static final String LEARN_MORE_URL = "https://developers.google.com/cloud/devtools/android_studio_templates/";
+  private static final String ADD_ACCOUNT = "Add Account";
+  private static final String SIGN_IN = "Sign In";
+  private static final String SIGN_OUT = "Sign Out";
+  private final static String CLOUD_LABEL_TEXT = "Open Google Developers Console";
+  private final static String PLAY_LABEL_TEXT = "Open Play Developer Console";
+  private final static String DEFAULT_AVATAR = "/icons/loginAvatar@2x.png";
+  private final static String SIGN_IN_TEXT = "<HTML> Sign in with your Google account to start <br> adding "
+    + "Cloud functionality to your <br> Android applications from Android Studio. </HTML>";
+  private static final String LEARN_MORE_TEXT = "Learn more";
+  private static final int PLAIN_USER_IMAGE_WIDTH = 48;
+  private static final int PLAIN_USER_IMAGE_HEIGHT = 48;
+public boolean inCloudConsoleUrl(Point point, int activeIndex) {
+  }
+
+  public boolean inLearnMoreUrl(Point point) {
+    // 3 is for the number of labels and row of texts
+    double urlYStart = GOOGLE_IMAGE_NORTH + myGoogleImageLabel.getIcon().getIconHeight() + WELCOME_LABEL_NORTH
+      + (myGeneralFontHeight * 3) + 3;
+    double urlYEnd = urlYStart + myLearnMoreLabelDimension.getHeight();
+    double urlXStart = GOOGLE_IMAGE_WEST;
+    double urlXEnd = urlXStart + myLearnMoreLabelDimension.getWidth();
+private JPanel createNoUserDisplay() {
+    urlLabel.setFont(myGeneralFont);
+    urlLabel.setForeground(JBColor.BLUE);
+    urlLabel.setPreferredSize(myLearnMoreLabelDimension);
+
+    mainPanel.add(Box.createVerticalStrut(GOOGLE_IMAGE_NORTH));
+    mainPanel.add(myGoogleImageLabel);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+private void drawSatellite(Canvas c, int s, float elev, float azim, float snr, i
+                    c.drawCircle(x, y, SAT_RADIUS, mSatelliteStrokePaint);
+                    break;
+                case GLONASS:
+                    c.drawRect(x - SAT_RADIUS, y + SAT_RADIUS, x + SAT_RADIUS, y - SAT_RADIUS,
+                            thisPaint);
+                    c.drawRect(x - SAT_RADIUS, y + SAT_RADIUS, x + SAT_RADIUS, y - SAT_RADIUS,
+                            mSatelliteStrokePaint);
+                    break;
+            }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/.idea/libraries
+.DS_Store
+.externalNativeBuild
+
+out/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+/local.properties
+
+# Proguard folder generated by Eclipse
+proguard/
+
+# Log Files
+proguard/
+captures/
+
+# Intellij
+*.iml
+.idea/workspace.xml
+
+# Keystore files
+*.jks
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+      <entry name="!?*.aj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
+<component name="CopyrightManager">
+  <settings default="" />
+</component>
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="C:\Android\Android Studio\gradle\gradle-2.14.1" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
+  <component name="NullableNotNullManager">
+    <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
+    <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
+    <option name="myNullables">
+      <value>
+        <list size="4">
+          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
+          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
+          <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
+          <item index="3" class="java.lang.String" itemvalue="android.support.annotation.Nullable" />
+        </list>
+      </value>
+    </option>
+    <option name="myNotNulls">
+      <value>
+        <list size="4">
+          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
+          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
+          <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
+          <item index="3" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
+        </list>
+      </value>
+    </option>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" default="true" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ChowDetails.iml" filepath="$PROJECT_DIR$/ChowDetails.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RunConfigurationProducerService">
+    <option name="ignoredProducers">
+      <set>
+        <option value="org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer" />
+        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer" />
+        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer" />
+      </set>
+    </option>
+  </component>
+</project>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+buildscript {
+		jcenter()
+	}
+	dependencies {
+		classpath 'com.android.tools.build:gradle:2.3.0-beta4'
+		classpath files('libs/gradle-witness.jar')
+	}
+}
+apply plugin: 'com.android.application'
+apply plugin: 'witness'
+
+dependencies {
+	def supportVersion = '25.1.1'
+	compile "com.android.support:appcompat-v7:$supportVersion"
+	compile "com.android.support:design:$supportVersion"
+	compile "com.android.support:cardview-v7:$supportVersion"
+	compile "com.android.support:recyclerview-v7:$supportVersion"
+	compile "com.android.support:preference-v14:$supportVersion"
+	compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
+
+	compile 'com.github.orangegangsters:swipy:1.2.3'
+	compile 'de.cketti.library.changelog:ckchangelog:1.2.2'
+	compile 'org.apmem.tools:layouts:1.10'
+	compile 'com.mikepenz:materialdrawer:5.8.1'
+	compile 'com.mikepenz:aboutlibraries:5.9.1'
+	compile 'com.mikepenz:fastadapter-commons:2.1.0@aar'
+	compile 'org.osmdroid:osmdroid-android:5.6.1'
+	compile 'uk.co.samuelwall:material-tap-target-prompt:1.6.3'
+	compile ('com.mapbox.mapboxsdk:mapbox-android-sdk:4.2.2@aar') {
+		transitive = true
+	}
+	compile 'com.google.dagger:dagger:2.8'
+	annotationProcessor 'com.google.dagger:dagger-compiler:2.8'
+
+	compile(project(':sublibs:public-transport-enabler:enabler')) {
+		exclude group: 'org.json' // provided by Android
+dependencies {
+
+dependencyVerification {
+	verify = [
+			'com.android.support:appcompat-v7:c485c421d73fa5b257fa4c39a31f7e24aeada62451f84b44250b8285b0dc95ae',
+			'com.android.support:design:4867cf256911d7ada88f3d948a27cdc7d4555d69411e2b4e3aa2336b657ad111',
+			'com.android.support:cardview-v7:7b4320d989c371fd9539c0aca7500c3f787b338021006e54ccfd8b8bea415c1a',
+			'com.android.support:recyclerview-v7:e3b519f59f05e9765fdc93b88286e4a7b9430f64b6440a03bacb5847daa8e13c',
+			'com.android.support:preference-v14:3a404b1e1e6a66d2e7d614c170da497aaaec55002fe5fb808635ac1c88812e63',
+			'com.android.support.constraint:constraint-layout:46b7471f09c41d93dfb0261fd1999756efdfb0d73cfab20c3190af56a4c60082',
+			'com.github.orangegangsters:swipy:153d03ab51b7c3672e0dfb60963dc4b983c3bf0fd39adbff576cd5179b8edbda',
+			'de.cketti.library.changelog:ckchangelog:e113de0f4bc42b983dd6b690b67d76f29975167c2204e3792831961740889d78',
+			'org.apmem.tools:layouts:25f878e7faa5c384ed0861889104e5f10a40e5682eaf80c9abb47559c367b348',
+			'com.mikepenz:materialdrawer:91716d14c7537e8d490cc505b979430e03ac5cf7b4bdb72eb0afab23da02c22e',
+			'com.mikepenz:aboutlibraries:70a36d5f49efab987783fec44139f9810e46c4fac3e2d147e2602270a48d5017',
+			'com.mikepenz:fastadapter-commons:ff7c751a839c18575a4a4221c2cfc3fa9bb72846f4b346803a64d405b4393483',
+			'org.osmdroid:osmdroid-android:e64a97b8302a50bedf6c4c6ff024291008f72103b17a728801132ebdce0492ed',
+			'uk.co.samuelwall:material-tap-target-prompt:b53287592ddbe4a7c79aadea8092524c0760a1daa51c7cae928c445b0c192406',
+			'com.mapbox.mapboxsdk:mapbox-android-sdk:81e7b72106f42389645fb54d8d265248401d484a6d2d692c973eba5962d14aab',
+			'com.google.dagger:dagger:5070e1dff5c551a4908ba7b93125c0243de2a688aed3d2f475357d86d9d7c0ad',
+			'com.android.support:support-annotations:46cc01378ddbefa9d0a6bd46bb3c10b35b06e06e375d41a357c3769ba563e9c6',
+			'com.android.support:support-v4:b9b0b9220b7ece40cd621ee839d36d8094694151c7d7021ae91e3e7b76c1300f',
+			'com.android.support:support-vector-drawable:58c63db6367691397ce0d534fdef59fe204178af78deb686a0983f3b6556e6e0',
+			'com.android.support:animated-vector-drawable:d59d0161ff90fa04ace30425037c1d5463698f481dbf41a611e4dc622af09553',
+			'com.android.support:transition:d0b2db0594eff7555ec81c0fea9952d47a04c6174f50383bdf296b5dec8703d7',
+			'com.android.support:support-compat:c5072de567ae6ef711f7a90599e8370aefbece9f4df45407b5802a21714839d9',
+			'com.android.support:support-core-ui:df14d89b20e62b85cc55d5e17442c58d66e032c19833247fb44268f0ae3204b6',
+			'com.android.support:preference-v7:444c586ddfe186c61bf89a5d77e07a7237307a8b2b3b08bb7802713f144b1218',
+			'com.android.support.constraint:constraint-layout-solver:9f9990052870c15ac57a3985f2491b5b1020289e442d1d57da5ac6c6822950dd',
+			'com.mikepenz:materialize:942ccf5e2aa1a46803aa884e8dc7bbaf2a9e8e9996a0cf92e3fe2f44a8592ba4',
+			'com.mikepenz:iconics-core:fdaec9164d5dccd213e1e80610b29dbd33a6e36ccd56ca3e8d4e4a802ac962d5',
+			'com.mapzen.android:lost:6e2a7bfb1627587cf17e7788fc16eb2a293f1fb03c1cd9715da4cf5c9d33fefe',
+			'com.mapbox.mapboxsdk:mapbox-java-services:48488716151c51f6606da48d30812ba6eb3d1b82d721d1c089ff648d22d95429',
+			'javax.inject:javax.inject:91c77044a50c481636c32d916fd89c9118a72195390452c81065080f957de7ff',
+			'com.squareup.okhttp3:logging-interceptor:2f77bb4b1b2ecf1c330a54295b0b112f65a56d2c16b7937303ad601b1de18fde',
+			'com.google.guava:guava:36a666e3b71ae7f0f0dca23654b67e086e6c93d192f60ba5dfd5519db6c288c8',
+			'org.slf4j:slf4j-api:1d5aeb6bd98b0fdd151269eae941c05f6468a791ea0f1e68d8e7fe518af3e7df',
+			'com.google.code.findbugs:jsr305:bec0b24dcb23f9670172724826584802b80ae6cbdaba03bdebdef9327b962f6a',
+			'com.squareup.retrofit2:retrofit:b7ae1a8c9f8de27c85ea43238c6c1507e91d33c6411cc52a06b5451842dc28bb',
+			'com.squareup.retrofit2:converter-gson:7a24c46a7185f89ffdde23670a5db2fb794a87d34fc3ab8e0e4039c5ef48e652',
+			'com.google.code.gson:gson:2d43eb5ea9e133d2ee2405cc14f5ee08951b8361302fdd93494a3a997b508d32',
+			'com.mikepenz:fastadapter:bee864e3dcb54b6c6126335f58b92ecb17a4b70b58a270279c91e9c96ac1b963',
+			'com.android.support:support-media-compat:84213df60369186320c6b4f3e1d25d1240045d4e5f72275474da0db0b1b62181',
+			'com.android.support:support-core-utils:b7f5449c6c60a813c7f8348cb2ae0d6221d453348af0a4623c2b6c917e64b87c',
+			'com.android.support:support-fragment:dfbe0891ff08b98ed70f4de41b7c597f4ac6d00d4c919534cce14a4007c79fc3',
+			'com.squareup.okhttp3:okhttp:eecd834b09d12c3cd568b811522b97012619f7f00378c3c719a1957fac6458ef',
+			'com.squareup.okio:okio:8c5436cadfab36bbd97db5f5c43b7bfdb5bf2f5f894ec8709b1929f14bdd010c',
+	]
+}
+
+
+import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.mikepenz.fastadapter.items.AbstractItem;
+import com.mikepenz.fastadapter.utils.ViewHolderFactory;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+private void fillIntent(Intent intent) {
+	}
+
+	class ProductItem extends AbstractItem<ProductDialogFragment.ProductItem, ProductItem.ViewHolder> {
+		private final ViewHolderFactory<? extends ProductItem.ViewHolder> FACTORY = new ProductItem.ItemFactory();
+		private final Product product;
+
+		ProductItem(Product product) {
+public void onClick(View v) {
+		}
+
+		@Override
+		public ViewHolderFactory<? extends ProductItem.ViewHolder> getFactory() {
+			return FACTORY;
+		}
+
+		class ItemFactory implements ViewHolderFactory<ProductItem.ViewHolder> {
+			public ProductItem.ViewHolder create(View v) {
+				return new ProductItem.ViewHolder(v);
+			}
+		}
+
+		class ViewHolder extends RecyclerView.ViewHolder {
+
+import com.mikepenz.fastadapter.commons.adapters.FastItemAdapter;
+import com.mikepenz.fastadapter.items.AbstractItem;
+import com.mikepenz.fastadapter.utils.ViewHolderFactory;
+import com.mikepenz.materialdrawer.util.KeyboardUtil;
+
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
+
+import de.grobox.liberario.settings.Preferences;
+import de.grobox.liberario.R;
+import de.grobox.liberario.utils.TransportrUtils;
+import de.schildbach.pte.dto.Product;
+
+void setOnProductsChangedListener(OnProductsChangedListener listener) {
+	}
+
+	class ProductItem extends AbstractItem<ProductItem, ProductItem.ViewHolder> {
+		private final ViewHolderFactory<? extends ProductItem.ViewHolder> FACTORY = new ItemFactory();
+		private final Product product;
+
+		ProductItem(Product product) {
+public void onClick(View v) {
+		}
+
+		@Override
+		public ViewHolderFactory<? extends ProductItem.ViewHolder> getFactory() {
+			return FACTORY;
+		}
+
+		class ItemFactory implements ViewHolderFactory<ProductItem.ViewHolder> {
+			public ProductItem.ViewHolder create(View v) {
+				return new ProductItem.ViewHolder(v);
+			}
+		}
+
+		class ViewHolder extends RecyclerView.ViewHolder {
+import com.mikepenz.fastadapter.IAdapter;
+import com.mikepenz.fastadapter.IItem;
+import com.mikepenz.fastadapter.commons.items.AbstractExpandableItem;
+import com.mikepenz.fastadapter.utils.ViewHolderFactory;
+
+import java.util.Comparator;
+import java.util.List;
+class RegionItem extends AbstractExpandableItem<RegionItem, RegionViewHolder, TransportNetworkItem> {
+
+	private final Region region;
+	private static final ViewHolderFactory<RegionViewHolder> FACTORY = new ItemFactory();
+
+	RegionItem(Region region) {
+		super();
+public void bindView(RegionViewHolder ui, List<Object> payloads) {
+		ui.bind(region, isExpanded());
+	}
+
+	final private FastAdapter.OnClickListener<RegionItem> onClickListener = new FastAdapter.OnClickListener<RegionItem>() {
+		@Override
+		public boolean onClick(View v, IAdapter adapter, RegionItem item, int position) {
+public long getIdentifier() {
+	}
+
+	@Override
+	public ViewHolderFactory<RegionViewHolder> getFactory() {
+		return FACTORY;
+	}
+
+	@Override
+	public FastAdapter.OnClickListener<RegionItem> getOnItemClickListener() {
+		return onClickListener;
+	}
+public int compare(IItem i1, IItem i2) {
+		}
+	}
+
+	private static class ItemFactory implements ViewHolderFactory<RegionViewHolder> {
+		public RegionViewHolder create(View v) {
+			return new RegionViewHolder(v);
+		}
+	}
+
+}
+import android.view.View;
+
+import com.mikepenz.fastadapter.commons.items.AbstractExpandableItem;
+import com.mikepenz.fastadapter.utils.ViewHolderFactory;
+
+import java.util.List;
+
+class TransportNetworkItem extends AbstractExpandableItem<RegionItem, TransportNetworkViewHolder, TransportNetworkItem> {
+
+	private final TransportNetwork network;
+	private static final ViewHolderFactory<TransportNetworkViewHolder> FACTORY = new ItemFactory();
+
+	TransportNetworkItem(TransportNetwork network) {
+		super();
+public void bindView(TransportNetworkViewHolder ui, List<Object> payloads) {
+	}
+
+	@Override
+	public long getIdentifier() {
+		return network.getId().ordinal();
+	}
+TransportNetwork getTransportNetwork() {
+		return network;
+	}
+
+	@Override
+	public ViewHolderFactory<TransportNetworkViewHolder> getFactory() {
+		return FACTORY;
+	}
+
+	private static class ItemFactory implements ViewHolderFactory<TransportNetworkViewHolder> {
+		public TransportNetworkViewHolder create(View v) {
+			return new TransportNetworkViewHolder(v);
+		}
+	}
+
+}
+Subproject commit fde9b3f47058682823e1bc3228df7d83110b039e
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public IconicsButton(Context context) {
+        super(context);
+        setTypeface(new FontAwesome().getTypeface(context));
+    }
+
+    public IconicsButton(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        setTypeface(new FontAwesome().getTypeface(context));
+    }
+
+    public IconicsButton(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        setTypeface(new FontAwesome().getTypeface(context));
+    }
+
+    @Override
+    public void setText(CharSequence text, BufferType type) {
+        super.setText(new Iconics.IconicsBuilder().ctx(getContext()).on(text).build(), type);
+    }
+}
+public IconicsTextView(Context context, AttributeSet attrs, int defStyle) {
+
+    @Override
+    public void setText(CharSequence text, BufferType type) {
+        super.setText(new Iconics.IconicsBuilder().ctx(getContext()).on(text).build(), type);
+    }
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

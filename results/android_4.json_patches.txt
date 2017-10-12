@@ -1,0 +1,3783 @@
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory;
+import android.view.LayoutInflater.Factory2;
+import android.view.View;
+import android.view.ViewGroup;
+
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import solutions.alterego.androidbound.android.interfaces.IBindableLayoutInflaterFactory;
+import solutions.alterego.androidbound.android.interfaces.IFontManager;
+import solutions.alterego.androidbound.binding.TextSpecificationBinder;
+import solutions.alterego.androidbound.factories.SourceBindingFactory;
+import solutions.alterego.androidbound.factories.TargetBindingFactory;
+import solutions.alterego.androidbound.binding.interfaces.IBinder;
+import solutions.alterego.androidbound.binding.interfaces.IBindingAssociationEngine;
+import solutions.alterego.androidbound.converters.interfaces.IValueConverter;
+import solutions.alterego.androidbound.interfaces.IViewBinder;
+import solutions.alterego.androidbound.viewresolvers.interfaces.IViewResolver;
+import solutions.alterego.androidbound.parsers.BindingSpecificationListParser;
+import solutions.alterego.androidbound.parsers.BindingSpecificationParser;
+import solutions.alterego.androidbound.resources.ResourceService;
+import solutions.alterego.androidbound.converters.ValueConverterService;
+import solutions.alterego.androidbound.viewresolvers.ChainedViewResolver;
+import solutions.alterego.androidbound.viewresolvers.ViewResolver;
+
+@Accessors(prefix = "m")
+public class ViewBinder implements IViewBinder {
+public View inflate(Context context, Object source, int layoutResID, ViewGroup v
+        LayoutInflater inflater = LayoutInflater.from(context).cloneInContext(context);
+
+        if (android.os.Build.VERSION.SDK_INT >= 11 && context instanceof Factory2) {
+            inflater.setFactory2(mInflaterFactory.inflaterFor(source, (Factory2) context));
+        } else if (context instanceof Factory) {
+            inflater.setFactory(mInflaterFactory.inflaterFor(source, (Factory) context));
+        } else {
+public View inflate(Context context, Object source, int layoutResID, ViewGroup v
+
+    @Override
+    public View inflate(Context context, Object source, int layoutResID, ViewGroup viewGroup, IViewResolver resolver) {
+        LayoutInflater inflater = LayoutInflater.from(context).cloneInContext(context);
+
+        mViewResolver.addResolverToFront(resolver);
+
+        if (android.os.Build.VERSION.SDK_INT >= 11 && context instanceof Factory2) {
+            inflater.setFactory2(mInflaterFactory.inflaterFor(source, (Factory2) context));
+        } else if (context instanceof Factory) {
+            inflater.setFactory(mInflaterFactory.inflaterFor(source, (Factory) context));
+        } else {
+            inflater.setFactory(mInflaterFactory.inflaterFor(source));
+        }
+
+        View view = inflater.inflate(layoutResID, viewGroup);
+        mViewResolver.removeResolver(resolver);
+
+        return view;
+    }
+
+
+    @Override
+    public void registerBindingsFor(View view, List<IBindingAssociationEngine> bindings) {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
+        View rootView = inflater.inflate(R.layout.fragment_modules, container, false);
+        fragmentManager = getFragmentManager();
+
+        initTabStrip(rootView);
+        initSubjects();
+
+        return rootView;
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+package com.pluscubed.logcat;
+
+import android.app.Application;
+
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.core.CrashlyticsCore;
+public void onCreate() {
+                .build();
+        Fabric.with(this, crashlyticsKit);
+
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        android:label="@string/permlab_syncData"
+        android:permissionGroup="android.permission-group.SYNC_SETTINGS" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <!-- <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> -->
+    <uses-permission android:name="ekylibre.zero.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="ekylibre.zero.permission.SYNC_DATA" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <supports-screens
+
+import ekylibre.api.ZeroContract;
+import ekylibre.zero.util.AccountTool;
+
+public class IssueActivity extends AppCompatActivity {
+
+public boolean onOptionsItemSelected(MenuItem item) {
+
+    public void takePicture(View v) throws IOException{
+
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            // Create the File where the photo should go
+            try{
+                photoFile = createImageFile(picturesFile);
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+public File createImageFile(File picturesFile) throws IOException {
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Log.d(TAG, "image path = " + image_path.toString());
+
+        // Save a file: path for use with ACTION_VIEW intents
+public Cursor getEventsFromLocal() {
+        startTime.setTimeInMillis(startTime.getTimeInMillis() - 1000);
+        selection = setSelection(startTime, endTime);
+
+
+        context = this.context;
+        contentResolver = context.getContentResolver();
+        if (!PermissionManager.calendarPermissions(context, this.activity))
+import ekylibre.zero.BuildConfig;
+import ekylibre.zero.R;
+import ekylibre.zero.util.AccountTool;
+import ekylibre.zero.util.UpdatableActivity;
+
+
+private void startTracking() {
+        startTracking(0);
+    }
+
+    private void startTracking(long interval) {
+        try
+        {
+            mLocationManager.requestLocationUpdates(mLocationProvider, interval, 0, mTrackingListener);
+            mRunning = true;
+        }
+        catch(SecurityException e)
+        {
+            Toast.makeText(this, getResources().getString(R.string.GPSissue), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void stopTracking() {
+        try
+        {
+            mLocationManager.removeUpdates(mTrackingListener);
+            mRunning = false;
+        }
+        catch(SecurityException e)
+        {
+            Toast.makeText(this, getResources().getString(R.string.GPSissue), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void addCrumb(String type) {
+        this.addCrumb(type, null);
+    }
+
+    private void addCrumb(String type, Bundle metadata) {
+        try
+        {
+            TrackingListener listener = new TrackingListener(this, type, metadata);
+            mLocationManager.requestSingleUpdate(mLocationProvider, listener, null);
+        }
+        catch(SecurityException e)
+        {
+            Toast.makeText(this, getResources().getString(R.string.GPSissue), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void writeCrumb(Location location, String type, Bundle metadata)
+public class PermissionManager
+{
+    private final static String    TAG = "Permission manag";
+    private final static int REQUEST_CALENDAR = 42;
+
+    public static boolean calendarPermissions(Context context, Activity activity)
+    {
+public static boolean calendarPermissions(Context context, Activity activity)
+        Log.d(TAG, "PERMISSIONS GRANTED");
+        return (true);
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+5. [Dismissing Dialogs](https://github.com/afollestad/material-dialogs#dismissing-dialogs)
+5. [Migration from AlertDialogs](https://github.com/afollestad/material-dialogs#migration-from-alertdialogs)
+6. [Displaying an Icon](https://github.com/afollestad/material-dialogs#displaying-an-icon)
+7. [Stacked Action Buttons](https://github.com/afollestad/material-dialogs#stacked-action-buttons)
+8. [Neutral Action Button](https://github.com/afollestad/material-dialogs#neutral-action-button)
+9. [Callbacks](https://github.com/afollestad/material-dialogs#callbacks)
+10. [List Dialogs](https://github.com/afollestad/material-dialogs#list-dialogs)
+You can create basic, list, single/multi choice, progress, input, etc. dialogs w
+```gradle
+dependencies {
+	// ... other dependencies here
+    compile 'com.afollestad.material-dialogs:core:0.8.6.1'
+}
+```
+
+The *commons* module contains extensions to the library that not everyone may ne
+```gradle
+dependencies {
+    // ... other dependencies here
+    compile 'com.afollestad.material-dialogs:commons:0.8.6.1'
+}
+```
+
+new MaterialDialog.Builder(this)
+        .show();
+```
+
+You can also force the dialog to stack its buttons with the `forceStacking()` method of the `Builder`.
+
+---
+
+apply plugin: 'com.android.library'
+ext {
+    PUBLISH_GROUP_ID = 'com.afollestad.material-dialogs'
+    PUBLISH_ARTIFACT_ID = 'commons'
+    PUBLISH_VERSION = '0.8.6.1'
+    SUPPORT_LIBRARY_VERSION = '24.0.0'
+    BUILD_TOOLS = "24.0.0"
+    TARGET_SDK = 24
+}
+android {
+}
+
+dependencies {
+    compile "com.android.support:appcompat-v7:${SUPPORT_LIBRARY_VERSION}"
+//    compile "com.afollestad.material-dialogs:core:${PUBLISH_VERSION}"
+    compile project(':core')
+}
+apply plugin: 'com.android.library'
+ext {
+    PUBLISH_GROUP_ID = 'com.afollestad.material-dialogs'
+    PUBLISH_ARTIFACT_ID = 'core'
+    PUBLISH_VERSION = '0.8.6.1'
+    SUPPORT_LIBRARY_VERSION = '24.0.0'
+    BUILD_TOOLS = "24.0.0"
+    TARGET_SDK = 24
+}
+android {
+}
+
+dependencies {
+    compile "com.android.support:support-v4:${SUPPORT_LIBRARY_VERSION}"
+    compile "com.android.support:appcompat-v7:${SUPPORT_LIBRARY_VERSION}"
+    compile "com.android.support:recyclerview-v7:${SUPPORT_LIBRARY_VERSION}"
+    compile "com.android.support:support-annotations:${SUPPORT_LIBRARY_VERSION}"
+    compile "me.zhanghai.android.materialprogressbar:library:1.1.6"
+}
+
+apply from: 'https://raw.githubusercontent.com/afollestad/aidanfollestad.com/master/android-lib-release.gradle'
+import android.widget.TextView;
+
+import com.afollestad.materialdialogs.internal.MDTintHelper;
+
+class DefaultAdapter extends BaseAdapter {
+
+public long getItemId(int position) {
+    public View getView(final int index, View view, ViewGroup parent) {
+        if (view == null)
+            view = LayoutInflater.from(dialog.getContext()).inflate(layout, parent, false);
+
+        TextView tv = (TextView) view.findViewById(R.id.title);
+        switch (dialog.listType) {
+public View getView(final int index, View view, ViewGroup parent) {
+                boolean selected = dialog.mBuilder.selectedIndex == index;
+                MDTintHelper.setTint(radio, dialog.mBuilder.widgetColor);
+                radio.setChecked(selected);
+                break;
+            }
+            case MULTI: {
+public View getView(final int index, View view, ViewGroup parent) {
+                boolean selected = dialog.selectedIndicesList.contains(index);
+                MDTintHelper.setTint(checkbox, dialog.mBuilder.widgetColor);
+                checkbox.setChecked(selected);
+                break;
+            }
+        }
+        tv.setText(dialog.mBuilder.items[index]);
+        tv.setTextColor(dialog.mBuilder.itemColor);
+        dialog.setTypeface(tv, dialog.mBuilder.regularFont);
+public static void init(final MaterialDialog dialog) {
+        // Setup action buttons
+        dialog.view.setButtonGravity(builder.buttonsGravity);
+        dialog.view.setButtonStackedGravity(builder.btnStackedGravity);
+        dialog.view.setForceStack(builder.forceStacking);
+        boolean textAllCaps;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            textAllCaps = DialogUtils.resolveBoolean(builder.context, android.R.attr.textAllCaps, true);
+public static void init(final MaterialDialog dialog) {
+        dialog.checkIfListInitScroll();
+    }
+
+    private static void setupProgressDialog(final MaterialDialog dialog) {
+        final MaterialDialog.Builder builder = dialog.mBuilder;
+        if (builder.indeterminateProgress || builder.progress > -2) {
+private static void setupProgressDialog(final MaterialDialog dialog) {
+                }
+            }
+        }
+    }
+
+    private static void setupInputDialog(final MaterialDialog dialog) {
+private static void setupInputDialog(final MaterialDialog dialog) {
+
+        if (builder.inputType != -1) {
+            dialog.input.setInputType(builder.inputType);
+            if (builder.inputType != InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD  &&
+                    (builder.inputType & InputType.TYPE_TEXT_VARIATION_PASSWORD) == InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+                // If the flags contain TYPE_TEXT_VARIATION_PASSWORD, apply the password transformation method automatically
+                dialog.input.setTransformationMethod(PasswordTransformationMethod.getInstance());
+else if ((mBuilder.items == null || mBuilder.items.length == 0) && mBuilder.adap
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        if (mBuilder.listCallbackCustom != null) {
+            // Custom adapter
+            CharSequence text = null;
+            if (view instanceof TextView)
+                text = ((TextView) view).getText();
+            mBuilder.listCallbackCustom.onSelection(this, view, position, text);
+        } else if (listType == null || listType == ListType.REGULAR) {
+            // Default adapter, non choice mode
+public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+        } else {
+            // Default adapter, choice mode
+            if (listType == ListType.MULTI) {
+                final boolean shouldBeChecked = !selectedIndicesList.contains(position);
+                final CheckBox cb = (CheckBox) view.findViewById(R.id.control);
+                if (shouldBeChecked) {
+                    // Add the selection to the states first so the callback includes it (when alwaysCallMultiChoiceCallback)
+                    selectedIndicesList.add(position);
+public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+                        sendMultichoiceCallback();
+                }
+            } else if (listType == ListType.SINGLE) {
+                boolean allowSelection = true;
+                final DefaultAdapter adapter = (DefaultAdapter) mBuilder.adapter;
+                final RadioButton radio = (RadioButton) view.findViewById(R.id.control);
+
+                if (mBuilder.autoDismiss && mBuilder.positiveText == null) {
+                    // If auto dismiss is enabled, and no action button is visible to approve the selection, dismiss the dialog
+public final void onClick(View v) {
+                }
+                if (mBuilder.onNegativeCallback != null)
+                    mBuilder.onNegativeCallback.onClick(this, tag);
+                if (mBuilder.autoDismiss) dismiss();
+                break;
+            }
+            case NEUTRAL: {
+public final void onClick(View v) {
+        protected float contentLineSpacingMultiplier = 1.2f;
+        protected int selectedIndex = -1;
+        protected Integer[] selectedIndices = null;
+        protected boolean autoDismiss = true;
+        protected Typeface regularFont;
+        protected Typeface mediumFont;
+public final void onClick(View v) {
+        protected OnCancelListener cancelListener;
+        protected OnKeyListener keyListener;
+        protected OnShowListener showListener;
+        protected boolean forceStacking;
+        protected boolean wrapCustomViewInScroll;
+        protected int dividerColor;
+        protected int backgroundColor;
+public Builder itemsCallbackMultiChoice(@Nullable Integer[] selectedIndices, @No
+        }
+
+        /**
+         * By default, the multi choice callback is only called when the user clicks the positive button
+         * or if there are no buttons. Call this to force it to always call on item clicks even if the
+         * positive button exists.
+public Builder widgetColorRes(@ColorRes int colorRes) {
+        }
+
+        public Builder widgetColorAttr(@AttrRes int colorAttr) {
+            return widgetColorRes(DialogUtils.resolveColor(this.context, colorAttr));
+        }
+
+        public Builder dividerColor(@ColorInt int color) {
+public Builder keyListener(@NonNull OnKeyListener listener) {
+            return this;
+        }
+
+        public Builder forceStacking(boolean stacked) {
+            this.forceStacking = stacked;
+            return this;
+        }
+
+        public Builder input(@Nullable CharSequence hint, @Nullable CharSequence prefill, boolean allowEmptyInput, @NonNull InputCallback callback) {
+            if (this.customView != null)
+                throw new IllegalStateException("You cannot set content() when you're using a custom view.");
+import com.afollestad.materialdialogs.GravityEnum;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.R;
+import com.afollestad.materialdialogs.util.DialogUtils;
+
+/**
+    private boolean mDrawTopDivider = false;
+    private boolean mDrawBottomDivider = false;
+    private final MDButton[] mButtons = new MDButton[3];
+    private boolean mForceStack = false;
+    private boolean mIsStacked = false;
+    private boolean mUseFullPadding = true;
+    private boolean mReducePaddingNoTitleNoButtons;
+public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        boolean hasButtons = false;
+
+        final boolean stacked;
+        if (!mForceStack) {
+            int buttonsWidth = 0;
+            for (MDButton button : mButtons) {
+                if (button != null && isVisible(button)) {
+public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+                    .getDimensionPixelSize(R.dimen.md_neutral_button_margin);
+            final int buttonFrameWidth = width - 2 * buttonBarPadding;
+            stacked = buttonsWidth > buttonFrameWidth;
+        } else {
+            stacked = true;
+        }
+
+        int stackedHeight = 0;
+protected void onLayout(boolean changed, final int l, int t, final int r, int b)
+        setUpDividersVisibility(mContent, true, true);
+    }
+
+    public void setForceStack(boolean forceStack) {
+        mForceStack = forceStack;
+        invalidate();
+    }
+
+public class MDTintHelper {
+
+    public static void setTint(@NonNull RadioButton radioButton, @ColorInt int color) {
+        ColorStateList sl = new ColorStateList(new int[][]{
+                new int[]{-android.R.attr.state_checked},
+                new int[]{android.R.attr.state_checked}
+        }, new int[]{
+                DialogUtils.resolveColor(radioButton.getContext(), R.attr.colorControlNormal),
+                color
+        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            radioButton.setButtonTintList(sl);
+public static void setTint(@NonNull EditText editText, @ColorInt int color) {
+    }
+
+    public static void setTint(@NonNull CheckBox box, @ColorInt int color) {
+        ColorStateList sl = new ColorStateList(new int[][]{
+                new int[]{-android.R.attr.state_checked},
+                new int[]{android.R.attr.state_checked}
+        }, new int[]{
+                DialogUtils.resolveColor(box.getContext(), R.attr.colorControlNormal),
+                color
+        });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            box.setButtonTintList(sl);
+import android.os.IBinder;
+import android.support.annotation.ArrayRes;
+import android.support.annotation.AttrRes;
+import android.support.annotation.ColorRes;
+import android.support.annotation.NonNull;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+//        }
+//    }
+
+    public static int adjustAlpha(int color, @SuppressWarnings("SameParameterValue") float factor) {
+        int alpha = Math.round(Color.alpha(color) * factor);
+        int red = Color.red(color);
+        int green = Color.green(color);
+        int blue = Color.blue(color);
+        return Color.argb(alpha, red, green, blue);
+    }
+
+    public static int resolveColor(Context context, @AttrRes int attr) {
+        return resolveColor(context, attr, 0);
+    }
+
+    public static int resolveColor(Context context, @AttrRes int attr, int fallback) {
+        TypedArray a = context.getTheme().obtainStyledAttributes(new int[]{attr});
+        try {
+public static ColorStateList getActionTextColorStateList(Context context, @Color
+     *                entry. The value 0 is an invalid identifier.
+     * @return A single color value in the form 0xAARRGGBB.
+     */
+    public static int getColor(Context context, @ColorRes int colorId) {
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP_MR1) {
+            //noinspection deprecation
+public static boolean resolveBoolean(Context context, @AttrRes int attr) {
+        return resolveBoolean(context, attr, false);
+    }
+
+    public static boolean isColorDark(int color) {
+        double darkness = 1 - (0.299 * Color.red(color) + 0.587 * Color.green(color) + 0.114 * Color.blue(color)) / 255;
+        return darkness >= 0.5;
+    }
+public static ColorStateList getActionTextStateList(Context context, int newPrim
+        ta.recycle();
+        return colors;
+    }
+}
+    <color name="md_divider_black">#10000000</color>
+    <color name="md_divider_white">#10FFFFFF</color>
+
+    <color name="md_material_blue_600">#1E88E5</color>
+    <color name="md_material_blue_800">#1565C0</color>
+
+    <color name="md_edittext_error">#DD2C00</color>
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+ext {
+    PUBLISH_VERSION = '0.8.6.1'
+    SUPPORT_LIBRARY_VERSION = '24.0.0'
+    BUILD_TOOLS = "24.0.0"
+    TARGET_SDK = 24
+}
+android {
+        applicationId "com.afollestad.materialdialogssample"
+        minSdkVersion 9
+        targetSdkVersion TARGET_SDK
+        versionCode 163
+        versionName PUBLISH_VERSION
+    }
+    lintOptions {
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.GravityEnum;
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.afollestad.materialdialogs.Theme;
+import com.afollestad.materialdialogs.color.CircleView;
+import com.afollestad.materialdialogs.color.ColorChooserDialog;
+public void showStacked() {
+                .positiveText(R.string.speedBoost)
+                .negativeText(R.string.noThanks)
+                .btnStackedGravity(GravityEnum.END)
+                .forceStacking(true)  // this generally should not be forced, but is used for demo purposes
+                .show();
+    }
+
+public boolean onSelection(MaterialDialog dialog, Integer[] which, CharSequence[
+                .show();
+    }
+
+    @OnClick(R.id.simpleList)
+    public void showSimpleList() {
+        final MaterialSimpleListAdapter adapter = new MaterialSimpleListAdapter(this);
+public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+        int widgetColor = ThemeSingleton.get().widgetColor;
+        MDTintHelper.setTint(checkbox,
+                widgetColor == 0 ? ContextCompat.getColor(this, R.color.material_teal_a400) : widgetColor);
+
+        MDTintHelper.setTint(passwordInput,
+                widgetColor == 0 ? ContextCompat.getColor(this, R.color.material_teal_a400) : widgetColor);
+
+        dialog.show();
+        positiveAction.setEnabled(false); // disabled by default
+public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    public void showCustomWebView() {
+        int accentColor = ThemeSingleton.get().widgetColor;
+        if (accentColor == 0)
+            accentColor = ContextCompat.getColor(this, R.color.material_teal_a400);
+        ChangelogDialog.create(false, accentColor)
+                .show(getSupportFragmentManager(), "changelog");
+    }
+public void showThemed() {
+                .titleColorRes(R.color.material_red_400)
+                .contentColorRes(android.R.color.white)
+                .backgroundColorRes(R.color.material_blue_grey_800)
+                .dividerColorRes(R.color.material_teal_a400)
+                .btnSelector(R.drawable.md_btn_selector_custom, DialogAction.POSITIVE)
+                .positiveColor(Color.WHITE)
+                .negativeColorAttr(android.R.attr.textColorSecondaryInverse)
+            android:layout_marginTop="@dimen/sample_button_spacing"
+            android:text="@string/multiChoice_longItems" />
+
+        <!-- Advanced Lists -->
+
+        <TextView
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/material_indigo_500</item>
+        <item name="colorPrimaryDark">@color/material_indigo_600</item>
+        <item name="colorAccent">@color/material_teal_a400</item>
+
+        <item name="android:navigationBarColor">@color/material_indigo_500</item>
+    </style>
+    <!-- http://www.google.com/design/spec/style/color.html#color-color-palette -->
+    <color name="material_indigo_500">#3F51B5</color>
+    <color name="material_indigo_600">#3949AB</color>
+    <color name="material_teal_a400">#1DE9B6</color>
+    <color name="material_red_400">#EF5350</color>
+
+</resources>
+    <string name="choice_lists">Choice Lists</string>
+    <string name="advanced_lists">Advanced Lists</string>
+    <string name="list_longItems">Basic List (Long Items)</string>
+    <string name="singleChoice_longItems">Single Choice (Long Items)</string>
+    <string name="multiChoice_longItems">Multi Choice (Long Items)</string>
+    <string name="file_chooser">File Chooser</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/material_indigo_500</item>
+        <item name="colorPrimaryDark">@color/material_indigo_600</item>
+        <item name="colorAccent">@color/material_teal_a400</item>
+    </style>
+
+    <style name="SampleHeader">
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_layout"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main" />
+
+</android.support.design.widget.CoordinatorLayout>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.marveldiceroller.custom.MarvelTextView
+        android:id="@+id/dice_roller"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_main"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.marveldiceroller.custom.MarvelTextView
+            android:text="@string/prompt"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"/>
+
+        <Spinner
+            android:id="@+id/shift_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <com.marveldiceroller.custom.MarvelTextView
+                android:text="@string/automatic_roll"
+                android:textSize="22sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_weight="1"/>
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/automatic_roll_switch"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <com.marveldiceroller.custom.MarvelTextView
+            android:id="@+id/roll_text_view"
+            android:hint="@string/dice_roll"
+            android:textColorHint="@color/light_gray"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp" />
+
+        <com.marveldiceroller.custom.MarvelEditText
+            android:id="@+id/roll_edit_text"
+            android:hint="@string/dice_roll"
+            android:textColorHint="@color/light_gray"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:inputType="number" />
+
+        <com.marveldiceroller.custom.MarvelButton
+            android:id="@+id/go_button"
+            android:text="@string/go"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:background="@drawable/button_selector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"/>
+
+        <com.marveldiceroller.custom.MarvelTextView
+            android:id="@+id/result_text"
+            android:text="@string/result"
+            android:textAllCaps="true"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</RelativeLayout>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+DO NOT TOUCH; GENERATED BY DRONE
+      <span class="mdl-layout-title">Lint Report: 73 errors and 853 warnings</span>
+private void handleNewPictureAction(Context context, Intent intent) {
+        String[] CONTENT_PROJECTION = {
+                Images.Media.DATA, Images.Media.DISPLAY_NAME, Images.Media.MIME_TYPE, Images.Media.SIZE};
+
+        int permissionCheck = ContextCompat.checkSelfPermission(context,
+                Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        if (android.content.pm.PackageManager.PERMISSION_GRANTED != permissionCheck) {
+            Log_OC.w(TAG, "Read external storage permission isn't granted, aborting");
+            return;
+        }
+
+        c = context.getContentResolver().query(intent.getData(), CONTENT_PROJECTION, null, null, null);
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Environment;
+import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
+import com.owncloud.android.lib.common.OwnCloudAccount;
+import com.owncloud.android.lib.common.OwnCloudClientManagerFactory;
+import com.owncloud.android.lib.common.utils.Log_OC;
+import com.owncloud.android.utils.AnalyticsUtils;
+import com.owncloud.android.utils.DisplayUtils;
+
+
+    private String mUploadPath;
+    private PreferenceCategory mPrefInstantUploadCategory;
+    private Preference mPrefInstantUpload;
+    private Preference mPrefInstantUploadBehaviour;
+    private Preference mPrefInstantUploadPath;
+    private Preference mPrefInstantUploadUseSubfolders;
+    private Preference mPrefInstantPictureUploadOnlyOnCharging;
+    private Preference mPrefInstantUploadPathWiFi;
+    private Preference mPrefInstantVideoUpload;
+    private Preference mPrefInstantVideoUploadPath;
+    private Preference mPrefInstantVideoUploadUseSubfolders;
+    private Preference mPrefInstantVideoUploadPathWiFi;
+public boolean onPreferenceClick(Preference preference) {
+            mPrefInstantUploadUseSubfolders = findPreference("instant_upload_path_use_subfolders");
+            mPrefInstantUploadPathWiFi = findPreference("instant_upload_on_wifi");
+            mPrefInstantPictureUploadOnlyOnCharging = findPreference("instant_upload_on_charging");
+            mPrefInstantUpload = findPreference("instant_uploading");
+
+            toggleInstantPictureOptions(((SwitchPreference) mPrefInstantUpload).isChecked());
+
+            mPrefInstantUpload.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    toggleInstantPictureOptions((Boolean) newValue);
+                    toggleInstantUploadBehaviour(
+                            ((SwitchPreference) mPrefInstantVideoUpload).isChecked(),
+                            (Boolean) newValue);
+                    return true;
+                }
+            });
+
+        mPrefInstantVideoUploadPath = findPreference(PreferenceKeys.INSTANT_VIDEO_UPLOAD_PATH);
+        if (mPrefInstantVideoUploadPath != null){
+
+                mPrefInstantVideoUploadPath.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+                    @Override
+public boolean onPreferenceClick(Preference preference) {
+
+            mPrefInstantVideoUploadUseSubfolders = findPreference("instant_video_upload_path_use_subfolders");
+            mPrefInstantVideoUploadPathWiFi = findPreference("instant_video_upload_on_wifi");
+            mPrefInstantVideoUpload = findPreference("instant_video_uploading");
+            mPrefInstantVideoUploadOnlyOnCharging = findPreference("instant_video_upload_on_charging");
+            toggleInstantVideoOptions(((CheckBoxPreference) mPrefInstantVideoUpload).isChecked());
+            mPrefInstantVideoUpload.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference, Object newValue) {
+                    toggleInstantVideoOptions((Boolean) newValue);
+                    toggleInstantUploadBehaviour(
+                            (Boolean) newValue,
+                            ((CheckBoxPreference) mPrefInstantUpload).isChecked());
+                    return true;
+                }
+            });
+
+            mPrefInstantUploadBehaviour = findPreference("prefs_instant_behaviour");
+            toggleInstantUploadBehaviour(
+                    ((CheckBoxPreference) mPrefInstantVideoUpload).isChecked(),
+                    ((CheckBoxPreference) mPrefInstantUpload).isChecked());
+
+            loadInstantUploadPath();
+            loadInstantUploadVideoPath();
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public static String decrypt(String seed, String encrypted) throws Exception {
+
+	private static byte[] getRawKey(byte[] seed) throws Exception {
+		KeyGenerator kgen = KeyGenerator.getInstance("AES");
+		SecureRandom sr = SecureRandom.getInstance("SHA1PRNG");
+		sr.setSeed(seed);
+	    kgen.init(128, sr); // 192 and 256 bits may not be available
+	    SecretKey skey = kgen.generateKey();
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import org.json.JSONObject;
+
+import java.util.Iterator;
+import java.util.Objects;
+
+/**
+ * Logs messages to Logsene from Android applications.
+  private String uuid;
+
+  public Logsene(Context context) {
+    Objects.requireNonNull(context);
+    this.context = context;
+    this.uuid = Installation.id(context);
+  }
+public Logsene(Context context) {
+   * @param message message text
+     */
+  public void log(String level, String message) {
+    Objects.requireNonNull(message);
+    JSONObject obj = new JSONObject();
+    try {
+      obj.put("level", level);
+public void error(Throwable error) {
+   * @param error any throwable
+     */
+  public void log(String level, Throwable error) {
+    Objects.requireNonNull(error);
+    JSONObject obj = new JSONObject();
+    try {
+      obj.put("level", level);
+public void log(String level, Throwable error) {
+   * @param object the event data.
+   */
+  public void event(JSONObject object) {
+    Objects.requireNonNull(object);
+    sendServiceIntent(object);
+  }
+
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * Persistent FIFO queue implementation with Sqlite.
+public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+   * @param dbName name to use for the sqlite database
+   */
+  public SqliteObjectQueue(Context context, String dbName) {
+    Objects.requireNonNull(context);
+    Objects.requireNonNull(dbName);
+    ObjectDbHelper dbHelper = new ObjectDbHelper(context, dbName);
+    this.db = dbHelper.getWritableDatabase();
+    this.maxSize = DEFAULT_MAX_SIZE;
+public SqliteObjectQueue(Context context, String dbName) {
+   * @param maxSize max size of the queue, older records will be overwritten
+   */
+  public SqliteObjectQueue(Context context, String dbName, int maxSize) {
+    Objects.requireNonNull(context);
+    Objects.requireNonNull(dbName);
+    if (maxSize <= 0) {
+      throw new IllegalArgumentException("maxSize must be greater than 0");
+    }
+public long size() {
+   * Pushes element to queue.
+   */
+  public void add(JSONObject obj) {
+    Objects.requireNonNull(obj);
+    db.execSQL("INSERT INTO " + TABLE_NAME + "(data) VALUES (?)", new Object[] { obj.toString() } );
+    if (cachedCount != null) {
+      cachedCount += 1;
+import java.util.Date;
+import java.util.TimeZone;
+
+enum Utils {
+  INSTANCE;
+
+  private static final SimpleDateFormat ISO8601_FORMAT;
+  static {
+public static String getStackTrace(Throwable throwable) {
+    throwable.printStackTrace(pw);
+    return sw.getBuffer().toString();
+  }
+}
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * Represents a bulk request.
+   * @throws IllegalArgumentException if sources and types don't have the same size
+   */
+  public Bulk(List<String> sources, List<String> types) {
+    Objects.requireNonNull(sources);
+    Objects.requireNonNull(types);
+    if (sources.size() != types.size()) {
+      throw new IllegalArgumentException("sources and types should have the same size");
+    }
+public RequestBody toBody(String index) {
+   * @return the request body as string
+   */
+  public String toString(String index) {
+    Objects.requireNonNull(index);
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < sources.size(); i++) {
+      sb.append(String.format("{ \"index\" : { \"_index\": \"%!s(MISSING)\", \"_type\" : \"%!s(MISSING)\" } }\n", index, types.get(i)));
+public String toString(String index) {
+     * @return the builder
+     */
+    public Builder addSource(String source, String type) {
+      Objects.requireNonNull(source);
+      Objects.requireNonNull(type);
+      sources.add(source);
+      types.add(type);
+      return this;
+import okhttp3.Response;
+
+import java.io.IOException;
+import java.util.Objects;
+
+/**
+ * Base client for interacting with Logsene API.
+   * @param appToken the logsene app token
+   */
+  public LogseneClient(String receiverUrl, String appToken) {
+    Objects.requireNonNull(receiverUrl);
+    Objects.requireNonNull(appToken);
+    receiverUrl = receiverUrl.trim();
+    if (receiverUrl.endsWith("/")) {
+      receiverUrl = receiverUrl.substring(0, receiverUrl.length() - 1);
+public LogseneClient(String receiverUrl, String appToken) {
+   * @throws IOException if unable to send request
+   */
+  public ApiResponse execute(Bulk bulk) throws IOException {
+    Objects.requireNonNull(bulk);
+    Request request = new Request.Builder()
+        .url(receiverUrl + "/_bulk")
+        .post(bulk.toBody(appToken))
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class SecureSessionFactory implements SessionFactory {
+    private final SSLContext mSslContext;
+
+    public SecureSessionFactory() throws NoSuchAlgorithmException {
+        mSslContext = SSLContext.getDefault();
+    }
+
+    @Override
+
+package net.kazyx.wirespider;
+
+import java.security.NoSuchAlgorithmException;
+
+public class SecureTransport {
+    private static final String WSS_SCHEME = "wss";
+
+    /**
+     * Enable secure connection for "wss" URI scheme on the given {@link WebSocketFactory}.
+     *
+     * @param factory {@link WebSocketFactory} to enable secure connection.
+     * @throws NoSuchAlgorithmException Failed to start secure session engine.
+     */
+    public static void enable(WebSocketFactory factory) throws NoSuchAlgorithmException {
+        factory.socketEngine().registerFactory(new SecureSessionFactory(), WSS_SCHEME);
+    }
+}
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import java.io.IOException;
+import java.net.URI;
+import java.security.NoSuchAlgorithmException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+public void echoWebSocketOrgSecureLargeMessage() throws InterruptedException, Ex
+        }
+        */
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        </activity>
+        <activity
+            android:name=".activities.WebGuiActivity"
+            android:label="@string/web_gui_title">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+        <activity android:name=".activities.SettingsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import org.jamienicol.episodes.db.ShowsTable;
+import org.jamienicol.episodes.services.RefreshShowService;
+import org.jamienicol.episodes.widget.ObservableScrollView;
+
+public class ShowActivity
+	extends ActionBarActivity
+	private TextView titleView;
+	private PagerSlidingTabStrip tabStrip;
+	private PagerAdapter pagerAdapter;
+	private ViewPager pager;
+
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+public void onCreate(Bundle savedInstanceState)
+		pagerAdapter =
+			new PagerAdapter(this, getSupportFragmentManager(), showId);
+
+		pager = (ViewPager)findViewById(R.id.pager);
+		pager.setAdapter(pagerAdapter);
+
+		tabStrip = (PagerSlidingTabStrip)findViewById(R.id.tab_strip);
+private void setDefaultPositions() {
+		// can be completely scrolled off of the screen even if the
+		// contents of the pager is small.
+		final int minHeight = scrollView.getHeight() - headerBox.getHeight();
+		if (pager.getMinimumHeight() != minHeight) {
+			pager.setMinimumHeight(minHeight);
+		}
+	}
+protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+				             MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+
+				final int height = Math.max(view.getMeasuredHeight(),
+				                            getMinimumHeight());
+				heightMeasureSpec =
+					MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);
+			}
+		}
+
+		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import android.app.AlertDialog;
+import android.content.ContentValues;
+import android.content.DialogInterface;
+import android.database.Cursor;
+import android.net.Uri;
+import android.os.Bundle;
+public void onCreate(Bundle savedInstanceState) {
+            name = getParameter(ICalendar.PARAM_NAME);
+            location = getParameter(ICalendar.PARAM_LOCATION);
+            coords = getParameter(ICalendar.PARAM_COORDS);
+            if (name.length() > 0 && hiddenDate.length() > 0) {
+                selectCalendarForAdding();
+            }
+        } catch (Exception e) {
+            Log.e(LOG_TAG, e.getMessage(), e);
+private void selectCalendarForAdding() {
+        // TODO: Handle missing provider
+        final Cursor cursor = managedQuery(calendarProvider, projection, "selected=1", null, null);
+
+        final Map<Integer, String> calendars = new HashMap<Integer, String>();
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+
+                final int indexId = cursor.getColumnIndex("_id");
+                final int indexName = cursor.getColumnIndex("displayName");
+
+                do {
+                    final String idString = cursor.getString(indexId);
+                    if (idString != null) {
+                        try {
+                            int id = Integer.parseInt(idString);
+                            final String calName = cursor.getString(indexName);
+
+                            if (id > 0 && calName != null) {
+                                calendars.put(id, calName);
+                            }
+                        } catch (NumberFormatException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
+                    }
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+        }
+
+        if (calendars.isEmpty()) {
+            return;
+public void onCancel(DialogInterface dialog) {
+    }
+
+    /**
+     * @param calendars
+     *
+     * @param index
+     *            The selected calendar
+     */
+    private void addToCalendar(Integer calendarId) {
+        try {
+            final Uri calendarProvider = Compatibility.getCalenderEventsProviderURI();
+
+            // date
+            final Date eventDate = new Date(Long.parseLong(hiddenDate));
+            eventDate.setHours(0);
+            eventDate.setMinutes(0);
+            eventDate.setSeconds(0);
+
+            // description
+            final StringBuilder description = new StringBuilder();
+            description.append(url);
+            if (shortDesc.length() > 0) {
+                // remove images in short description
+                final Spanned spanned = Html.fromHtml(shortDesc, null, null);
+                String text = spanned.toString();
+                final ImageSpan[] spans = spanned.getSpans(0, spanned.length(), ImageSpan.class);
+                for (int i = spans.length - 1; i >= 0; i--) {
+                    text = text.substring(0, spanned.getSpanStart(spans[i])) + text.substring(spanned.getSpanEnd(spans[i]));
+                }
+                if (text.length() > 0) {
+                    description.append("\n\n");
+                    description.append(text);
+                }
+            }
+
+            if (personalNote.length() > 0) {
+                description.append("\n\n").append(Html.fromHtml(personalNote).toString());
+            }
+
+            // location
+            final StringBuilder locBuffer = new StringBuilder();
+            if (coords.length() > 0) {
+                locBuffer.append(coords);
+            }
+            if (location.length() > 0) {
+                boolean addParentheses = false;
+                if (locBuffer.length() > 0) {
+                    addParentheses = true;
+                    locBuffer.append(" (");
+                }
+
+                locBuffer.append(Html.fromHtml(location).toString());
+                if (addParentheses) {
+                    locBuffer.append(')');
+                }
+            }
+
+            // values
+            final ContentValues event = new ContentValues();
+private void addToCalendar(Integer calendarId) {
+            event.put("dtend", eventDate.getTime() + 43200000 + 3600000); // + one hour
+            event.put("eventTimezone", "UTC");
+            event.put("title", Html.fromHtml(name).toString());
+            event.put("description", description.toString());
+
+            if (locBuffer.length() > 0) {
+                event.put("eventLocation", locBuffer.toString());
+            }
+            event.put("allDay", 1);
+            event.put("hasAlarm", 0);
+private void addToCalendar(Integer calendarId) {
+        }
+    }
+
+    public final void showToast(final String text) {
+        final Toast toast = Toast.makeText(this, text, Toast.LENGTH_LONG);
+
+
+    private final static int sdkVersion = Integer.parseInt(Build.VERSION.SDK);
+    private final static boolean isLevel8 = sdkVersion >= 8;
+
+    public static Uri getCalendarProviderURI() {
+        return Uri.parse(isLevel8 ? "content://com.android.calendar/calendars" : "content://calendar/calendars");
+    }
+
+    public static Uri getCalenderEventsProviderURI() {
+        return Uri.parse(isLevel8 ? "content://com.android.calendar/events" : "content://calendar/events");
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		<item name="colorAccent">@color/red_main</item>
+		<item name="colorControlHighlight">@color/yellow_main</item>
+		<item name="colorButtonNormal">@color/red_main</item>
+		<item name="android:windowBackground">@android:color/white</item>
+		<item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+	</style>
+		<item name="colorPrimaryDark">@color/yellow_main</item>
+		<item name="colorAccent">@color/red_main</item>
+		<item name="colorControlHighlight">@color/yellow_main</item>
+	</style>
+
+	<style name="AppTheme.NoStatusBar">
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+android {
+
+    defaultConfig {
+        applicationId 'cl.monsoon.s1next'
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 13
+        versionName '1.0.0-dev'
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        tools:ignore="RtlSymmetry"
+        tools:text="Item" />
+
+    <CheckBox
+        android:id="@+id/control"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:button="@drawable/abc_btn_check_material"
+        android:background="@null"
+        android:clickable="false"
+        android:focusable="false"
+        tools:ignore="RtlSymmetry"
+        tools:text="Item" />
+
+    <RadioButton
+        android:id="@+id/control"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:button="@drawable/abc_btn_radio_material"
+        android:background="@null"
+        android:clickable="false"
+        android:focusable="false"
+    android:paddingStart="@dimen/md_dialog_frame_margin"
+    tools:gravity="start|center_vertical">
+
+    <CheckBox
+        android:id="@+id/control"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:button="@drawable/abc_btn_check_material"
+        android:background="@null"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center_vertical" />
+    android:paddingStart="@dimen/md_dialog_frame_margin"
+    tools:gravity="start|center_vertical">
+
+    <RadioButton
+        android:id="@+id/control"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:button="@drawable/abc_btn_radio_material"
+        android:background="@null"
+        android:clickable="false"
+        android:focusable="false"
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import com.google.inject.Inject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.UUID;
+import java.util.concurrent.BlockingQueue;
+  private Long queueCounter = 0L;
+  private BluetoothDevice dev = null;
+  private BluetoothSocket sock = null;
+
+  @Override
+  public IBinder onBind(Intent intent) {
+public void startService() {
+      Log.e(
+          TAG,
+          "There was an error while establishing connection. -> "
+              + e.getMessage());
+
+      // in case of failure, stop this service.
+      stopService();
+public void startService() {
+
+  /**
+   * Start and configure the connection to the OBD interface.
+   *
+   * @throws IOException
+   */
+  private void startObdConnection() throws IOException {
+    Log.d(TAG, "Starting OBD connection..");
+
+    // Instantiate a BluetoothSocket for the remote device and connect it.
+    sock = dev.createRfcommSocketToServiceRecord(MY_UUID);
+    sock.connect();
+
+    // Let's configure the connection.
+    Log.d(TAG, "Queing jobs for connection configuration..");
+private void startObdConnection() throws IOException {
+  /**
+   * Runs the queue until the service is stopped
+   */
+  private void executeQueue() {
+    Log.d(TAG, "Executing queue..");
+    isQueueRunning = true;
+private void executeQueue() {
+   * This method will add a job to the queue while setting its ID to the
+   * internal queue counter.
+   *
+   * @param job
+   * @return
+   */
+  public void queueJob(ObdCommandJob job) {
+    queueCounter++;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+else if (state == ConnectionState.waiting)
+			chatViews.setTextViewText(R.id.text, status);
+
+			Notification notification = new Notification();
+			if (Application.SDK_INT >= 14) {
+				// Ongoing icons are in the left side, so hide this one.
+				notification.icon = R.drawable.ic_placeholder;
+				notification.when = Long.MIN_VALUE;
+else if (state == ConnectionState.waiting)
+		persistentNotification.defaults = 0;
+		persistentNotification.sound = null;
+		persistentNotification.tickerText = null;
+		if (Application.SDK_INT >= 14) {
+			// Ongoing icons are in the left side, so always use it.
+			persistentNotification.when = startTime;
+			if (messageNotifications.isEmpty()) {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yohpapa.overlaymusicplayer"
+    android:versionCode="017"
+    android:versionName="0.1.7" >
+    
+	<!--
+	Android 4.4					19	KITKAT
+	Android 4.3					18	JELLY_BEAN_MR2
+	Android 4.2, 4.2.2			17	JELLY_BEAN_MR1
+	Android 4.1, 4.1.1			16	JELLY_BEAN
+    
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+    
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:name=".OverlayMusicPlayerApp"
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ */
+public class ArrayListLoggers extends ArrayList<Loggers> implements List<Loggers>{
+
+    private final int LEVEL_0 = 0;
+    private final int LEVEL_1 = 1;
+    private final int LEVEL_2 = 2;
+    private final int LEVEL_3 = 3;
+
+
+
+public boolean containsLevel0(Loggers log){
+    }
+
+    public boolean containsLevel1(Loggers log){
+        for(Loggers logger:this){
+            if(logger.level1.compareTo(log.level1)==0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean containsLevel2(Loggers log){
+        for(Loggers logger:this){
+            if(logger.level2.compareTo(log.level2)==0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ArrayListLoggers getListFromLevel(Loggers logger,int level){
+public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
+            AppListAdapter _adpatrer = new AppListAdapter(getActivity(), R.layout.shell_wallet_desktop_front_grid_item, lstDatabases);
+            _adpatrer.notifyDataSetChanged();
+            gridView.setAdapter(_adpatrer);
+            /*String[] availableResources;
+            if (developerDatabaseList.size() > 0) {
+                availableResources = new String[developerDatabaseList.size()];
+                for(int i = 0; i < developerDatabaseList.size() ; i++) {
+                    availableResources[i] = developerDatabaseList.get(i).getName();
+                }
+            } else {
+                availableResources = new String[0];
+            }*/
+
+            //ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity().getApplicationContext(),
+            //        android.R.layout.simple_list_item_1, android.R.id.text1, availableResources);
+
+            /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String item = (String) listView.getItemAtPosition(position);
+
+                    for (DeveloperDatabase devDB : developerDatabaseList2) {
+                        if (devDB.getName().equals(item)) {
+                            DatabaseToolsDatabaseTableListFragment databaseToolsDatabaseTableListFragment = new DatabaseToolsDatabaseTableListFragment();
+                            databaseToolsDatabaseTableListFragment.setResource(resource.resource);
+                            databaseToolsDatabaseTableListFragment.setDeveloperDatabase(devDB);
+
+                            FragmentTransaction FT = getFragmentManager().beginTransaction();
+
+                            FT.replace(R.id.hola, databaseToolsDatabaseTableListFragment);
+
+                            FT.addToBackStack(null);
+
+                            FT.commit();
+                        }
+                    }
+
+                }
+            });
+            */
+
+            //listView.setAdapter(adapter);
+        } catch (Exception e) {
+            showMessage("DatabaseTools Database List onCreateView Exception - " + e.getMessage());
+            e.printStackTrace();
+public View getView(final int position, View convertView, ViewGroup parent) {
+
+            final Databases item = getItem(position);
+
+
+            /*gridView =(GridView) rootView.findViewById(R.id.gridView);
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View v,
+                                        int position, long id) {
+                    Toast.makeText(getActivity(), "natalia+"+position, Toast.LENGTH_SHORT).show();
+                    //Resource item=(Resource) gridView.getItemAtPosition(position);
+                    //Toast.makeText(getActivity(),item.resource,Toast.LENGTH_SHORT).show();
+                    //DatabaseToolsDatabaseListFragment databaseToolsDatabaseListFragment = new DatabaseToolsDatabaseListFragment();
+
+                    //databaseToolsDatabaseListFragment.setResource(item);
+
+                    //FragmentTransaction FT = getFragmentManager().beginTransaction();
+
+
+                    //FT.add(databaseToolsDatabaseListFragment, TAG_DATABASE_TOOLS_FRAGMENT);
+                    //FT.replace(R.id.hola, databaseToolsDatabaseListFragment);
+
+                    //FT.commit();
+
+
+                }
+            });
+            */
+
+            ViewHolder holder;
+            if (convertView == null) {
+                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Service.LAYOUT_INFLATER_SERVICE);
+public void onClick(View view) {
+
+                        //FT.add(dabaDatabaseToolsDatabaseTableListFragment, TAG_DATABASE_TABLES_FRAGMENT);
+                        FT.replace(R.id.hola, dabaDatabaseToolsDatabaseTableListFragment);
+                        FT.commit();
+                        //FT.show(dabaDatabaseToolsDatabaseTableListFragment);
+                    }
+public void onClick(View view) {
+                        dabaDatabaseToolsDatabaseTableListFragment.setResource(databases);
+                        dabaDatabaseToolsDatabaseTableListFragment.setDeveloperDatabaseTable(developerDatabaseTableList.get(position));
+                        dabaDatabaseToolsDatabaseTableListFragment.setDeveloperDatabase(developerDatabase);
+                        //dabaDatabaseToolsDatabaseTableListFragment.setResource();
+
+                        //falta pasar la database
+                        FragmentTransaction FT = getFragmentManager().beginTransaction();
+
+
+                        //FT.add(dabaDatabaseToolsDatabaseTableListFragment, TAG_DATABASE_TABLES_TOOLS_FRAGMENT);
+
+                        //FT.replace(R.id.hola, dabaDatabaseToolsDatabaseTableListFragment, TAG_DATABASE_TABLES_TOOLS_FRAGMENT);
+                        FT.replace(R.id.hola, dabaDatabaseToolsDatabaseTableListFragment);
+
+                        FT.commit();
+                    }
+                });
+public void onClick(View view) {
+
+                        //FT.add(databaseToolsDatabaseListFragment, TAG_DATABASE_TOOLS_FRAGMENT);
+                        FT.replace(R.id.hola, databaseToolsDatabaseListFragment);
+
+                        FT.commit();
+                    }
+                });
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+android {
+        applicationId "kitchen.dev.icfbooks.esther"
+        minSdkVersion 16
+        targetSdkVersion 24
+        versionCode 16
+        versionName '1.0.3'
+        multiDexEnabled true
+    }
+    buildTypes {
+    android:height="24dp"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0"
+    android:tint="?attr/colorControlNormal">
+    <path
+        android:pathData="M20,11L7.8,11l5.6,-5.6L12,4l-8,8l8,8l1.4,-1.4L7.8,13L20,13L20,11z"
+        android:fillColor="@color/white"/>
+</vector>
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton"
+                android:src="@drawable/abc_ic_go_search_api_material"
+                android:background="@android:color/transparent"
+                android:scaleType="fitEnd" />
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/abc_ic_go_search_api_material"
+                android:background="@android:color/transparent"
+                android:scaleType="fitEnd"
+                android:contentDescription="follow" />
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/abc_ic_go_search_api_material"
+                android:background="@android:color/transparent"
+                android:scaleType="fitEnd" />
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            android:layout_alignParentTop="true"
+            android:src="@drawable/weather_na" />
+
+        <TextClock
+            android:id="@+id/time_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/city_text"
+            android:layout_toLeftOf="@id/condition_image"
+            android:singleLine="true"
+            android:format24Hour="kk:mm"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/condition_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/time_text"
+            android:layout_toLeftOf="@id/temp_text"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+public static String getDescription(TimeZone tz) {
+    }
+
+    private static final DateFormat WEEKDAY_FORMAT = new SimpleDateFormat("EEE", Locale.US);
+    
+    public static String showTime(TimeZone tz, Date date, DateFormat df, boolean addWeekday) {
+        df.setTimeZone(tz);
+        String time = df.format(date);
+        if (addWeekday) {
+            DateFormat dayFormat = (DateFormat) WEEKDAY_FORMAT.clone();
+            dayFormat.setTimeZone(tz);
+            String day = dayFormat.format(date);
+            if (!day.equals(WEEKDAY_FORMAT.format(date))) {
+                time += " " + day;
+            }
+        }
+        return time;
+    }
+}
+public static void updateItemView(Context context, Cursor cursor, RemoteViews rv
+        rv.setTextViewText(R.id.city_text, cursor.getString(cursor.getColumnIndex(Clocks.CITY)));
+
+        String id = cursor.getString(cursor.getColumnIndex(Clocks.TIMEZONE_ID));
+        if (SANS_JELLY_BEAN_MR1) {
+            Date date = new Date();
+            TimeZone tz = TimeZone.getTimeZone(id);
+            rv.setTextViewText(R.id.time_text, TimeZoneInfo.showTime(tz, date, mTimeFormat, true));
+        } else {
+            RemoteViewUtil.setTextClockTimeZone(rv, R.id.time_text, id);
+        }
+
+        rv.setTextViewText(R.id.condition_text, cursor
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+import org.commcare.android.util.StringUtils;
+import org.commcare.dalvik.R;
+import org.javarosa.core.model.data.IAnswerData;
+import org.javarosa.core.model.data.StringData;
+import org.javarosa.form.api.FormEntryPrompt;
+public IAnswerData getAnswer() {
+        }
+    }
+
+
+    private String getPathFromUri(Uri uri) {
+        if (uri.toString().startsWith("file")) {
+            return uri.toString().substring(6);
+        } else {
+            String[] audioProjection = {
+                Audio.Media.DATA
+            };
+            Cursor c =
+                ((Activity) getContext()).managedQuery(uri, audioProjection, null, null, null);
+            ((Activity) getContext()).startManagingCursor(c);
+            int column_index = c.getColumnIndexOrThrow(Audio.Media.DATA);
+            String audioPath = null;
+            if (c.getCount() > 0) {
+                c.moveToFirst();
+                audioPath = c.getString(column_index);
+            }
+            return audioPath;
+        }
+    }
+
+
+    /*
+     * (non-Javadoc)
+     * @see org.odk.collect.android.widgets.IBinaryWidget#setBinaryData(java.lang.Object)
+public void setBinaryData(Object binaryuri) {
+        }
+
+        // get the file path and create a copy in the instance folder
+        String binaryPath = getPathFromUri((Uri) binaryuri);
+        String extension = binaryPath.substring(binaryPath.lastIndexOf("."));
+        String destAudioPath = mInstanceFolder + "/" + System.currentTimeMillis() + extension;
+
+
+import org.commcare.android.util.StringUtils;
+import org.commcare.dalvik.R;
+import org.javarosa.core.model.data.IAnswerData;
+import org.javarosa.core.model.data.StringData;
+import org.javarosa.form.api.FormEntryPrompt;
+public IAnswerData getAnswer() {
+        }
+    }
+
+
+    private String getPathFromUri(Uri uri) {
+        if (uri.toString().startsWith("file")) {
+            return uri.toString().substring(6);
+        } else {
+            String[] videoProjection = {
+                Video.Media.DATA
+            };
+            Cursor c =
+                ((Activity) getContext()).managedQuery(uri, videoProjection, null, null, null);
+            ((Activity) getContext()).startManagingCursor(c);
+            int column_index = c.getColumnIndexOrThrow(Video.Media.DATA);
+            String videoPath = null;
+            if (c.getCount() > 0) {
+                c.moveToFirst();
+                videoPath = c.getString(column_index);
+            }
+            return videoPath;
+        }
+    }
+
+
+    /*
+     * (non-Javadoc)
+     * @see org.odk.collect.android.widgets.IBinaryWidget#setBinaryData(java.lang.Object)
+public void setBinaryData(Object binaryuri) {
+        }
+
+        // get the file path and create a copy in the instance folder
+        String binaryPath = getPathFromUri((Uri) binaryuri);
+        String extension = binaryPath.substring(binaryPath.lastIndexOf("."));
+        String destVideoPath = mInstanceFolder + "/" + System.currentTimeMillis() + extension;
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public void onClick(View v) {
+
+
+
+        //viewHolder.txt_UnreadCount.setText(group.unreadCount);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+        	viewHolder.imgView.setRotation(0);
+
+
+        if(group.idFolder != null)
+        {
+public void onClick(View v) {
+        } else {
+        	if(group.id_database == ALL_STARRED_ITEMS.getValue()) {
+        		viewHolder.imgView.setVisibility(View.VISIBLE);
+                viewHolder.imgView.setRotation(0);
+                viewHolder.imgView.setImageDrawable(getBtn_rating_star_off_normal_holo_light(mContext));
+        	} else if (getChildrenCount( groupPosition ) == 0 ) {
+	        	viewHolder.imgView.setVisibility(View.INVISIBLE);
+public void onClick(View v) {
+                viewHolder.imgView.setImageDrawable(getFolderIndicatorIcon(mContext));
+
+	        	if(isExpanded) {
+                    viewHolder.imgView.setRotation(90);
+	        	} else {
+                    viewHolder.imgView.setRotation(180);
+                }
+	        }
+        }
+
+        return convertView;
+	}
+
+public void onClick(View v) {
+
+
+    Drawable folder_indicator_icon;
+    Drawable btn_rating_star_off_normal_holo_light;
+
+    private Drawable getBtn_rating_star_off_normal_holo_light(Context context) {
+private Drawable getFolderIndicatorIcon(Context context) {
+        return folder_indicator_icon;
+    }
+
+
+	static class GroupHolder
+	{
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+dependencies {
+    compile 'com.esotericsoftware:kryo:4.0.0'
+
+    // map and location
+    compile 'com.mapzen.tangram:tangram:0.5.1'
+    compile 'com.mapzen.android:lost:2.1.2'
+
+    // config files
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v13.app.FragmentCompat;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+	private Marker locationMarker;
+	private Marker accuracyMarker;
+	private Marker directionMarker;
+	private float[] directionMarkerSize;
+
+	private MapView mapView;
+
+protected void initMap()
+
+		locationMarker = controller.addMarker();
+		BitmapDrawable dot = createBitmapDrawableFrom(R.drawable.location_dot);
+		locationMarker.setStylingFromString("{ style: 'points', color: 'white', size: "+Arrays.toString(sizeInDp(dot))+", order: 2000, flat: true, collide: false }");
+		locationMarker.setDrawable(dot);
+		locationMarker.setDrawOrder(3);
+
+protected void initMap()
+		listener.onMapReady();
+	}
+
+	private float[] sizeInDp(Drawable drawable)
+	{
+		DisplayMetrics metrics = new DisplayMetrics();
+		getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		float d = metrics.density;
+		return new float[]{drawable.getIntrinsicWidth() / d , drawable.getIntrinsicHeight() / d};
+
+	}
+
+	private BitmapDrawable createBitmapDrawableFrom(int resId)
+private void updateAccuracy()
+		{
+			double r = rotation * 180 / Math.PI;
+			directionMarker.setStylingFromString(
+					"{ style: 'points', color: '#cc536dfe', size: " +
+							Arrays.toString(directionMarkerSize) +
+							", order: 2000, collide: false, flat: true, angle: " + r + " }");
+		}
+	}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+package com.soundcloud.android.crop;
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.Region;
+import android.util.TypedValue;
+import android.view.View;
+
+    Matrix mMatrix;
+    private RectF mImageRect; // Image space
+
+    private final Paint mFocusPaint = new Paint();
+    private final Paint mNoFocusPaint = new Paint();
+    private final Paint mOutlinePaint = new Paint();
+    private final Paint mHandlePaint = new Paint();
+
+public void setup(Matrix m, Rect imageRect, RectF cropRect, boolean maintainAspe
+        mInitialAspectRatio = mCropRect.width() / mCropRect.height();
+        mDrawRect = computeLayout();
+
+        mFocusPaint.setARGB(125, 50, 50, 50);
+        mNoFocusPaint.setARGB(125, 50, 50, 50);
+        mOutlinePaint.setStyle(Paint.Style.STROKE);
+        mOutlinePaint.setAntiAlias(true);
+        mOutlineWidth = dpToPx(OUTLINE_DP);
+protected void draw(Canvas canvas) {
+            path.addRect(new RectF(mDrawRect), Path.Direction.CW);
+            mOutlinePaint.setColor(mHighlightColor);
+
+            canvas.clipPath(path, Region.Op.DIFFERENCE);
+            canvas.drawRect(viewDrawingRect, hasFocus() ? mFocusPaint : mNoFocusPaint);
+
+            canvas.restore();
+            canvas.drawPath(path, mOutlinePaint);
+protected void draw(Canvas canvas) {
+        }
+    }
+
+    private void drawHandles(Canvas canvas) {
+        int xMiddle = mDrawRect.left + ((mDrawRect.right  - mDrawRect.left) / 2);
+        int yMiddle = mDrawRect.top + ((mDrawRect.bottom - mDrawRect.top) / 2);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final String CLOCK_TICK_ACTION = "ch.corten.aha.worldclock.CLOCK_TICK";
+
+    private static final List<Class<? extends AppWidgetProvider>> WIDGET_PROVIDERS = new ArrayList<Class<? extends AppWidgetProvider>>();
+    
+    protected static void registerClockWidget(Class<? extends ClockWidgetProvider> provider) {
+        WIDGET_PROVIDERS.add(provider);
+    }
+    
+    @Override
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager,
+            int[] appWidgetIds) {
+public void onUpdate(Context context, AppWidgetManager appWidgetManager,
+    @Override
+    public void onEnabled(Context context) {
+        super.onEnabled(context);
+        if (SANS_JELLY_BEAN_MR1) {
+            AlarmManager alarmManager = (AlarmManager) context
+                    .getSystemService(Context.ALARM_SERVICE);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.set(Calendar.MILLISECOND, 0);
+            calendar.add(Calendar.SECOND, 60);
+            calendar.set(Calendar.SECOND, 0);
+            alarmManager.setRepeating(AlarmManager.RTC, calendar.getTimeInMillis(),
+                    60000, createClockTickIntent(context));
+    
+            Class<? extends BroadcastReceiver> receiver = ClockWidgetSystemReceiver.class;
+            PackageManager pm = context.getApplicationContext().getPackageManager();
+            ComponentName component = new ComponentName(context, receiver);
+            pm.setComponentEnabledSetting(component, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+        }
+    }
+
+    @Override
+    public void onDisabled(Context context) {
+        super.onDisabled(context);
+        if (SANS_JELLY_BEAN_MR1 && !isAnyWidgetActive(context, WIDGET_PROVIDERS)) {
+            AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.cancel(createClockTickIntent(context));
+            
+            Class<? extends BroadcastReceiver> receiver = ClockWidgetSystemReceiver.class;
+            PackageManager pm = context.getApplicationContext().getPackageManager();
+            ComponentName component = new ComponentName(context, receiver);
+public void onDisabled(Context context) {
+    public void onReceive(Context context, Intent intent) {
+        super.onReceive(context, intent);
+        if (WIDGET_DATA_CHANGED_ACTION.equals(intent.getAction())
+                || (SANS_JELLY_BEAN_MR1 && CLOCK_TICK_ACTION.equals(intent.getAction()))) {
+            PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+            if (pm.isScreenOn()) {
+                onClockTick(context);
+private PendingIntent createClockTickIntent(Context context) {
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        return pendingIntent;
+    }
+    
+    protected boolean isAnyWidgetActive(Context context, List<Class<? extends AppWidgetProvider>> classes) {
+        AppWidgetManager awm = AppWidgetManager.getInstance(context);
+        for (Class<? extends AppWidgetProvider> clazz : classes) {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+If you want to animate your Toolbar too like the demo gif, you can enable it by
+
+    searchViewLayout.handleToolbarAnimation(toolbar);
+
+Listen to search complete by:
+
+    searchViewLayout.setSearchListener(new SearchViewLayout.SearchListener() {
+Listen to layout collapse/expand by using `setOnToggleVisibilityListener`. For e
+Available at jCenter and mavenCentral.
+
+    dependencies {
+        compile 'xyz.sahildave:searchviewlayout:0.0.1'
+    }
+
+### TODO
+
+* Make view transition background programatically by asking for startColor and endColor
+* API for setting icons
+* Granular setPadding using `onAnimationUpdate`
+
+package xyz.sahildave.widget.sample;
+
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+public void onClick(View view) {
+        final SearchViewLayout searchViewLayout = (SearchViewLayout) findViewById(R.id.search_view_container);
+        searchViewLayout.setExpandedContentFragment(this, new SearchStaticFragment());
+        searchViewLayout.handleToolbarAnimation(toolbar);
+        searchViewLayout.setSearchListener(new SearchViewLayout.SearchListener() {
+            @Override
+            public void onFinished(String searchKeyword) {
+ext {
+    siteUrl = 'https://github.com/sahildave/Search-View-Layout'
+    gitUrl = 'https://github.com/sahildave/Search-View-Layout.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'sahildave'
+    developerName = 'Sahil Dave'
+android {
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "0.0.1"
+    }
+}
+
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.Context;
+import android.graphics.drawable.TransitionDrawable;
+import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.AttributeSet;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.ViewGroup;
+    private TransitionDrawable mBackgroundTransition;
+    private Toolbar mToolbar;
+
+    private int mExpandedHeight;
+    private int mCollapsedHeight;
+
+public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    Utils.fadeOut(mExpandedSearchIcon, ANIMATION_DURATION);
+                }
+            }
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override public void afterTextChanged(Editable s) { }
+        });
+
+        mBackButtonView.setOnClickListener(new OnClickListener() {
+public void onClick(View v) {
+                Utils.hideInputMethod(v);
+            }
+        });
+        mBackgroundTransition = (TransitionDrawable) getBackground();
+        mBackgroundTransition.setCrossFadeEnabled(true);
+        super.onFinishInflate();
+    }
+
+public void handleToolbarAnimation(Toolbar toolbar) {
+        this.mToolbar = toolbar;
+    }
+
+    public void expand(boolean requestFocus) {
+        mCollapsedHeight = getHeight();
+        toggleToolbar(true);
+        mBackgroundTransition.startTransition(ANIMATION_DURATION);
+        updateVisibility(true /* isExpand */);
+        mIsExpanded = true;
+
+public void expand(boolean requestFocus) {
+
+    public void collapse() {
+        toggleToolbar(false);
+        mBackgroundTransition.reverseTransition(ANIMATION_DURATION);
+        mSearchEditText.setText(null);
+        updateVisibility(false /* isExpand */);
+        mIsExpanded = false;
+private void showContentFragment() {
+    }
+
+    private void hideContentFragment() {
+        final FragmentTransaction transaction = mFragmentManager.beginTransaction();
+        transaction.remove(mExpandedContentFragment).commit();
+    }
+<transition xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:drawable="?colorPrimary"/>
+    <item android:drawable="@color/default_color"/>
+</transition>
+    android:id="@+id/search_view_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:orientation="horizontal"
+    android:clipToPadding="false"
+    android:clipChildren="false"
+    android:background="@drawable/searchview_toggle_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/search_box_collapsed"
+        android:layout_width="match_parent"
+    <color name="search_shortcut_background_color">#b6b6b6</color>
+    <color name="search_shortcut_icon_color">#f8f8f8</color>
+
+    <color name="default_color">#F0F0F0</color>
+</resources>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jsoup-1.8.3" level="project" />
+  </component>
+</module>
+
+
+package pw.thedrhax.httpclient;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class HttpClient {
+	private String cookies;
+	private URL referer;
+	private String userAgent;
+	private int timeout = 2000;
+	private boolean ignoreSSL = false;
+	private int retries = 0;
+	
+	/*
+	 * Set initial request headers
+	 */
+	
+	public HttpClient setCookies (String cookies) {
+		this.cookies = cookies; return this;
+	}
+	public HttpClient setReferer (URL referer) {
+		this.referer = referer; return this;
+	}
+	public HttpClient setReferer (String referer) throws MalformedURLException {
+		return setReferer(new URL(referer));
+	}
+	public HttpClient setUserAgent (String userAgent) {
+		this.userAgent = userAgent; return this;
+	}
+	
+	/*
+	 * Set connection parameters
+	 */
+	
+	public HttpClient setIgnoreSSL (boolean ignoreSSL) {
+		this.ignoreSSL = ignoreSSL; return this;
+	}
+	public HttpClient setTimeout(int timeout) {
+		this.timeout = timeout; return this;
+	}
+	public HttpClient setMaxRetries (int retries) {
+		this.retries = retries; return this;
+	}
+	
+	/*
+	 * Methods
+	 */
+	
+	private HttpRequest createRequest(URL url, String params) throws IOException {
+		HttpRequest request = new HttpRequest(url, params);
+		
+		if (cookies != null)	request.setCookies(cookies);
+		if (referer != null)	request.setReferer(referer);
+		if (userAgent != null)	request.setUserAgent(userAgent);
+		if (ignoreSSL)			request.setIgnoreSSL();
+		request.setTimeout(timeout);
+		
+		return request;
+	}
+	
+	public HttpRequest navigate (URL url, String params) throws IOException {
+		HttpRequest request = createRequest(url, params);
+		
+		for (int i = 0; i <= retries; i++) {
+			try {
+				request.connect();
+				break;
+			} catch (IOException ex) {
+				if (i == retries) {
+					throw(ex);
+				} else {
+					request = createRequest(url, params);
+				}
+			}
+		}
+		
+		cookies += request.getCookies();
+		referer = url;
+		
+		return request;
+	}
+	
+	public HttpRequest navigate (URL url) throws IOException {
+		return navigate(url, null);
+	}
+	
+	public HttpRequest navigate (String address, String params) throws IOException {
+		return navigate(new URL(address), params);
+	}
+	
+	public HttpRequest navigate (String address) throws IOException {
+		return navigate(address, null);
+	}	
+}
+package pw.thedrhax.httpclient;
+
+import javax.net.ssl.*;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.security.cert.X509Certificate;
+import java.util.List;
+import java.util.Map;
+
+public class HttpRequest {
+	private String params;
+	
+	private URLConnection connection;
+	private boolean isHttps;
+
+	private Map<String,List<String>> header;	
+	private String content;
+	
+	/*
+	 * Set optional request headers
+	 */
+	
+	public HttpRequest setCookies (String cookies) {
+		connection.addRequestProperty("Cookie", cookies);
+		return this;
+	}
+	public HttpRequest setReferer (URL referer) {
+		connection.addRequestProperty("Referer", referer.toString());
+		return this;
+	}
+	public HttpRequest setUserAgent (String userAgent) {
+		connection.addRequestProperty("User-Agent", userAgent);
+		return this;
+	}
+	public HttpRequest setTimeout (int timeout) {
+		connection.setConnectTimeout(timeout);
+		connection.setReadTimeout(timeout);
+		return this;
+	}
+	public HttpRequest setIgnoreSSL () {
+		if (!isHttps) return this;
+		
+		TrustManager[] trustAllCerts = new TrustManager[] {
+			new X509TrustManager() {
+				public java.security.cert.X509Certificate[] getAcceptedIssuers() {return null;}
+				public void checkClientTrusted(X509Certificate[] certs, String authType) {}
+				public void checkServerTrusted(X509Certificate[] certs, String authType) {}
+			}
+		};
+		
+		SSLContext sc;
+		try {
+			sc = SSLContext.getInstance("SSL");
+			sc.init(null, trustAllCerts, new java.security.SecureRandom());
+		} catch (Exception ex) {
+			return this;
+		}
+
+		HostnameVerifier allHostsValid = new HostnameVerifier() {
+			public boolean verify(String hostname, SSLSession session) {return true;}
+		};
+
+        ((HttpsURLConnection) connection).setSSLSocketFactory(sc.getSocketFactory());
+        ((HttpsURLConnection) connection).setHostnameVerifier(allHostsValid);
+        
+		return this;
+	}
+	
+	/*
+	 *  Public constructors
+	 */
+	
+	public HttpRequest (URL url, String params) throws IOException {
+		this.params = params;
+		
+		isHttps = url.getProtocol().equals("https");
+		
+		connection = url.openConnection();
+	}
+	
+	public HttpRequest (URL  url) throws IOException {
+		this(url, null);
+	}
+	
+	// Request sequence
+	public HttpRequest connect() throws IOException {
+		// Send POST data if defined
+		if (params != null) {
+			try{
+				((HttpURLConnection)connection).setRequestMethod("POST");
+			} catch (ProtocolException ignored) {}
+			
+			connection.setDoOutput(true);
+
+			OutputStreamWriter writer = new OutputStreamWriter (
+				connection.getOutputStream()
+			);
+		
+			writer.write(params);
+			writer.flush();
+			writer.close();
+		} else {
+			try {
+				((HttpURLConnection)connection).setRequestMethod("GET");
+			} catch (ProtocolException ignored) {}
+		}
+			
+		// Read server answer
+		InputStream stream;
+		int responseCode;
+
+		try {
+			responseCode = ((HttpURLConnection) connection).getResponseCode();
+		} catch (Exception ex) {
+			responseCode = ((HttpURLConnection) connection).getResponseCode();
+		}
+
+		if (responseCode < 400) {
+			stream = connection
+				.getInputStream();
+		} else {
+			stream = ((HttpURLConnection)connection)
+				.getErrorStream();
+		}
+		
+		BufferedReader reader = new BufferedReader(
+			new InputStreamReader(stream)
+		);
+		
+		String input;
+		StringBuilder buffer = new StringBuilder();
+		
+		try {
+			while ((input = reader.readLine()) != null) {
+				buffer.append(input);
+				buffer.append("\r\n");
+			}
+		} catch (IOException ex) {
+			return this;
+		}
+		
+		reader.close();
+		
+		content = buffer.toString();
+		header = connection.getHeaderFields();
+		
+		return this;
+	}
+	
+	/*
+	 * Get request results 
+	 */
+	
+	public String getContent() {
+		return content;
+	}
+	
+	public String getCookies() {
+		if (header == null) return "";
+		List<String> cookies = header.get("Set-Cookie");
+		if (cookies == null) return "";
+		
+		StringBuilder buffer = new StringBuilder();
+		
+		for (String cookie : cookies) {
+			buffer.append(cookie.substring(0, cookie.indexOf(';')));
+			buffer.append("; ");
+		}
+		
+		return buffer.toString();
+	}
+}
+package pw.thedrhax.mosmetro.authenticator;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import pw.thedrhax.httpclient.HttpClient;
+import pw.thedrhax.util.Logger;
+
+public class Authenticator {
+    // Result state
+    public static final int STATUS_CONNECTED = 0;
+    public static final int CHECK_NOT_CONNECTED = 2;
+    
+	protected Logger logger;
+    private HttpClient client;
+
+    public Authenticator () {
+        logger = new Logger();
+        client = new HttpClient().setIgnoreSSL(true);
+    }
+
+    public int isConnected() {
+        HttpClient client = new HttpClient();
+
+        String content;
+        try {
+            content = client.navigate("http://vmet.ro").getContent();
+            if (content == null || content.isEmpty())
+                throw new Exception("Empty response");
+        } catch (Exception ex) {
+private static String parseMetaRedirect (Document document) throws Exception {
+        return link;
+    }
+
+    private Document getPageContent (String link, String params) throws Exception {
+        Document document;
+
+        // Get and parse the page
+        String content = client.navigate(link, params).getContent();
+        if (content == null || content.isEmpty()) {
+            throw new Exception("Страница не получена");
+        }
+private Document getPageContent (String link, String params) throws Exception {
+        return document;
+    }
+
+    private static String parseForm (Element form) throws Exception {
+        String request;
+        Elements inputs = form.getElementsByTag("input");
+
+        StringBuilder params = new StringBuilder();
+        for (Element input : inputs) {
+            if (params.length() != 0) params.append("&");
+            params.append(input.attr("name"))
+                    .append("=")
+                    .append(input.attr("value"));
+        }
+        request = params.toString();
+
+        if (request == null || request.isEmpty()) {
+            throw new Exception("Форма не найдена");
+        }
+
+        return request;
+    }
+
+	// Returns 0 on success, 1 if already connected and 2 if error
+    public int connect() {
+        Document page;
+        String fields, link;
+
+        onChangeProgress(0);
+
+public int connect() {
+
+        logger.log_debug("<< Все проверки пройдены\n>> Подключаюсь...");
+
+        client.setMaxRetries(3);
+
+        onChangeProgress(16);
+
+        logger.log_debug(">>> Получение начального перенаправления");
+public int connect() {
+                return STATUS_NOT_REGISTERED;
+            }
+            fields = parseForm(forms.first());
+            logger.debug(fields);
+        } catch (Exception ex) {
+            fields = null;
+            logger.log_debug("<<< Ошибка: форма авторизации не найдена");
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import pw.thedrhax.httpclient.HttpClient;
+
+import java.io.IOException;
+
+public int connect() {
+    }
+
+    private void submit_info (int result) {
+        StringBuilder params = new StringBuilder();
+
+        params.append("version=").append(getVersion()).append("&");
+        params.append("automatic=").append(automatic ? "1" : "0").append("&");
+        params.append("connected=").append(result == STATUS_CONNECTED ? "1" : "0");
+
+        try {
+            new HttpClient().navigate(STATISTICS_URL, params.toString());
+        } catch (IOException ignored) {}
+    }
+}
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.preference.PreferenceManager;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import pw.thedrhax.httpclient.HttpClient;
+import pw.thedrhax.mosmetro.R;
+
+public abstract class UpdateCheckTask extends AsyncTask<Void,Void,Void> {
+private boolean hasUpdate() {
+
+    @Override
+    protected Void doInBackground (Void... params) {
+        HttpClient client = new HttpClient().setMaxRetries(3);
+
+        // Retrieve info from server
+        String content;
+        try {
+            content = client.navigate(UPDATE_INFO_URL).getContent();
+            if (content == null || content.isEmpty())
+                throw new Exception ("Failed to receive info from the update server");
+        } catch (Exception ex) {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public class WidgetConfigurationActivity extends PreferenceActivity {
+
+	private int appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
+
+	@Override
+public void onClick(View v) {
+	public void onBuildHeaders(List<Header> target) {
+		loadHeadersFromResource(R.xml.preferences_header, target);
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.Gravity;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
+import org.odk.collect.android.application.Collect;
+
+import java.lang.reflect.Field;
+import java.util.Calendar;
+import java.util.Date;
+
+public DateTimeWidget(Context context, FormEntryPrompt prompt) {
+        mDatePicker.setFocusable(!prompt.isReadOnly());
+        mDatePicker.setEnabled(!prompt.isReadOnly());
+
+        mTimePicker = new TimePicker(getContext());
+        mTimePicker.setId(QuestionWidget.newUniqueId());
+        mTimePicker.setFocusable(!prompt.isReadOnly());
+public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+            }
+        });
+
+        setGravity(Gravity.LEFT);
+        LinearLayout answerLayout = new LinearLayout(getContext());
+        answerLayout.setOrientation(LinearLayout.VERTICAL);
+        if (showCalendar) {
+public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+        setAnswer();
+    }
+
+    /**
+     * Shared between DateWidget and DateTimeWidget.
+     * There are extra appearance settings that do not apply for dateTime...
+private void setAnswer() {
+
+            DateTime ldt =
+                    new DateTime(
+                            ((Date) ((DateTimeData) mPrompt.getAnswerValue()).getValue()).getTime
+                                    ());
+            mDatePicker.init(ldt.getYear(), ldt.getMonthOfYear() - 1, ldt.getDayOfMonth(),
+                    mDateListener);
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.Gravity;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
+import org.odk.collect.android.application.Collect;
+
+import java.lang.reflect.Field;
+import java.util.Calendar;
+public DateWidget(Context context, FormEntryPrompt prompt) {
+        mDatePicker.setFocusable(!prompt.isReadOnly());
+        mDatePicker.setEnabled(!prompt.isReadOnly());
+
+        hideDayFieldIfNotInFormat(prompt);
+
+        mDateListener = new DatePicker.OnDateChangedListener() {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+dependencies {
+    compile "com.mixpanel.android:mixpanel-android:4.6.2"
+    compile 'com.google.android.gms:play-services:7.5.0'
+    compile "com.splunk.mint:mint:4.2.1"
+    compile('org.simpleframework:simple-xml:2.7.1') {
+        exclude module: 'stax'
+        exclude module: 'stax-api'
+
+import android.app.Activity;
+import android.app.Application;
+import android.util.Log;
+
+import com.google.android.gms.analytics.GoogleAnalytics;
+
+import java.util.HashMap;
+
+public class EvercamPlayApplication extends Application
+{
+    private static final String PROPERTY_ID = "UA-52483995-1";
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+protected void onCreate(@Nullable final Bundle savedInstanceState) {
+        resultIntent = this.getIntent();
+        this.setResult(RESULT_OK, resultIntent);
+
+        setContentView(R.layout.activity_settings);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setTitle(R.string.action_settings);
+        toolbar.setNavigationOnClickListener(v -> finish());
+    }
+
+    /**
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.my.package">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/tool_bar"
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+private static String retrieveResponse(final URL url) throws Exception {
+                }
+                return result;
+        } finally { 
+                uc.getInputStream().close();
+                if (uc.getErrorStream() != null) {
+                        uc.getErrorStream().close();
+                }
+        }
+    }
+    
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    android:versionName="1.0.4" >
+
+    <uses-sdk
+        android:minSdkVersion="5"
+        android:targetSdkVersion="22" />
+	<uses-permission android:name="android.permission.INTERNET" />
+    <application
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.10"
+        android:divider="@layout/empty_tall_divider"
+        android:gravity="center"
+        android:showDividers="middle" >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ip_port_label"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/ipandportvalue"
+            android:layout_width="159dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            android:text="@string/ip_port" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+        </LinearLayout>
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:dividerPadding="5dp"
+        android:gravity="center_horizontal|fill_horizontal" >
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+    <string name="app_name">ElpisRemote</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="ip_port_label">Your IP</string>
+    <string name="ip_port">192.168.1.64</string>
+    <string name="play_button_string">Playing</string>
+    <string name="pause_button_string">Paused</string>
+package com.alexey_sel.elpisremote;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.Menu;
+import java.util.concurrent.TimeUnit;
+
+public class RemoteControl extends Activity implements AsyncResponse {
+	EditText ipport;
+	String currentSongAmazonID;
+	String URL;
+	TextView songAndArtist;
+	ProgressBar dislikeProgressBar;
+	ProgressBar loadingSongProgressBar;
+	TextView loadingSongText;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		t = this;
+		setContentView(R.layout.activity_remote_control);
+		play = (Button) findViewById(R.id.buttonPlay);
+		next = (Button) findViewById(R.id.buttonNext);
+		like = (Button) findViewById(R.id.buttonLike);
+		dislike = (Button) findViewById(R.id.buttonDislike);
+		currentSongAmazonID = "";
+		ipport = (EditText) findViewById(R.id.ipandportvalue);
+		songAndArtist = (TextView) findViewById(R.id.songAndArtist);
+		progressBar = (ProgressBar) findViewById(R.id.ProgressBar);
+		playPauseProgressBar = (ProgressBar) findViewById(R.id.playPauseProgessBar);
+public void onClick(View v) {
+				new RequestTask().execute("dislike", new String());
+			}
+		});
+		ipport.setImeActionLabel("Set IP", KeyEvent.KEYCODE_ENTER);
+		ipport.setOnEditorActionListener(new OnEditorActionListener() {
+
+			@Override
+			public boolean onEditorAction(TextView v, int actionId,
+					KeyEvent event) {
+				if (actionId == KeyEvent.KEYCODE_ENTER) {
+					ip = ipport.getText().toString();
+					Log.d("Setting ip", ip);
+					connect();
+				}
+				return false;
+			}
+		});
+		ScheduledExecutorService scheduler = Executors
+				.newSingleThreadScheduledExecutor();
+
+public void run() {
+			}
+		}, 0, 2, TimeUnit.SECONDS);
+
+	}
+
+	public void toggleGUIElements(final boolean setAsVisible,
+			final View... views) {
+		if (views[0].getVisibility() != (setAsVisible ? View.VISIBLE
+public void run() {
+		}
+	}
+
+	public void checkFirstRun() {
+		boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
+				.getBoolean("isFirstRun", true);
+public void onClick(DialogInterface dialog, int id) {
+			AlertDialog dialog = builder.create();
+			dialog.show();
+
+			if (Statistics.sendAnonymousStatistics(this))
+				getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
+						.putBoolean("isFirstRun", false).apply();
+		}
+	}
+
+public String getIPPort() {
+		protected String doInBackground(String... uri) {
+			this.command = uri[0];
+			if (connected || command.equals("connect")) {
+				Log.d("Command:ip", command + ":" + ip);
+				HttpParams httpParams = new BasicHttpParams();
+				HttpConnectionParams.setConnectionTimeout(httpParams, 100);
+public boolean onCreateOptionsMenu(Menu menu) {
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle presses on the action bar items
+		switch (item.getItemId()) {
+		case R.id.updateSongInfo:
+			forceUpdate = true;
+			getActionBar();
+			return true;
+		case R.id.listen:
+			listen = !item.isChecked();
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ - CID 60861-60864 : fix Coverity issue : dereference null return value
+ - build against Android SDK 4.4W (API 20)
+ - translated to Russian, thanks to Олег Нощенко
+
+ v0.3 (released on 07Jul2014)
+ - CID 60865 : fix Coverity issue : dereference null return value
+public final void onCreate(final Bundle savedInstanceState) {
+                    findPreference(DebugLevel.PREF_DEBUG_LEVEL));
+        }
+    }
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public static String getDirectoryName(final String type) {
+    }
+
+    public static String getConversationsDirectory(final String type) {
+        if (type == "null" || type == null) {
+            return Environment.getExternalStorageDirectory().getAbsolutePath() + getDirectoryName(null);
+        } else {
+            return Environment.getExternalStorageDirectory().getAbsolutePath() + getDirectoryName(type);
+        }
+    }
+
+    public Bitmap resize(Bitmap originalBitmap, int size) {
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+public TestConnectionResult testConnection() throws HttpHostConnectException, Pa
+		Element root = dom.getDocumentElement();
+		NodeList items = root.getElementsByTagNameNS("*","principal");
+		
+		if (items.getLength()!=1) {
+			Log.d (TAG, "endConnection failure");
+			return TestConnectionResult.WRONG_ANSWER;
+		} else {
+public TestConnectionResult testConnection() throws HttpHostConnectException, Pa
+		"<propfind xmlns=\"DAV:\">"+
+		"<prop>"+
+        "  <calendar-home-set xmlns=\"urn:ietf:params:xml:ns:caldav\"/>"+
+		"</prop>"+
+        "</propfind>";
+		
+public TestConnectionResult testConnection() throws HttpHostConnectException, Pa
+		Element root = dom.getDocumentElement();
+		NodeList items = root.getElementsByTagNameNS("*","calendar-home-set");
+		
+		if (items.getLength()>1) {
+			throw new CaldavProtocolException("Multiple calendar-home-set returned");
+		}
+		
+		if (items.getLength()==1) {
+			
+			Node item = items.item(0);
+			
+public TestConnectionResult testConnection() throws HttpHostConnectException, Pa
+					//calendarList.add(calendar);
+				}
+			}
+		}
+		
+		return calendarList;
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+android {
+        minSdkVersion 10
+        targetSdkVersion 25
+        versionCode 1
+        versionName "0.0.3"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
+package me.toptas.fancyshowcasesample;
+
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import me.toptas.fancyshowcase.FancyShowCaseView;
+import me.toptas.fancyshowcase.OnViewInflateListener;
+
+public class MainActivity extends AppCompatActivity {
+protected void onCreate(Bundle savedInstanceState) {
+    @OnClick(R.id.btn_simple)
+    public void simple() {
+        new FancyShowCaseView.Builder(this)
+                .title("Simple title")
+                .build()
+                .show();
+    }
+
+    /**
+     * Shows a FancyShowCaseView that focus on a view
+     *
+     * @param view view to focus
+     */
+    @OnClick(R.id.btn_focus)
+    public void focusView(View view) {
+public void focusView(View view) {
+    }
+
+    /**
+     * Shows FancyShowCaseView with focusCircleRadiusFactor 1.5 and title gravity
+     *
+     * @param view view to focus
+     */
+    @OnClick(R.id.btn_focus2)
+    public void focusWithLargerCircle(View view) {
+public void focusWithLargerCircle(View view) {
+    /**
+     * Shows a FancyShowCaseView that focuses on a larger view
+     *
+     * @param view view to focus
+     */
+    @OnClick(R.id.btn_longer)
+    public void longerText(View view) {
+public void longerText(View view) {
+    /**
+     * Shows a FancyShowCaseView with background color and title style
+     *
+     * @param view view to focus
+     */
+    @OnClick(R.id.btn_color)
+    public void focusWithBackgroundColor(View view) {
+public void focusWithBackgroundColor(View view) {
+    /**
+     * Shows a FancyShowCaseView with custom enter, exit animations
+     *
+     * @param view view to focus
+     */
+    @OnClick(R.id.btn_anim)
+    public void focusWithCustomAnimation(View view) {
+public void onAnimationRepeat(Animation animation) {
+    /**
+     * Shows a FancyShowCaseView view custom view inflation
+     *
+     * @param view view to focus
+     */
+    @OnClick(R.id.btn_custom_view)
+    public void focusWithCustomView(View view) {
+public void onClick(View view) {
+        }
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|top"
+    android:orientation="vertical"
+    tools:context="me.toptas.fancyshowcasesample.MainActivity">
+
+
+    <Button
+        android:id="@+id/btn_simple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="NoFocus" />
+
+    <Button
+        android:id="@+id/btn_focus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Focus" />
+
+    <Button
+        android:id="@+id/btn_focus2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Larger" />
+
+    <Button
+        android:id="@+id/btn_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Color" />
+
+    <Button
+        android:id="@+id/btn_longer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="A button with longer text" />
+
+    <Button
+        android:id="@+id/btn_anim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Custom\nAnimation" />
+
+    <Button
+        android:id="@+id/btn_custom_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/default_margin"
+        android:text="Custom\nView" />
+
+</LinearLayout>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="MyTitleStyle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#00ff00</item>
+android {
+        minSdkVersion 10
+        targetSdkVersion 25
+        versionCode 1
+        versionName "0.0.3"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    private Bitmap mBitmap;
+    private Paint mBackgroundPaint, mErasePaint;
+    private int mBackgroundColor = Color.TRANSPARENT;
+    private int mRadius, mLeft, mTop;
+    private int mAnimCounter = 0;
+    private int mStep = 1;
+    private double mAnimMoveFactor = 1;
+private void init() {
+
+    /**
+     * Setting parameters for background an animation
+     * @param backgroundColor background color
+     * @param left focus animation left
+     * @param top focus animation top
+     * @param radius focus animation radius
+     * @param animMoveFactor focus animation move factor
+     */
+    public void setParameters(int backgroundColor, int left, int top, int radius, int animMoveFactor) {
+        mBackgroundColor = backgroundColor;
+        mLeft = left;
+        mTop = top;
+        mRadius = radius;
+        mAnimMoveFactor = animMoveFactor;
+    }
+
+    /**
+     * Draws background and moving focus area
+     * @param canvas draw canvas
+     */
+    @Override
+protected void onDraw(Canvas canvas) {
+
+        }
+        canvas.drawBitmap(mBitmap, 0, 0, mBackgroundPaint);
+        if (mRadius > 0) {
+            mAnimCounter = mAnimCounter + mStep;
+            canvas.drawCircle(mLeft, mTop, (float) (mRadius + mAnimCounter * mAnimMoveFactor), mErasePaint);
+
+            if (mAnimCounter == ANIM_COUNTER_MAX) {
+                mStep = -1;
+            } else if (mAnimCounter == 0) {
+                mStep = 1;
+            }
+            postInvalidate();
+        }
+
+    }
+}
+    private Animation mEnterAnimation, mExitAnimation;
+    private boolean mCloseOnTouch;
+    private boolean mFitSystemWindows;
+
+
+    private int mAnimationDuration = 400;
+    private int mCenterX, mCenterY, mRadius;
+    private int mDeviceWidth, mDeviceHeight;
+    private FrameLayout mContainer;
+    private ViewGroup mRoot;
+    private SharedPreferences mSharedPreferences;
+
+    /**
+     * Constructor for FancyShowCaseView
+     * @param exitAnimation           exit animation for FancyShowCaseView
+     * @param closeOnTouch            closes on touch if enabled
+     * @param fitSystemWindows        should be the same value of root view's fitSystemWindows value
+     */
+    private FancyShowCaseView(Activity activity, View view, String id, String title,
+                              int titleGravity, int titleStyle, double focusCircleRadiusFactor,
+                              int backgroundColor, int customViewRes,
+                              OnViewInflateListener viewInflateListener, Animation enterAnimation,
+                              Animation exitAnimation, boolean closeOnTouch, boolean fitSystemWindows) {
+        mId = id;
+        mActivity = activity;
+        mView = view;
+private FancyShowCaseView(Activity activity, View view, String id, String title,
+        mExitAnimation = exitAnimation;
+        mCloseOnTouch = closeOnTouch;
+        mFitSystemWindows = fitSystemWindows;
+
+        initializeParameters();
+    }
+private void initializeParameters() {
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        mActivity.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        mDeviceWidth = displayMetrics.widthPixels;
+        mDeviceHeight = displayMetrics.heightPixels;
+        mCenterX = mDeviceWidth / 2;
+        mCenterY = mDeviceHeight / 2;
+        mSharedPreferences = mActivity.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+    }
+
+public void show() {
+            return;
+        }
+
+        final int bitmapHeight = mDeviceHeight - (mFitSystemWindows ? 0 : Utils.getStatusBarHeight(mActivity));
+        Bitmap bitmap = Bitmap.createBitmap(mDeviceWidth, bitmapHeight, Bitmap.Config.ARGB_8888);
+        bitmap.eraseColor(mBackgroundColor);
+
+        int[] focusPoint = Utils.calculateFocusPointValues(mView,
+                mFocusCircleRadiusFactor, mFitSystemWindows);
+
+        ViewGroup androidContent = (ViewGroup) mActivity.findViewById(android.R.id.content);
+        mRoot = (ViewGroup) androidContent.getParent().getParent();
+        mContainer = (FrameLayout) mRoot.findViewWithTag(CONTAINER_TAG);
+public void onClick(View view) {
+
+
+            FancyImageView imageView = new FancyImageView(mActivity);
+            if (focusPoint != null) {
+                //Utils.drawFocusCircle(bitmap, focusPoint, focusPoint[2]);
+                mCenterX = focusPoint[0];
+                mCenterY = focusPoint[1];
+                mRadius = focusPoint[2];
+            }
+            imageView.setParameters(mBackgroundColor, mCenterX, mCenterY, mRadius, 1);
+            imageView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT));
+
+public void onClick(View view) {
+                inflateCustomView(mCustomViewRes, mViewInflateListener);
+            }
+
+
+            startEnterAnimation();
+            writeShown();
+        }
+public FrameLayout getContainerView() {
+        private Animation mEnterAnimation, mExitAnimation;
+        private boolean mCloseOnTouch = true;
+        private boolean mFitSystemWindows;
+
+        /**
+         * Constructor for Builder class
+public Builder fitSystemWindows(boolean fitSystemWindows) {
+            return this;
+        }
+
+        /**
+         * builds the builder
+         *
+public Builder fitSystemWindows(boolean fitSystemWindows) {
+        public FancyShowCaseView build() {
+            return new FancyShowCaseView(mActivity, mView, mId, mTitle, mTitleGravity, mTitleStyle,
+                    mFocusCircleRadiusFactor, mBackgroundColor, mCustomViewRes, mViewInflateListener,
+                    mEnterAnimation, mExitAnimation, mCloseOnTouch, mFitSystemWindows);
+        }
+    }
+}
+static boolean shouldShowCircularAnimation() {
+     * @param circleRadiusFactor radius factor of circle
+     * @return x, y, radius values for the circle
+     */
+    static int[] calculateFocusPointValues(View view, double circleRadiusFactor, boolean fitSystemWindows) {
+        int[] point = new int[3];
+        if (view != null) {
+            int[] viewPoint = new int[2];
+            view.getLocationInWindow(viewPoint);
+
+            point[0] = viewPoint[0] + view.getWidth() / 2;
+            point[1] = viewPoint[1] + view.getHeight() / 2 -
+                    (fitSystemWindows ? 0 : getStatusBarHeight(view.getContext()));
+            int radius = (int) ((int) (Math.hypot(view.getWidth(), view.getHeight()) / 2) * circleRadiusFactor);
+            point[2] = radius;
+            return point;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+protected Object deserializeUnknownHeader(DataInput in, int head, FastArrayList<
+    static protected Object sunReflFac = null;
+    static protected Method androidConstructor = null;
+    static private Method androidConstructorGinger = null;
+    static private Object constructorId;
+
+    static{
+protected Object deserializeUnknownHeader(DataInput in, int head, FastArrayList<
+        }catch(Exception e){
+            //ignore
+        }
+    }
+
+
+protected Object deserializeUnknownHeader(DataInput in, int head, FastArrayList<
+        }else if(androidConstructorGinger!=null){
+            //android (post ginger) specific way
+            return (T)androidConstructorGinger.invoke(null, clazz, constructorId);
+        }
+        else{
+            //try usual generic stuff which does not skip constructor
+            Constructor<?> c = class2constuctor.get(clazz);
+            if(c==null){
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        <!-- item name="android:windowSharedElementEnterTransition">@transition/change_image_transform</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_image_transform</item -->
+
+    </style>
+
+</resources>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+</resources>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Version 1.0.3 *(2012-11-23)*
+----------------------------
+
+* Fixed: Crash when determining currency for en_UK which is not an ISO 3611 country
+* Improved: Better handle rotation when creating transactions
+* Improved: Spanish & Italian translations
+
+public BigDecimal parseInputToDecimal(String amountString){
+		@Override
+		public void afterTextChanged(Editable s) {
+			boolean valid = (mAmountEditText.getText().length() > 0);
+			mSaveMenuItem.setEnabled(valid);
+		}
+
+		@Override
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Welcome to Link Bubble!</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-size:32px;
+font-weight:bold;
+padding-bottom:40px;
+}
+
+ul {
+
+li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  padding: 0px 0px 3px;
+}
+
+ol {
+    list-style-type: decimal !important;
+    padding:0px 0px 0px 25px;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+}
+
+.ppSectionHeader {
+  font-size:24px;
+  font-weight:bold;
+  margin:0px 0px 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.ppCenterColumn {
+margin: 0px auto;
+padding: 20px 20px 0px;
+}
+
+
+      <div class="ppSectionHeader">How does it work?</div>
+      <ol>
+        <li>Click a link in an app.</li>
+        <li>A bubble will spawn on the edge of the screen which will load that link in the background. As soon as the link is ready, it will be displayed for you.</li>
+      </ol><br>
+
+      <div>
+          <img src="http://s3.amazonaws.com/linkbubble/img/link_bubble_load_demo.gif" 
+              style="display:block;margin:auto;" width="440" height="782">
+      </div><br>
+
+      <p><b>It's that simple.</b> With Link Bubble, you can keep using your current app rather than wasting your time watching links redirect and waiting for pages to load. What's not to love about that?</p></br></br>
+      
+      <div class="ppSectionHeader">Show me more!</div>
+      <p>You can also quickly share a link or add it to a read it later service such as Pocket:</p>
+      <br />
+
+      <div>
+          <img src="http://s3.amazonaws.com/linkbubble/img/link_bubble_add_to_pocket_demo.gif" 
+              style="display:block;margin:auto;" width="440" height="782">
+      </div><br>
+
+      <p>Looks both fun <i>and</i> useful right?</p><br />
+
+      <p>Link Bubble does plenty of other cool stuff such as:</p>
+      <ul>
+        <li>Redirecting the current page to a dedicated app (where appropriate).</li>
+        <li>Locating YouTube videos on webpages so you can easily load them in the YouTube app.</li>
+      </ul></br></br>
+
+
+<div class="ppSectionHeader">Link Bubble Pro</div>
+<p>The free version gives you a taste of the Link Bubble's power, but if you want to load multiple bubbles at once or load links from all the apps on your device, you'll want to upgrade to Link Bubble Pro. As well as unlocking the full feature set of Link Bubble, going Pro also helps ensure I get to write more of these apps in the future :)</p><br />
+
+<p>Thanks, and enjoy the app!</p><br />
+
+<p>Chris Lacy</br>@chrismlacy / +Chris Lacy</p>
+<img src="http://s3.amazonaws.com/linkbubble/img/chris_lacy.png" width="100" height="100">
+      <br /><br /><br />
+<p>PS. To close this bubble, either press the Back button or long press the bubble and flick it onto the Close bubble at the bottom of the screen :)</p>
+    </div>
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            <TextView
+                android:id="@+id/textDeviceValue"
+                style="@style/Theme.rpiCheck.Dark.Text.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:singleLine="true"
+                />
+
+            <TextView
+                android:id="@+id/textDeviceUserHost"
+                style="@style/Theme.rpiCheck.Dark.Text.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                />
+
+            <TextView
+                android:id="@+id/textStatusValue"
+                style="@style/Theme.rpiCheck.Dark.Text.Small"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                />
+
+        </LinearLayout>
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Theme.rpiCheck.Dark.Text.Small"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:text="@string/widget_temp_header"
+                />
+
+            <TextView
+                android:id="@+id/textTempValue"
+                style="@style/Theme.rpiCheck.Dark.Text.Small"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="2dp"
+                />
+        </LinearLayout>
+
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Theme.rpiCheck.Dark.Text.Small"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:text="@string/widget_arm_header"
+                />
+
+            <TextView
+                android:id="@+id/textArmValue"
+                style="@style/Theme.rpiCheck.Dark.Text.Small"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="2dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Theme.rpiCheck.Dark.Text.Small"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:text="@string/widget_load_header"
+                />
+
+            <TextView
+                android:id="@+id/textLoadValue"
+                style="@style/Theme.rpiCheck.Dark.Text.Small"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="2dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Theme.rpiCheck.Dark.Text.Small"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:text="@string/widget_memory_header"
+                />
+
+            <TextView
+                android:id="@+id/textMemoryValue"
+                style="@style/Theme.rpiCheck.Dark.Text.Small"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="2dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+private void clearTexture() {
+            mExpandedTitleTexture.recycle();
+            mExpandedTitleTexture = null;
+        }
+    }
+
+    /**
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      <sourceFolder url="file://$MODULE_DIR$/src/main/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/shaders" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/aidl" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/shaders" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/res" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/resources" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/assets" type="java-test-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/jni" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/androidTest/shaders" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/assets" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/builds" />
+<?xml version="1.0" encoding="utf-8"?> 
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.inaturalist.android"
+    android:versionCode="164"
+    android:versionName="1.4.17" >
+
+    <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="21" />
+
+    android:gravity="center_vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:background="@drawable/activated_background"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:paddingRight="12dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
+        <com.android.internal.widget.PreferenceImageView
+            android:id="@+android:id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:background="@drawable/activated_background"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:paddingRight="12dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp">
+        <com.android.internal.widget.PreferenceImageView
+            android:id="@+android:id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        android:summary="@string/auto_upload_description"
+        android:title="@string/automatic_upload" />
+
+
+    <ListPreference
+        android:layout="@layout/custom_preference"
+        android:key="language"
+        android:key="contact_support"
+        android:title="@string/contact_support" />
+
+     <Preference
+        android:layout="@layout/custom_preference_with_header"
+        android:key="about"
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+android {
+    defaultConfig {
+        applicationId "kitchen.dev.icfbooks.esther"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 14
+        versionName '1.0.1'
+        multiDexEnabled true
+    }
+    buildTypes {
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Point;
+import android.graphics.PorterDuff;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.Html;
+import android.text.TextUtils;
+import android.view.Display;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.zxing.common.StringUtils;
+
+import kitchen.dev.icfbooks.esther.dal.ApiClient;
+import kitchen.dev.icfbooks.esther.dal.ApiResultHandler;
+protected void onCreate(Bundle savedInstanceState) {
+
+        //Workaround to set black title
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'>"+ getString(R.string.menu_about)+"</font>"));
+        final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
+        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+
+protected void onCreate(Bundle savedInstanceState) {
+
+        //Workaround to set black title
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'>"+ getString(R.string.title_esther)+"</font>"));
+        final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
+        upArrow.setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.net.Uri;
+import android.preference.PreferenceManager;
+import android.provider.CalendarContract.Attendees;
+import android.provider.CalendarContract.Instances;
+	private static final String EVENT_SORT_ORDER = "startDay ASC, allDay DESC, begin ASC ";
+	private static final String EVENT_SELECTION = Instances.SELF_ATTENDEE_STATUS + "!="
+			+ Attendees.ATTENDEE_STATUS_DECLINED;
+	private static final String[] PROJECTION = new String[] { Instances.EVENT_ID, Instances.TITLE,
+            Instances.BEGIN, Instances.END, Instances.ALL_DAY, Instances.DISPLAY_COLOR,
+            Instances.EVENT_LOCATION, Instances.HAS_ALARM, Instances.RRULE};
+    private static final String CLOSING_BRACKET = " )";
+    private static final String OR = " OR ";
+	private static final String EQUALS = " = ";
+private CalendarEvent createCalendarEvent(Cursor calendarCursor) {
+		event.setStartDate(new DateTime(calendarCursor.getLong(2)));
+		event.setEndDate(new DateTime(calendarCursor.getLong(3)));
+		event.setAllDay(calendarCursor.getInt(4) > 0);
+		event.setColor(getAsOpaque(calendarCursor.getInt(5)));
+		event.setLocation(calendarCursor.getString(6));
+		event.setAlarmActive(calendarCursor.getInt(7) > 0);
+		event.setRecurring(calendarCursor.getString(8) != null);
+		if (event.isAllDay()) {
+			DateTime startDate = event.getStartDate();
+			long converted = startDate.getZone().convertLocalToUTC(startDate.getMillis(), true);
+			event.setStartDate(new DateTime(converted));
+private CalendarEvent createCalendarEvent(Cursor calendarCursor) {
+		return event;
+	}
+
+	private int getAsOpaque(int color) {
+		return argb(255, red(color), green(color), blue(color));
+	}
+
+	private Cursor createLoadedCursor() {
+private Cursor createLoadedCursor() {
+		ContentUris.appendId(builder, end);
+		String selection = createSelectionClause();
+		ContentResolver contentResolver = context.getContentResolver();
+        return contentResolver.query(builder.build(), PROJECTION, selection, null, EVENT_SORT_ORDER);
+    }
+
+	private String createSelectionClause() {
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		Set<String> activeCalenders = prefs.getStringSet(CalendarPreferences.PREF_ACTIVE_CALENDARS,
+				new HashSet<String>());
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+public boolean onOptionsItemSelected(MenuItem item) {
+
+            case R.id.listType_all:
+                if (af != null && mf != null) {
+                    af.getRecords(0, "anime", false);
+                    mf.getRecords(0, "manga", false);
+                    supportInvalidateOptionsMenu();
+                }
+                break;
+            case R.id.listType_inprogress:
+                if (af != null && mf != null) {
+                    af.getRecords(1, "anime", false);
+                    mf.getRecords(1, "manga", false);
+                    supportInvalidateOptionsMenu();
+                }
+                break;
+            case R.id.listType_completed:
+                if (af != null && mf != null) {
+                    af.getRecords(2, "anime", false);
+                    mf.getRecords(2, "manga", false);
+                    supportInvalidateOptionsMenu();
+                }
+                break;
+            case R.id.listType_onhold:
+                if (af != null && mf != null) {
+                    af.getRecords(3, "anime", false);
+                    mf.getRecords(3, "manga", false);
+                    supportInvalidateOptionsMenu();
+                }
+                break;
+            case R.id.listType_dropped:
+                if (af != null && mf != null) {
+                    af.getRecords(4, "anime", false);
+                    mf.getRecords(4, "manga", false);
+                    supportInvalidateOptionsMenu();
+                }
+                break;
+            case R.id.listType_planned:
+                if (af != null && mf != null) {
+                    af.getRecords(5, "anime", false);
+                    mf.getRecords(5, "manga", false);
+                    supportInvalidateOptionsMenu();
+                }
+                break;
+            case R.id.forceSync:
+                if (af != null && mf != null) {
+                    af.getRecords(af.currentList, "anime", true);
+                    mf.getRecords(af.currentList, "manga", true);
+                    syncNotify();
+                }
+                break;
+public boolean onOptionsItemSelected(MenuItem item) {
+    public void onResume() {
+        super.onResume();
+        if (instanceExists) {
+            af.getRecords(af.currentList, "anime", false);
+            mf.getRecords(af.currentList, "manga", false);
+        }
+
+        checkNetworkAndDisplayCrouton();
+public void fragmentReady() {
+
+        //Logic to check if we have just signed in. If yes, automatically do a sync
+        if (getIntent().getBooleanExtra("net.somethingdreadful.MAL.firstSync", false)) {
+            af.getRecords(af.currentList, "anime", true);
+            mf.getRecords(mf.currentList, "manga", true);
+            getIntent().removeExtra("net.somethingdreadful.MAL.firstSync");
+            syncNotify();
+        }
+public void checkNetworkAndDisplayCrouton() {
+        if (isNetworkAvailable() && networkAvailable == false) {
+            Crouton.makeText(this, R.string.crouton_connectionRestored, Style.INFO).show();
+            //TODO: Sync here, but first sync any records marked DIRTY
+            af.getRecords(af.currentList, "anime", true);
+            mf.getRecords(af.currentList, "manga", true);
+            syncNotify();
+        }
+
+public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+
+        gv.setDrawSelectorOnTop(true);
+
+        getRecords(currentList, recordType, false);
+
+        Iready.fragmentReady();
+
+        return layout;
+
+    }
+
+    public void getRecords(int listint, String mediaType, boolean forceSync) {
+        forceSyncBool = forceSync;
+        currentList = listint;
+        recordType = mediaType;
+
+        if (recordType.equals("anime")) {
+            new getAnimeRecordsTask(this.gridCellHeight).execute(currentList);
+        } else if (recordType.equals("manga")) {
+            new getMangaRecordsTask(this.gridCellHeight).execute(currentList);
+        }
+    }
+
+public void getRecords(int listint, String mediaType, boolean forceSync) {
+        String type = recordType;
+        MALManager internalManager = mManager;
+        int gridCellHeight;
+
+        getAnimeRecordsTask(int imageHeight) {
+            this.gridCellHeight = imageHeight;
+        }
+
+        @SuppressWarnings({"rawtypes", "unchecked"})
+public void getRecords(int listint, String mediaType, boolean forceSync) {
+
+            if (mForceSync) {
+                al = new ArrayList();
+                if (mManager == null) {
+                    Log.w("MALX", "mManager is null. Attempting to re-create the object.");
+
+                    try {
+                        mManager = new MALManager(c);
+                    } finally {
+                        Log.v("MALX", "Successfully re-created mManager");
+                    }
+protected void onPostExecute(ArrayList<AnimeRecord> result) {
+        String type = recordType;
+        MALManager internalManager = mManager;
+        int gridCellHeight;
+
+        getMangaRecordsTask(int imageHeight) {
+            this.gridCellHeight = imageHeight;
+        }
+
+        @SuppressWarnings({"rawtypes", "unchecked"})
+protected void onPostExecute(ArrayList<AnimeRecord> result) {
+            }
+            if (mForceSync) {
+                al = new ArrayList();
+                if (mManager == null) {
+                    Log.w("MALX", "mManager is null. Attempting to re-create the object.");
+
+                    try {
+                        mManager = new MALManager(c);
+                    } finally {
+                        Log.v("MALX", "Successfully re-created mManager");
+                    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
